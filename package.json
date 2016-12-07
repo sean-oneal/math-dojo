@@ -1,0 +1,31 @@
+{
+  "name": "catfight",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "bcrypt-nodejs": "0.0.3",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.1",
+    "morgan": "^1.7.0",
+    "q": "^1.4.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "webpack": "^1.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rob0h/hrsf51-greenfield.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rob0h/hrsf51-greenfield/issues"
+  },
+  "homepage": "https://github.com/Rob0h/hrsf51-greenfield#readme"
+}
