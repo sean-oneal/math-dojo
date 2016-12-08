@@ -16,22 +16,18 @@ class Login extends React.Component {
   }
 
   login(username, password) {
-    Axios.post('http://localhost:3000/signup', {
+    Axios.post('http://localhost:3000/login', {
       username: username,
       password: password,
     })
-    console.log(username);
-    console.log(password);
   }
 
-  register(username, password) {
-    this.getAvatars();
+  register(username, password, url) {
     Axios.post('http://localhost:3000/signup', {
       username: username,
       password: password,
+      imageUrl: url,
     })
-    console.log(username);
-    console.log(password);
   }
 
   getAvatars() {
@@ -43,7 +39,7 @@ class Login extends React.Component {
   }
 
   render () {
-    let displayChoices = this.state.avatarChoices.length > 0 ? <AvatarChoices avatarChoices={this.state.avatarChoices}/> : <div></div>
+    let displayChoices = this.state.avatarChoices.length > 0 ? <AvatarChoices register={this.register} avatarChoices={this.state.avatarChoices}/> : <div></div>
     return (
       <div className="container" onSubmit={this.handleSubmit}>
         <form className="form-signin">
@@ -53,7 +49,7 @@ class Login extends React.Component {
           <label className="sr-only">Password</label>
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" required/>
           <button onClick={() => this.login(document.getElementById('inputUsername').value, document.getElementById('inputPassword').value)} className="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-          <button onClick={() => this.register(document.getElementById('inputUsername').value, document.getElementById('inputPassword').value)} className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+          <button onClick={() => this.getAvatars()} className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </form>
 
         {displayChoices}
