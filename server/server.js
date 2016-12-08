@@ -39,6 +39,6 @@ app.post('/signup', function(req,res) {
 
 app.listen(port, function() {
   console.log('Now listening on port', port);
-
+});
 
 module.exports = app;
