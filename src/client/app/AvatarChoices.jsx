@@ -7,7 +7,7 @@ var AvatarChoices = (props) => (
             {props.avatarChoices.map((avatar) => 
               <div className="item">
                 <div className="well"> 
-                  <img src={avatar.link}></img>
+                  <img onClick={() => props.register(document.getElementById('inputUsername').value, document.getElementById('inputPassword').value, avatar.link)} src={avatar.link}></img>
                 </div>
               </div>
             )}
