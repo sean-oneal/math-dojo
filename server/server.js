@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost/catFight');
 
 app.use(cookieParser());
 app.use(session({secret: '1234567890QWERTY'}));
-
+var port = 3000;
 // var newUser = new User({ username: 'V-Cat', password: 'meow', imageUrl: 'https://s-media-cache-ak0.pinimg.com/originals/e0/81/6b/e0816b09a99f6ce0ee708343cfc5469d.png' });
 
 
@@ -30,15 +30,15 @@ require('./config/middleware.js')(app,express);
 // })
 
 app.post('/signup', function(req,res) {
-  console.log('do something');
+  console.log('do something', req.body);
 });
 // app.get('/*', function(req, res){
 //   res.redirect('/');
 // })
 
 
-app.listen(3000,function(){
-  console.log('hello world');
+app.listen(port, function() {
+  console.log('Now listening on port', port);
 });
 
 module.exports = app;
