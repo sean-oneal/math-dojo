@@ -30,6 +30,13 @@ require('./config/middleware.js')(app,express);
 // })
 
 app.post('/signup', function(req,res) {
+  var current = req.body;
+  var newUser = new User({
+      "username": current.username,
+      "password": current.password,
+      "imageUrl": current.imageUrl,
+  })
+  newUser.save();
   console.log('do something', req.body);
 });
 // app.get('/*', function(req, res){

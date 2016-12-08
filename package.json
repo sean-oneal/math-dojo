@@ -30,7 +30,8 @@
   },
   "scripts": {
     "dev": "webpack -d --watch",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "start": "nodemon --ignore node_modules ./server/server.js"
   },
   "repository": {
     "type": "git",
