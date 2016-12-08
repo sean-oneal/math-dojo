@@ -12,6 +12,7 @@ class App extends React.Component {
       user: 100,
       opponent: 100,
       question: '',
+      answer: '',
     }
   }
 
@@ -26,12 +27,26 @@ class App extends React.Component {
   }
 
   generateQuestion() {
-    this.setState({question: '5 + 5'});
+    // need to check level, not using multiplication or division for now
+    var operands = ['+', '-', '*', '/']
+    var firstDigit = Math.floor(Math.random() * 10);
+    var secondDigit = Math.floor(Math.random() * 10);
+    var operandIndex = Math.floor(Math.random() * 2);
+    var answer = eval(firstDigit + operands[operandIndex] + secondDigit);
+    this.setState({
+      answer: answer
+    })
+    this.setState({
+      question: firstDigit + ' ' + operands[operandIndex] + ' ' + secondDigit + ' = '
+    });
   }
 
   checkAnswer(answer) {
-    console.log(answer);
-
+    if (answer === '' + this.state.answer) {
+      alert('you right son');
+    } else {
+      alert('damn you goofed');
+    }
   }
 
 
