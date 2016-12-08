@@ -83,7 +83,7 @@ class App extends React.Component {
 
         <Question question={this.state.question}/>
         <form>
-          <input id='answerForm' type='text' placeholder='Enter Answer here'></input>
+          <input id='answerForm' type='text' placeholder='Enter Number'></input>
         </form>
         <button onClick={() => this.checkAnswer(document.getElementById('answerForm').value)}>Lezz Fite</button>
       </div>
