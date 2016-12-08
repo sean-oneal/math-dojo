@@ -40,7 +40,7 @@ class App extends React.Component {
 
   getEvilAvatar() {
     var context = this;
-    Axios.get('https://www.googleapis.com/customsearch/v1?key=' + window.GMAP_KEY + '&cx=009407302250325958776:7xs2zpwdaho&q=evil%20cat%20gif&searchType=animated')
+    Axios.get('https://www.googleapis.com/customsearch/v1?key=' + window.GMAP_KEY + '&cx=009407302250325958776:7xs2zpwdaho&q=evil%20cat%20gif&searchType=image')
     .then(function (response) {
       var randomIndex = Math.floor(Math.random() * response.data.items.length);
       var evilCat = response.data.items[randomIndex].link;
