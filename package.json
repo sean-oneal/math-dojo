@@ -12,6 +12,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "jquery": "^3.1.1",
     "mongoose": "^4.7.1",
     "morgan": "^1.7.0",
     "nodemon": "^1.11.0",
@@ -25,7 +26,7 @@
   },
   "scripts": {
     "dev": "webpack -d --watch",
-    "build" : "webpack -p"
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
