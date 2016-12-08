@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Blake Fleck/Fiona Chiang
+  - __Scrum Master__: Robert Oh
+  - __Development Team Members__: Fiona Chiang, Vernon Quan
 
 ## Table of Contents
 
