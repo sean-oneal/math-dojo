@@ -38,7 +38,7 @@ app.post('/signup', function(req,res) {
 
 
 app.listen(3000,function(){
-  console.log('hello world');
+  console.log('Server listening at port 3000');
 });
 
 module.exports = app;
