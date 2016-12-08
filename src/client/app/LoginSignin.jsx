@@ -1,7 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 import Axios from '../../../node_modules/axios/lib/axios.js'; 
-import {AvatarChoices} from './AvatarChoices.jsx'
+import {AvatarChoices} from './AvatarChoices.jsx';
+import {Link} from 'react-router';
 
 class Login extends React.Component {
   constructor() {
@@ -42,6 +43,10 @@ class Login extends React.Component {
     let displayChoices = this.state.avatarChoices.length > 0 ? <AvatarChoices register={this.register} avatarChoices={this.state.avatarChoices}/> : <div></div>
     return (
       <div className="container" onSubmit={this.handleSubmit}>
+        <ul role="nav">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/Arena">Battle!</Link></li>
+        </ul>
         <form className="form-signin">
           <h2 className="form-signin-heading">Please sign in</h2>
           <label className="sr-only">Username</label>
@@ -59,4 +64,10 @@ class Login extends React.Component {
   }
 }
 
-render(<Login />, document.getElementById('login'));
+export {Login}
+
+
+
+
+
+
