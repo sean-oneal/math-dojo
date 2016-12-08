@@ -11,7 +11,10 @@
     "babel-preset-react": "^6.16.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "express-sessions": "^1.0.6",
     "mongoose": "^4.7.1",
     "morgan": "^1.7.0",
     "nodemon": "^1.11.0",
@@ -25,7 +28,7 @@
   },
   "scripts": {
     "dev": "webpack -d --watch",
-    "build" : "webpack -p"
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
