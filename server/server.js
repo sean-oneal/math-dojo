@@ -20,21 +20,21 @@ app.use(session({secret: '1234567890QWERTY'}));
 // });
 require('./config/middleware.js')(app,express);
 
-app.get('/logout', function (req, res) {
-  req.session.destroy();
-  res.redirect('../login');
-  res.send("logout success!");
-});
-app.get('/', function(req, res) {
-  console.log('Cookies: ', req.cookies)
-})
+// app.get('/logout', function (req, res) {
+//   req.session.destroy();
+//   res.redirect('../login');
+//   res.send("logout success!");
+// });
+// app.get('/', function(req, res) {
+//   console.log('Cookies: ', req.cookies)
+// })
 
 app.post('/signup', function(req,res) {
   console.log('do something');
 });
-app.get('/*', function(req, res){
-  res.redirect('/');
-})
+// app.get('/*', function(req, res){
+//   res.redirect('/');
+// })
 
 
 app.listen(3000,function(){
