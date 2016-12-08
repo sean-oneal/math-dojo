@@ -30,7 +30,7 @@ require('./config/middleware.js')(app,express);
 // })
 
 app.post('/signup', function(req,res) {
-  console.log('do something');
+  console.log('do something', req.body);
 });
 // app.get('/*', function(req, res){
 //   res.redirect('/');
@@ -39,6 +39,6 @@ app.post('/signup', function(req,res) {
 
 app.listen(port, function() {
   console.log('Now listening on port', port);
-});
+
 
 module.exports = app;
