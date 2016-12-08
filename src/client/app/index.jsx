@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 import {User} from './User.jsx';
 import {Opponent} from './Opponent.jsx';
 import {Question} from './Question.jsx';
+import Axios from '../../../node_modules/axios/lib/axios.js'; 
 
 class App extends React.Component {
   constructor() {
@@ -12,11 +13,15 @@ class App extends React.Component {
       user: 100,
       opponent: 100,
       question: '',
+      evilCatAvatar: '',
     }
   }
 
   componentWillMount() {
     this.generateQuestion();
+    // var evilCat = this.getEvilAvatar();
+    // this.setState({evilCat: evilCat});
+    this.getEvilAvatar();
   }
 
   fight() {
@@ -30,10 +35,24 @@ class App extends React.Component {
   }
 
   checkAnswer(answer) {
-    console.log(answer);
-
+    this.fight();
   }
 
+  getEvilAvatar() {
+    var context = this;
+    Axios.get('https://www.googleapis.com/customsearch/v1?key=' + window.GMAP_KEY + '&cx=009407302250325958776:7xs2zpwdaho&q=evil%20cat%20gif&searchType=animated')
+    .then(function (response) {
+      var randomIndex = Math.floor(Math.random() * response.data.items.length);
+      var evilCat = response.data.items[randomIndex].link;
+      console.log(evilCat);
+      context.setState({
+        evilCatAvatar: evilCat 
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
 
   render () {
@@ -41,7 +60,9 @@ class App extends React.Component {
       <div>
         <p>Cat Fight!</p>
         <User user={this.state.user}/>
-        <Opponent opponent={this.state.opponent}/>
+        <progress value={this.state.user} max="100"></progress>
+        <Opponent opponentImage={this.state.evilCatAvatar} opponent={this.state.opponent}/>
+        <progress value={this.state.opponent} max="100"></progress>
 
         <Question question={this.state.question}/>
         <form>
