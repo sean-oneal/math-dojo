@@ -12,32 +12,39 @@ mongoose.connect('mongodb://localhost/catFight');
 app.use(cookieParser());
 app.use(session({secret: '1234567890QWERTY'}));
 var port = 3000;
-// var newUser = new User({ username: 'V-Cat', password: 'meow', imageUrl: 'https://s-media-cache-ak0.pinimg.com/originals/e0/81/6b/e0816b09a99f6ce0ee708343cfc5469d.png' });
 
-
-// newUser.save(function(){
-//   console.log('saved');
-// });
 require('./config/middleware.js')(app,express);
 
-// app.get('/logout', function (req, res) {
-//   req.session.destroy();
-//   res.redirect('../login');
-//   res.send("logout success!");
-// });
-// app.get('/', function(req, res) {
-//   console.log('Cookies: ', req.cookies)
-// })
+app.post('/login', function(req, res) {
+  var username = req.body.username;
+  var password = req.body.password;
+  User.findOne({ username:username, password:password }).exec(function(err, user) {
+    if (user) {
+      console.log('cat found');
+      res.send(200, user);
+    } else {
+      console.log('cat not found');
+      res.send(404);
+    }
+  });
 
-app.post('/signup', function(req,res) {
+});
+
+app.post('/signup', function(req, res) {
   var current = req.body;
   var newUser = new User({
       "username": current.username,
       "password": current.password,
-      "imageUrl": current.imageUrl,
+      "imageUrl": current.imageUrl
   })
-  newUser.save();
-  console.log('do something', req.body);
+  newUser.save(function(err) {
+    if (err) {
+      res.status(500).send({ error: 'Oh snap son, shit\'s broken' });  
+    } else {
+      console.log('Saved', req.body.username, 'to the database');
+    }
+  });
+
 });
 // app.get('/*', function(req, res){
 //   res.redirect('/');
