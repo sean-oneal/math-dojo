@@ -5,6 +5,7 @@ var User = require('./users/userModel.js').User;
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var util = require('./config/utility.js')
 
 var app = express();
 mongoose.connect('mongodb://localhost/catFight');
@@ -20,14 +21,17 @@ app.post('/login', function(req, res) {
   var password = req.body.password;
   User.findOne({ username:username, password:password }).exec(function(err, user) {
     if (user) {
-      console.log('cat found');
+      util.createSession(req, res, user);
       res.send(200, user);
     } else {
-      console.log('cat not found');
-      res.send(404);
+      res.send(404, {error: 'User or Password does not match'});
     }
   });
 
+});
+app.get('/logout', function(req, res) {
+  req.session.destroy();
+  console.log('session over');
 });
 
 app.post('/signup', function(req, res) {
@@ -39,7 +43,7 @@ app.post('/signup', function(req, res) {
   })
   newUser.save(function(err) {
     if (err) {
-      res.status(500).send({ error: 'Oh snap son, shit\'s broken' });  
+      res.send({ error: 'Oh snap son, shit\'s broken' });  
     } else {
       console.log('Saved', req.body.username, 'to the database');
     }
