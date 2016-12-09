@@ -3,12 +3,15 @@ import {render} from 'react-dom';
 import Axios from '../../../node_modules/axios/lib/axios.js'; 
 import {AvatarChoices} from './AvatarChoices.jsx';
 import {Link} from 'react-router';
+import {browserHistory} from 'react-router'
+import {Alerts} from './Alerts.jsx';
 
 class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      avatarChoices: []
+      avatarChoices: [],
+      alertToUser: null
     }
   }
 
@@ -17,23 +20,38 @@ class Login extends React.Component {
   }
 
   login(username, password) {
+    var context = this;
     Axios.post('http://localhost:3000/login', {
       username: username,
       password: password,
     })
     .then(function(res) {
-      console.log(res);
+      if (res.data.error) {
+        console.log('unable to login');
+        context.setState({alertToUser: 'unsuccessfulsignin'});
+      } else {
+        console.log(res.data);
+        browserHistory.push('/Arena');
+      }
     })
   }
 
   register(username, password, url) {
+    var context = this;
     Axios.post('http://localhost:3000/signup', {
       username: username,
       password: password,
       imageUrl: url,
     })
     .then(function(res) {
-      console.log(res);
+      if (res.data.error) {
+        console.log('unable to register');
+        context.setState({alertToUser: 'unsuccessfulregister'});
+        context.setState({avatarChoices: []});
+      } else {
+        console.log(res.data);
+        browserHistory.push('/Arena');
+      }
     })
   }
 
@@ -45,8 +63,15 @@ class Login extends React.Component {
     });
   }
 
+  dismissAlert() {
+    this.setState({alertToUser: null});
+  }
+
   render () {
-    let displayChoices = this.state.avatarChoices.length > 0 ? <AvatarChoices register={this.register} avatarChoices={this.state.avatarChoices}/> : <div></div>
+    let displayChoices = this.state.avatarChoices.length > 0 ? <AvatarChoices register={this.register.bind(this)} avatarChoices={this.state.avatarChoices}/> : <div></div>
+
+    let alertToUser = this.state.alertToUser !== null ? <Alerts alert={this.state.alertToUser} dismiss={this.dismissAlert.bind(this)}/> : <div></div>
+
     return (
       <div className="container" onSubmit={this.handleSubmit}>
         <ul role="nav">
@@ -63,6 +88,10 @@ class Login extends React.Component {
           <button onClick={() => this.getAvatars()} className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </form>
 
+        <div id='alerts'>
+          {alertToUser}
+        </div>
+        
         {displayChoices}
 
       </div>
