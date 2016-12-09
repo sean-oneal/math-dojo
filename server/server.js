@@ -6,6 +6,7 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var util = require('./config/utility.js')
+var Q = require('Q');
 
 var app = express();
 mongoose.connect('mongodb://localhost/catFight');
@@ -24,7 +25,7 @@ app.post('/login', function(req, res) {
       util.createSession(req, res, user);
       res.send(200, user);
     } else {
-      res.send(404, {error: 'User or Password does not match'});
+      res.send(200, {error: 'User or Password does not match'});
     }
   });
 
