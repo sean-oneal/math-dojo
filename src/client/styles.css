@@ -58,3 +58,7 @@ body {
  position:relative;
  display: block;
 }
+
+#alerts {
+  text-align: center;
+}
