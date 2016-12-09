@@ -5,6 +5,8 @@ var User = require('./users/userModel.js').User;
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var util = require('./config/utility.js')
+var Q = require('Q');
 
 var app = express();
 mongoose.connect('mongodb://localhost/catFight');
@@ -12,25 +14,42 @@ mongoose.connect('mongodb://localhost/catFight');
 app.use(cookieParser());
 app.use(session({secret: '1234567890QWERTY'}));
 var port = 3000;
-// var newUser = new User({ username: 'V-Cat', password: 'meow', imageUrl: 'https://s-media-cache-ak0.pinimg.com/originals/e0/81/6b/e0816b09a99f6ce0ee708343cfc5469d.png' });
 
-
-// newUser.save(function(){
-//   console.log('saved');
-// });
 require('./config/middleware.js')(app,express);
 
-// app.get('/logout', function (req, res) {
-//   req.session.destroy();
-//   res.redirect('../login');
-//   res.send("logout success!");
-// });
-// app.get('/', function(req, res) {
-//   console.log('Cookies: ', req.cookies)
-// })
+app.post('/login', function(req, res) {
+  var username = req.body.username;
+  var password = req.body.password;
+  User.findOne({ username:username, password:password }).exec(function(err, user) {
+    if (user) {
+      util.createSession(req, res, user);
+      res.send(200, user);
+    } else {
+      res.send(200, {error: 'User or Password does not match'});
+    }
+  });
 
-app.post('/signup', function(req,res) {
-  console.log('do something', req.body);
+});
+app.get('/logout', function(req, res) {
+  req.session.destroy();
+  console.log('session over');
+});
+
+app.post('/signup', function(req, res) {
+  var current = req.body;
+  var newUser = new User({
+      "username": current.username,
+      "password": current.password,
+      "imageUrl": current.imageUrl
+  })
+  newUser.save(function(err) {
+    if (err) {
+      res.send({ error: 'Oh snap son, shit\'s broken' });  
+    } else {
+      console.log('Saved', req.body.username, 'to the database');
+    }
+  });
+
 });
 // app.get('/*', function(req, res){
 //   res.redirect('/');
