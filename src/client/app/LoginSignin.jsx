@@ -20,6 +20,9 @@ class Login extends React.Component {
       username: username,
       password: password,
     })
+    .then(function(res) {
+      console.log(res);
+    })
   }
 
   register(username, password, url) {
@@ -27,6 +30,9 @@ class Login extends React.Component {
       username: username,
       password: password,
       imageUrl: url,
+    })
+    .then(function(res) {
+      console.log(res);
     })
   }
 
