@@ -3,7 +3,7 @@ import React from 'react';
 var AvatarChoices = (props) => (
   <div className="container">
           <h1>Pick an Avatar</h1>
-          <div className="row">
+          <div className="avatarRow">
             {props.avatarChoices.map((avatar) => 
               <div className="item">
                 <div className="well"> 
