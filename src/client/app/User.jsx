@@ -2,7 +2,7 @@ import React from 'react';
 
 var User = (props) => (
   <div>
-    YO HEALTH: {props.user}
+    <img src={props.userImage} className="img-responsive"></img>
   </div>
 );
 
