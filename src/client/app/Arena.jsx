@@ -50,6 +50,21 @@ class Arena extends React.Component {
     });
   }
 
+  checkHealth() {
+    if (this.state.user <= 0) {
+      this.setState({
+        message: 'Sorry...try again',
+      });
+    } else if (this.state.opponent <= 0) {
+      this.setState({
+        message: 'You win!',
+        userlvl: this.state.userlvl + 1,
+        opponent: 100,
+        user: 100,
+      });
+    }
+  }
+
   generateLevel1Question() {
     var operands = ['+', '-'];
     var firstDigit = Math.floor(Math.random() * 10);
@@ -83,9 +98,11 @@ class Arena extends React.Component {
   checkAnswer(answer) {
     if (answer === '' + this.state.answer) {
       this.attack();
+      this.checkHealth();
       this.generateLevel1Question();
     } else {
       this.miss();
+      this.checkHealth();
       this.generateLevel1Question();
     }
   }
@@ -152,7 +169,7 @@ class Arena extends React.Component {
 
             <div className="col-xs-6 col-sm-3 placeholder userContainer">
               <User userImage={this.state.userAvatar} user={this.state.user}/>
-              <h4>You</h4>
+              <h4>You Lvl.{this.state.userlvl}</h4>
               <span className="text-muted">Health</span>
               <progress value={this.state.user} max="100"></progress>
             </div>
