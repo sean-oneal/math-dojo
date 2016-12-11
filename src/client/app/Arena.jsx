@@ -24,7 +24,7 @@ class Arena extends React.Component {
   }
 
   componentWillMount() {
-    this.generateLevel1Question();
+    this.generateQuestion();
     this.getEvilAvatar();
     this.getAvatar();
   }
@@ -65,10 +65,12 @@ class Arena extends React.Component {
     }
   }
 
-  generateLevel1Question() {
-    var operands = ['+', '-'];
-    var firstDigit = Math.floor(Math.random() * 10);
-    var secondDigit = Math.floor(Math.random() * 10);
+  generateQuestion() {
+    // Level 1 - addition/subtraction of single digits
+    var userlvl = this.state.userlvl;
+    var operands = ['+', '-', '*', '/'];
+    var firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
+    var secondDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
     var operandIndex = Math.floor(Math.random() * 2);
 
     var answer = eval(firstDigit + operands[operandIndex] + secondDigit);
@@ -80,30 +82,16 @@ class Arena extends React.Component {
     });
   }
 
-  generateLevel2Question() {
-    var operands = ['*', '/'];
-    var firstDigit = Math.floor(Math.random() * 10);
-    var secondDigit = Math.floor(Math.random() * 10);
-    var operandIndex = Math.floor(Math.random() * 2);
-
-    var answer = eval(firstDigit + operands[operandIndex] + secondDigit);
-    this.setState({
-      answer: answer
-    });
-    this.setState({
-      question: firstDigit + ' ' + operands[operandIndex] + ' ' + secondDigit + ' = '
-    });
-  }
 
   checkAnswer(answer) {
     if (answer === '' + this.state.answer) {
       this.attack();
       this.checkHealth();
-      this.generateLevel1Question();
+      this.generateQuestion();
     } else {
       this.miss();
       this.checkHealth();
-      this.generateLevel1Question();
+      this.generateQuestion();
     }
   }
 
