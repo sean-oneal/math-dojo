@@ -12,6 +12,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
+    "chart.js": "^2.4.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
@@ -34,10 +35,14 @@
     "webpack": "^1.14.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "static-site-generator-webpack-plugin": "^3.1.0",
     "style-loader": "^0.13.1",
+=======
+    "babel-plugin-transform-object-rest-spread": "^6.20.2",
+>>>>>>> fce587d76cb827d94738087738222e92829e5652
     "webpack": "^1.14.0"
   },
   "scripts": {
