@@ -6,16 +6,15 @@ import {Question} from './Question.jsx';
 import {Display} from './Display.jsx';
 import Axios from '../../../node_modules/axios/lib/axios.js'; 
 import {Link} from 'react-router';
+import { connect } from 'react-redux';
 
 class Arena extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      user: 100,
-      userlvl: 1,
-      userAvatar: 'https://cdn.meme.am/cache/images/folder803/100x100/8313803.jpg',
-      opponent: 100,
+      userHP: 100,
+      opponentHP: 100,
       question: '',
       evilCatAvatar: '',
       answer: '',
@@ -37,7 +36,7 @@ class Arena extends React.Component {
 
   attack() {
     this.setState({
-      opponent: this.state.opponent - 20,
+      opponentHP: this.state.opponentHP - 20,
       message: this.state.message = 'Great job! You\'ve damaged the enemy.',
     });
 
@@ -45,29 +44,29 @@ class Arena extends React.Component {
 
   miss() {
     this.setState({
-      user: this.state.user - 20,
+      userHP: this.state.userHP - 20,
       message: this.state.message = 'Oh no! You\'ve been hit!',
     });
   }
 
   checkHealth() {
-    if (this.state.user <= 0) {
+    if (this.state.userHP <= 0) {
       this.setState({
         message: 'Sorry...try again',
       });
-    } else if (this.state.opponent <= 0) {
+    } else if (this.state.opponentHP <= 0) {
       this.setState({
         message: 'You win!',
         userlvl: this.state.userlvl + 1,
-        opponent: 100,
-        user: 100,
+        opponentHP: 100,
+        userHP: 100,
       });
     }
   }
 
   generateQuestion() {
     // Level 1 - addition/subtraction of single digits
-    var userlvl = this.state.userlvl;
+    var userlvl = this.props.userlvl;
     var operands = ['+', '-', '*', '/'];
     var firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
     var secondDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
@@ -140,6 +139,7 @@ class Arena extends React.Component {
       </div>
     </nav>
 
+
     <div className="container-fluid">
       <div className="row">
         <div className="col-sm-3 col-md-2 sidebar">
@@ -156,17 +156,17 @@ class Arena extends React.Component {
           <div className="row placeholders">
 
             <div className="col-xs-6 col-sm-3 placeholder userContainer">
-              <User userImage={this.state.userAvatar} user={this.state.user}/>
-              <h4>You Lvl.{this.state.userlvl}</h4>
+              <User userImage={this.props.userAvatar} user={this.state.user}/>
+              <h4>You Lvl.{this.props.userlvl}</h4>
               <span className="text-muted">Health</span>
-              <progress value={this.state.user} max="100"></progress>
+              <progress value={this.state.userHP} max="100"></progress>
             </div>
 
             <div className="col-xs-6 col-sm-3 placeholder opponentContainer">
               <Opponent opponentImage={this.state.evilCatAvatar} opponent={this.state.opponent}/>
               <h4>Opponent</h4>
               <span className="text-muted">Health</span>
-              <progress value={this.state.opponent} max="100"></progress>
+              <progress value={this.state.opponentHP} max="100"></progress>
             </div>
             </div>
             <div className="jumbotron">
@@ -186,5 +186,12 @@ class Arena extends React.Component {
   }
 }
 
-export {Arena}
+const mapStateToProps = (state) => ({
+  username : state.user,
+  userlvl: state.userlvl,
+  userAvatar: state.userAvatar,
+});
 
+Arena = connect(mapStateToProps)(Arena);
+
+export {Arena};
