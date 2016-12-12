@@ -16,9 +16,6 @@ var Topbar = (props) => (
         <ul className="nav navbar-nav navbar-right">
           <li><a onClick={props.signOut}>Sign Out</a></li>
         </ul>
-        <form className="navbar-form navbar-right">
-          <input type="text" className="form-control" placeholder="Search..."></input>
-        </form>
       </div>
     </div>
   </nav>
