@@ -2,12 +2,27 @@ import React from 'react';
 import { Navbar } from './Navbar.jsx';
 import { Topbar } from './Topbar.jsx';
 import { Chart } from '../../../node_modules/chart.js/dist/Chart.js';
+import Axios from '../../../node_modules/axios/lib/axios.js';
 import { connect } from 'react-redux';
+import {browserHistory} from 'react-router'
 
 
 class ChartPage extends React.Component {
   constructor() {
     super();
+  }
+
+  signOut() {
+    var context = this;
+    Axios.put('http://localhost:3000/user/' + context.props.username, {
+      level: this.props.userlvl,
+      correctAnswers: context.props.correctAnswers,
+      incorrectAnswers: context.props.incorrectAnswers,
+    })
+    .then(function(res) {
+      console.log(res);
+      browserHistory.push('/');
+    })
   }
 
   componentWillMount() {
