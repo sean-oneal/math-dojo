@@ -31,8 +31,9 @@ exports.loginUser = function (req, res) {
 		} else if (!user) {
 			res.send(200, { error: 'User does not exist, please create an account' });
 		}	else {
+			// TODO: password needs to be hashed before entering
 			if (req.body.password !== user.password) {
-				res.status(403).send({ error: 'Password does not match' });
+				res.send({ error: 'Password does not match' });
 			} else {
 				util.createSession(req, res, user);
 				res.send(200, user);
@@ -44,4 +45,38 @@ exports.loginUser = function (req, res) {
 exports.logoutUser = function (req, res) {
 	req.session.destroy();
 	console.log('session over');
+};
+
+exports.retrieveUser = function (req, res) {
+	User.findOne(req.params, function(err, user) {
+		if (err) {
+			console.log('Error retrieving User:', err);
+			res.status(400).send(err);
+		} else {
+			res.send(user);
+		}
+	});
+};
+
+exports.updateUser = function (req, res) {
+	User.findOneAndUpdate(req.params, req.body, {new: true}, function(err, user) {
+		if (err) {
+			console.log('Error updating user:', err);
+			res.status(400).send(err);
+		} else {
+			res.send(user);
+		}
+	});
+};
+
+exports.deleteUser = function (req, res) {
+	User.findOneAndRemove(req.params, function(err, user) {
+		if (err) {
+			console.log('Error deleting user:', err);
+			res.status(400).send(err);
+		} else {
+			console.log('User deleted');
+			res.send(user);
+		}
+	});
 };
