@@ -9,14 +9,18 @@ class ChartPage extends React.Component {
     super();
   }
 
+  componentWillMount() {
+    // Need to get user data and then pass them to the chart
+  }
+
   componentDidMount() {
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            labels: ["Addition / Red", "Subtraction / Blue", "Multiplication / Yellow", "Division / Green", "Purple", "Orange"],
             datasets: [{
-                label: '# of Votes',
+                label: '# of Correct Questions',
                 data: [12, 19, 3, 5, 2, 3],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -27,7 +31,7 @@ class ChartPage extends React.Component {
                     'rgba(255, 159, 64, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255,99,132,1)',
+                    'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
@@ -58,9 +62,8 @@ class ChartPage extends React.Component {
             <div className="row">
               <Navbar />
               <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1 className="page-header">Chart</h1>
+                <h1 className="page-header">My Chart</h1>
                   <div className="jumbotron">
-                    <h1>My Chart</h1>
                     <canvas id="myChart" width="400" height="400"></canvas>
                   </div>
               </div>
