@@ -21,7 +21,7 @@ class Root extends React.Component {
           <Route path="/Chart" component={ChartPage}/>
         </Router>
       </Provider>
-    )
+    );
   }
   
 }
