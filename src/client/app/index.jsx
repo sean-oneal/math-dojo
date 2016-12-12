@@ -6,7 +6,7 @@ import user from './reducers/index.jsx';
 import { Router, Route, hashHistory, browserHistory } from 'react-router';
 import { Login } from './LoginSignin.jsx';
 import { Arena } from './Arena.jsx';
-import { Chart } from './Chart.jsx';
+import { ChartPage } from './Chart.jsx';
 
 let store = createStore(user);
 
@@ -18,7 +18,7 @@ class Root extends React.Component {
         <Router history={browserHistory}>
           <Route path="/" component={Login}/>
           <Route path="/Arena" component={Arena}/>
-          <Route path="/Chart" component={Chart}/>
+          <Route path="/Chart" component={ChartPage}/>
         </Router>
       </Provider>
     )
