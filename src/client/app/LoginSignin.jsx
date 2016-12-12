@@ -1,10 +1,12 @@
 import React from 'react';
 import {render} from 'react-dom';
 import Axios from '../../../node_modules/axios/lib/axios.js'; 
-import {AvatarChoices} from './AvatarChoices.jsx';
+import { connect } from 'react-redux';
+import {setUser} from './actions/index.jsx';
 import {Link} from 'react-router';
 import {browserHistory} from 'react-router'
 import {Alerts} from './Alerts.jsx';
+import {AvatarChoices} from './AvatarChoices.jsx';
 
 class Login extends React.Component {
   constructor() {
@@ -13,6 +15,14 @@ class Login extends React.Component {
       avatarChoices: [],
       alertToUser: null
     }
+  }
+
+  componentWillMount() {
+    this.props.dispatch(setUser({
+      username: 'test',
+      userlvl: 2,
+      userAvatar: 'https://yt3.ggpht.com/-8lHYUQlJIlE/AAAAAAAAAAI/AAAAAAAAAAA/T7aeL1TFNWQ/s100-c-k-no-mo-rj-c0xffffff/photo.jpg',
+    }));
   }
 
   handleSubmit(e) {
@@ -31,6 +41,11 @@ class Login extends React.Component {
         context.setState({alertToUser: 'unsuccessfulsignin'});
       } else {
         console.log(res.data);
+        context.props.dispatch(setUser({
+          username: res.data.username,
+          userlvl: 1,
+          userAvatar: res.data.imageUrl,
+        }));
         browserHistory.push('/Arena');
       }
     })
@@ -50,6 +65,11 @@ class Login extends React.Component {
         context.setState({avatarChoices: []});
       } else {
         console.log(res.data);
+        context.props.dispatch(setUser({
+          username: res.data.username,
+          userlvl: 1,
+          userAvatar: res.data.imageUrl,
+        }));
         browserHistory.push('/Arena');
       }
     })
@@ -99,10 +119,12 @@ class Login extends React.Component {
   }
 }
 
-export {Login}
+const mapStateToProps = (state) => ({
+  username : state.user,
+  userlvl: state.userlvl,
+  userAvatar: state.userAvatar,
+});
 
+Login = connect(mapStateToProps)(Login);
 
-
-
-
-
+export {Login};
