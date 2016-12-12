@@ -2,7 +2,7 @@ import React from 'react';
 
 var Question = (props) => (
   <div>
-    DO U EVEN MATH? {props.question}
+    <h1>{props.question}</h1>
   </div>
 );
 
