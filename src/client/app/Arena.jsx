@@ -54,8 +54,8 @@ class Arena extends React.Component {
 
     user.style.animation = 'attack2 1000ms infinite';
     opponent.style.animation = 'shake 1000ms infinite';
-    setTimeout(() => { user.style.animation = 'attack2 1000ms paused'; }, 2000);
-    setTimeout(() => { opponent.style.animation = 'shake 1000ms paused'; }, 2000);
+    setTimeout(() => { user.style.animation = 'attack2 1000ms paused'; }, 1000);
+    setTimeout(() => { opponent.style.animation = 'shake 1000ms paused'; }, 1000);
   }
 
   miss() {
@@ -69,8 +69,8 @@ class Arena extends React.Component {
     });
     opponent.style.animation = 'attack 1000ms infinite';
     user.style.animation = 'shake 1000ms infinite';
-    setTimeout(() => { opponent.style.animation = 'attack 1000ms paused'; }, 2000);
-    setTimeout(() => { user.style.animation = 'shake 1000ms paused'; }, 2000);
+    setTimeout(() => { opponent.style.animation = 'attack 1000ms paused'; }, 1000);
+    setTimeout(() => { user.style.animation = 'shake 1000ms paused'; }, 1000);
      setTimeout(function(){
       context.state.message = '';
     },2000)
