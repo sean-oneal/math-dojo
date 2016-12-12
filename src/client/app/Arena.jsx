@@ -15,6 +15,7 @@ import {Topbar} from './Topbar.jsx';
 class Arena extends React.Component {
   constructor() {
     super();
+    // hard-coded Answers, DELETE LATER ONCE THEY'RE INSERTED!!
 
     this.state = {
       userHP: 100,
@@ -23,6 +24,18 @@ class Arena extends React.Component {
       evilCatAvatar: '',
       answer: '',
       message: '',
+      correctAnswers : {
+        addition: 0,
+        subtraction: 0,
+        multiplcation: 0,
+        division: 0
+      },
+      incorrectAnswers : {
+        addition: 0,
+        subtraction: 0,
+        multiplcation: 0,
+        division: 0
+      }
     };
   }
 
@@ -86,20 +99,36 @@ class Arena extends React.Component {
     this.setState({
       question: firstDigit + ' ' + operands[operandIndex] + ' ' + secondDigit + ' = '
     });
+    var operand;
+    if (operands[operandIndex] === '+') {
+      operand = 'addition';
+    } else if (operands[operandIndex] === '-') {
+      operand = 'subtraction';
+    } else if (operands[operandIndex] === '*') {
+      operand = 'multiplcation';
+    } else if (operands[operandIndex] === '/') {
+      operand = 'division';
+    }
+    this.setState({
+      operand: operand
+    });
   }
 
 
   checkAnswer(answer) {
+    var context = this;
     if (answer === '' + this.state.answer) {
-      document.getElementById('answerForm').value = '';
+      context.state.correctAnswers[context.state.operand]++;
       this.attack();
       this.checkHealth();
       this.generateQuestion();
     } else {
+      context.state.incorrectAnswers[context.state.operand]++;
       this.miss();
       this.checkHealth();
       this.generateQuestion();
     }
+    document.getElementById('answerForm').value = '';
   }
 
   getEvilAvatar() {
@@ -121,6 +150,8 @@ class Arena extends React.Component {
     var context = this;
     Axios.put('http://localhost:3000/user/' + context.props.username, {
       level: this.props.userlvl,
+      correctAnswers: context.state.correctAnswers,
+      incorrectAnswers: context.state.incorrectAnswers
     })
     .then(function(res) {
       console.log(res);
