@@ -6,7 +6,9 @@ import {Question} from './Question.jsx';
 import {Display} from './Display.jsx';
 import Axios from '../../../node_modules/axios/lib/axios.js'; 
 import {Link} from 'react-router';
+import {browserHistory} from 'react-router'
 import { connect } from 'react-redux';
+import {setUser} from './actions/index.jsx';
 
 class Arena extends React.Component {
   constructor() {
@@ -25,7 +27,6 @@ class Arena extends React.Component {
   componentWillMount() {
     this.generateQuestion();
     this.getEvilAvatar();
-    this.getAvatar();
   }
 
   componentDidMount() {
@@ -57,15 +58,19 @@ class Arena extends React.Component {
     } else if (this.state.opponentHP <= 0) {
       this.setState({
         message: 'You win!',
-        userlvl: this.state.userlvl + 1,
         opponentHP: 100,
         userHP: 100,
       });
+      // POOR IMPLEMENTATION, NEED TO MAKE NEW LVL UP ACTION
+      this.props.dispatch(setUser({
+        username: this.props.username,
+        userlvl: this.props.userlvl + 1,
+        userAvatar: this.props.userAvatar,
+      }))
     }
   }
 
   generateQuestion() {
-    // Level 1 - addition/subtraction of single digits
     var userlvl = this.props.userlvl;
     var operands = ['+', '-', '*', '/'];
     var firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
@@ -109,8 +114,15 @@ class Arena extends React.Component {
     });
   }
 
-  getAvatar() {
-    
+  signOut() {
+    var context = this;
+    Axios.put('http://localhost:3000/user/' + context.props.username, {
+      level: this.props.userlvl,
+    })
+    .then(function(res) {
+      console.log(res);
+      browserHistory.push('/');
+    })
   }
 
   render () {
@@ -129,8 +141,7 @@ class Arena extends React.Component {
         </div>
         <div id="navbar" className="navbar-collapse collapse">
           <ul className="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a onClick={() => this.signOut()}>Sign Out</a></li>
           </ul>
           <form className="navbar-form navbar-right">
             <input type="text" className="form-control" placeholder="Search..."></input>
@@ -187,7 +198,7 @@ class Arena extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  username : state.user,
+  username : state.username,
   userlvl: state.userlvl,
   userAvatar: state.userAvatar,
 });
