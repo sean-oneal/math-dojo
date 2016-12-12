@@ -24,7 +24,7 @@ class Arena extends React.Component {
   }
 
   componentWillMount() {
-    this.generateLevel1Question();
+    this.generateQuestion();
     this.getEvilAvatar();
     this.getAvatar();
   }
@@ -50,10 +50,27 @@ class Arena extends React.Component {
     });
   }
 
-  generateLevel1Question() {
-    var operands = ['+', '-'];
-    var firstDigit = Math.floor(Math.random() * 10);
-    var secondDigit = Math.floor(Math.random() * 10);
+  checkHealth() {
+    if (this.state.user <= 0) {
+      this.setState({
+        message: 'Sorry...try again',
+      });
+    } else if (this.state.opponent <= 0) {
+      this.setState({
+        message: 'You win!',
+        userlvl: this.state.userlvl + 1,
+        opponent: 100,
+        user: 100,
+      });
+    }
+  }
+
+  generateQuestion() {
+    // Level 1 - addition/subtraction of single digits
+    var userlvl = this.state.userlvl;
+    var operands = ['+', '-', '*', '/'];
+    var firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
+    var secondDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
     var operandIndex = Math.floor(Math.random() * 2);
 
     var answer = eval(firstDigit + operands[operandIndex] + secondDigit);
@@ -65,28 +82,16 @@ class Arena extends React.Component {
     });
   }
 
-  generateLevel2Question() {
-    var operands = ['*', '/'];
-    var firstDigit = Math.floor(Math.random() * 10);
-    var secondDigit = Math.floor(Math.random() * 10);
-    var operandIndex = Math.floor(Math.random() * 2);
-
-    var answer = eval(firstDigit + operands[operandIndex] + secondDigit);
-    this.setState({
-      answer: answer
-    });
-    this.setState({
-      question: firstDigit + ' ' + operands[operandIndex] + ' ' + secondDigit + ' = '
-    });
-  }
 
   checkAnswer(answer) {
     if (answer === '' + this.state.answer) {
       this.attack();
-      this.generateLevel1Question();
+      this.checkHealth();
+      this.generateQuestion();
     } else {
       this.miss();
-      this.generateLevel1Question();
+      this.checkHealth();
+      this.generateQuestion();
     }
   }
 
@@ -152,7 +157,7 @@ class Arena extends React.Component {
 
             <div className="col-xs-6 col-sm-3 placeholder userContainer">
               <User userImage={this.state.userAvatar} user={this.state.user}/>
-              <h4>You</h4>
+              <h4>You Lvl.{this.state.userlvl}</h4>
               <span className="text-muted">Health</span>
               <progress value={this.state.user} max="100"></progress>
             </div>
