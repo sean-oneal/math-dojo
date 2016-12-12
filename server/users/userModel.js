@@ -17,7 +17,8 @@ var userSchema = new Schema({
     subtraction: {type: Number, default: 0},
     multiplication: {type: Number, default: 0},
     division: {type: Number, default: 0}
-  }
+  },
+  score: {type: Number, default: 0}
 });
 
 module.exports = mongoose.model('User', userSchema);
