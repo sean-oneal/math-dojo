@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import Axios from '../../../node_modules/axios/lib/axios.js'; 
 import { connect } from 'react-redux';
-import {setUser} from './actions/index.jsx';
+import {setUser, setCorrect, setIncorrect} from './actions/index.jsx';
 import {Link} from 'react-router';
 import {browserHistory} from 'react-router'
 import {Alerts} from './Alerts.jsx';
@@ -38,6 +38,8 @@ class Login extends React.Component {
           userlvl: res.data.level,
           userAvatar: res.data.imageUrl,
         }));
+        context.props.dispatch(setCorrect(res.data.correctAnswers));
+        context.props.dispatch(setIncorrect(res.data.incorrectAnswers));
         browserHistory.push('/Arena');
       }
     })
@@ -61,6 +63,18 @@ class Login extends React.Component {
           username: res.data.username,
           userlvl: res.data.level,
           userAvatar: res.data.imageUrl,
+        }));
+        context.props.dispatch(setCorrect({
+          addition: 0,
+          subtraction: 0,
+          multiplication: 0,
+          division: 0,
+        }));
+        context.props.dispatch(setIncorrect({
+          addition: 0,
+          subtraction: 0,
+          multiplication: 0,
+          division: 0,
         }));
         browserHistory.push('/Arena');
       }
@@ -115,6 +129,8 @@ const mapStateToProps = (state) => ({
   username : state.username,
   userlvl: state.userlvl,
   userAvatar: state.userAvatar,
+  correctAnswers: state.userCorrectAnswers,
+  incorrectAnswers: state.userIncorrectAnswers,
 });
 
 Login = connect(mapStateToProps)(Login);

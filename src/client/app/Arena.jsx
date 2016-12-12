@@ -8,15 +8,14 @@ import Axios from '../../../node_modules/axios/lib/axios.js';
 import {Link} from 'react-router';
 import {browserHistory} from 'react-router'
 import { connect } from 'react-redux';
-import {setUser} from './actions/index.jsx';
+import {setUser, setCorrect, setIncorrect} from './actions/index.jsx';
 import {Navbar} from './Navbar.jsx';
 import {Topbar} from './Topbar.jsx';
 
 class Arena extends React.Component {
   constructor() {
     super();
-    // hard-coded Answers, DELETE LATER ONCE THEY'RE INSERTED!!
-
+    
     this.state = {
       userHP: 100,
       opponentHP: 100,
@@ -24,18 +23,6 @@ class Arena extends React.Component {
       evilCatAvatar: '',
       answer: '',
       message: '',
-      correctAnswers : {
-        addition: 0,
-        subtraction: 0,
-        multiplcation: 0,
-        division: 0
-      },
-      incorrectAnswers : {
-        addition: 0,
-        subtraction: 0,
-        multiplcation: 0,
-        division: 0
-      }
     };
   }
 
@@ -118,12 +105,18 @@ class Arena extends React.Component {
   checkAnswer(answer) {
     var context = this;
     if (answer === '' + this.state.answer) {
-      context.state.correctAnswers[context.state.operand]++;
+      var newCorrect = Object.assign({}, context.props.correctAnswers);
+      newCorrect[context.state.operand]++;
+      context.props.dispatch(setCorrect(newCorrect));
+      
       this.attack();
       this.checkHealth();
       this.generateQuestion();
     } else {
-      context.state.incorrectAnswers[context.state.operand]++;
+      var newIncorrect = Object.assign({}, context.props.incorrectAnswers);
+      newIncorrect[context.state.operand]++;
+      context.props.dispatch(setIncorrect(newIncorrect));
+
       this.miss();
       this.checkHealth();
       this.generateQuestion();
@@ -150,8 +143,8 @@ class Arena extends React.Component {
     var context = this;
     Axios.put('http://localhost:3000/user/' + context.props.username, {
       level: this.props.userlvl,
-      correctAnswers: context.state.correctAnswers,
-      incorrectAnswers: context.state.incorrectAnswers
+      correctAnswers: context.props.correctAnswers,
+      incorrectAnswers: context.props.incorrectAnswers,
     })
     .then(function(res) {
       console.log(res);
@@ -210,6 +203,8 @@ const mapStateToProps = (state) => ({
   username : state.username,
   userlvl: state.userlvl,
   userAvatar: state.userAvatar,
+  correctAnswers: state.userCorrectAnswers,
+  incorrectAnswers: state.userIncorrectAnswers,
 });
 
 Arena = connect(mapStateToProps)(Arena);
