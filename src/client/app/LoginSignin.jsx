@@ -41,6 +41,11 @@ class Login extends React.Component {
         context.setState({alertToUser: 'unsuccessfulsignin'});
       } else {
         console.log(res.data);
+        context.props.dispatch(setUser({
+          username: res.data.username,
+          userlvl: 1,
+          userAvatar: res.data.imageUrl,
+        }));
         browserHistory.push('/Arena');
       }
     })
@@ -60,6 +65,11 @@ class Login extends React.Component {
         context.setState({avatarChoices: []});
       } else {
         console.log(res.data);
+        context.props.dispatch(setUser({
+          username: res.data.username,
+          userlvl: 1,
+          userAvatar: res.data.imageUrl,
+        }));
         browserHistory.push('/Arena');
       }
     })
