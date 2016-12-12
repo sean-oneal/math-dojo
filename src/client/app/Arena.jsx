@@ -79,7 +79,7 @@ class Arena extends React.Component {
       // POOR IMPLEMENTATION, NEED TO MAKE NEW LVL UP ACTION
       this.props.dispatch(setUser({
         username: this.props.username,
-        userlvl: this.props.userlvl + 1,
+        userlvl: this.props.userlvl,
         userAvatar: this.props.userAvatar,
       }))
     }
