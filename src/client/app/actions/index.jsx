@@ -4,3 +4,18 @@ export const setUser = (user) => {
     user,
   }
 }
+
+export const setCorrect = (correctAnswers) => {
+  return {
+    type: 'SET_CORRECT',
+    correctAnswers,
+  }
+}
+
+export const setIncorrect = (incorrectAnswers) => {
+  return {
+    type: 'SET_INCORRECT',
+    incorrectAnswers,
+  }
+}
+
