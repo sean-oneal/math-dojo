@@ -47,6 +47,17 @@ exports.logoutUser = function (req, res) {
 	console.log('session over');
 };
 
+exports.retrieveAll = function (req, res) {
+	User.find({}, function(err, users) {
+		if (err) {
+			console.log('Error retrieving database:', err);
+			res.status(400).send(err);
+		} else {
+			res.send(users);
+		}
+	});
+}
+
 exports.retrieveUser = function (req, res) {
 	console.log('retrieving');
 	User.findOne(req.params, function(err, user) {

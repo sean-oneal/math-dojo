@@ -176,8 +176,16 @@ class Arena extends React.Component {
 
   signOut() {
     var context = this;
+    var score = 0;
+    for (var operand in context.props.correctAnswers) {
+      score += context.props.correctAnswers[operand];
+    }
+    for (var operand in context.props.incorrectAnswers) {
+      score -= context.props.incorrectAnswers[operand];
+    }
     Axios.put('http://localhost:3000/user/' + context.props.username, {
       level: this.props.userlvl,
+      score: score,
       correctAnswers: context.props.correctAnswers,
       incorrectAnswers: context.props.incorrectAnswers,
     })
