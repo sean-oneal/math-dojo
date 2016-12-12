@@ -21,7 +21,7 @@ class Login extends React.Component {
 
   login(username, password) {
     var context = this;
-    Axios.post('http://localhost:3000/login', {
+    Axios.post('http://localhost:3000/user/login', {
       username: username,
       password: password,
     })
@@ -38,7 +38,7 @@ class Login extends React.Component {
 
   register(username, password, url) {
     var context = this;
-    Axios.post('http://localhost:3000/signup', {
+    Axios.post('http://localhost:3000/user/signup', {
       username: username,
       password: password,
       imageUrl: url,
