@@ -9,6 +9,8 @@ import {Link} from 'react-router';
 import {browserHistory} from 'react-router'
 import { connect } from 'react-redux';
 import {setUser} from './actions/index.jsx';
+import {Navbar} from './Navbar.jsx';
+import {Topbar} from './Topbar.jsx';
 
 class Arena extends React.Component {
   constructor() {
@@ -127,40 +129,15 @@ class Arena extends React.Component {
 
   render () {
     return (
-      <div>
-      <nav className="navbar navbar-inverse navbar-fixed-top">
-      <div className="container-fluid">
-        <div className="navbar-header">
-          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </button>
-          <a className="navbar-brand" href="#">Cat Fight</a>
-        </div>
-        <div id="navbar" className="navbar-collapse collapse">
-          <ul className="nav navbar-nav navbar-right">
-            <li><a onClick={() => this.signOut()}>Sign Out</a></li>
-          </ul>
-          <form className="navbar-form navbar-right">
-            <input type="text" className="form-control" placeholder="Search..."></input>
-          </form>
-        </div>
-      </div>
-    </nav>
+    <div>
 
+    <Topbar signOut={() => this.signOut()}/>
 
     <div className="container-fluid">
       <div className="row">
-        <div className="col-sm-3 col-md-2 sidebar">
-          <ul className="nav nav-sidebar">
-            <li className="active"><a href="#">Overview <span className="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-        </div>
+
+        <Navbar />
+
         <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 className="page-header">Arena</h1>
 
