@@ -4,7 +4,7 @@ import {User} from './User.jsx';
 import {Opponent} from './Opponent.jsx';
 import {Question} from './Question.jsx';
 import {Display} from './Display.jsx';
-import Axios from '../../../node_modules/axios/lib/axios.js'; 
+import Axios from '../../../node_modules/axios/lib/axios.js';
 import {Link} from 'react-router';
 import {browserHistory} from 'react-router'
 import { connect } from 'react-redux';
@@ -23,12 +23,15 @@ class Arena extends React.Component {
       evilCatAvatar: '',
       answer: '',
       message: '',
+      timer: 20,
+      reset: false,
     };
   }
 
   componentWillMount() {
     this.generateQuestion();
     this.getEvilAvatar();
+    this.timer()
   }
 
   componentDidMount() {
@@ -38,18 +41,26 @@ class Arena extends React.Component {
   }
 
   attack() {
+    var context = this;
     this.setState({
       opponentHP: this.state.opponentHP - 20,
       message: this.state.message = 'Great job! You\'ve damaged the enemy.',
     });
+    setTimeout(function(){
+      context.state.message = '';
+    },2000)
 
   }
 
   miss() {
+    var context = this;
     this.setState({
       userHP: this.state.userHP - 20,
-      message: this.state.message = 'Oh no! You\'ve been hit!',
+      message: this.state.message = 'Oh no! You\'ve been hit! Meow!',
     });
+     setTimeout(function(){
+      context.state.message = '';
+    },2000)
   }
 
   checkHealth() {
@@ -101,6 +112,28 @@ class Arena extends React.Component {
     });
   }
 
+  timer(){
+    var context = this;
+    this.setState({
+      reset:false
+    });
+    var sec = 20;
+    var timerOn = setInterval(function(){
+    var a = new Date();
+        document.getElementById("timer").innerHTML =" : " + sec ;
+        sec--;
+        context.setState({timer:sec})
+        if(sec === 0 || context.state.reset === true){
+           clearInterval(timerOn);
+           if(sec===0){ context.miss();}
+        }},1000);
+  }
+
+  resetTimer(){
+    var context = this;
+    this.setState({ reset:true })
+    setTimeout(function(){ context.timer()},1000)
+  }
 
   checkAnswer(answer) {
     var context = this;
@@ -112,6 +145,7 @@ class Arena extends React.Component {
       this.attack();
       this.checkHealth();
       this.generateQuestion();
+      this.resetTimer();
     } else {
       var newIncorrect = Object.assign({}, context.props.incorrectAnswers);
       newIncorrect[context.state.operand]++;
@@ -120,6 +154,7 @@ class Arena extends React.Component {
       this.miss();
       this.checkHealth();
       this.generateQuestion();
+      this.resetTimer();
     }
     document.getElementById('answerForm').value = '';
   }
@@ -131,7 +166,7 @@ class Arena extends React.Component {
       var randomIndex = Math.floor(Math.random() * response.data.items.length);
       var evilCat = response.data.items[randomIndex].link;
       context.setState({
-        evilCatAvatar: evilCat 
+        evilCatAvatar: evilCat
       });
     })
     .catch(function (error) {
@@ -170,20 +205,21 @@ class Arena extends React.Component {
 
             <div className="col-xs-6 col-sm-3 placeholder userContainer">
               <User userImage={this.props.userAvatar} user={this.state.user}/>
-              <h4>You Lvl.{this.props.userlvl}</h4>
+              <h4>{this.props.username} Cat </h4>
               <span className="text-muted">Health</span>
               <progress value={this.state.userHP} max="100"></progress>
             </div>
 
             <div className="col-xs-6 col-sm-3 placeholder opponentContainer">
               <Opponent opponentImage={this.state.evilCatAvatar} opponent={this.state.opponent}/>
-              <h4>Opponent</h4>
+              <h4>Rival Cat Lvl:{this.props.userlvl}</h4>
               <span className="text-muted">Health</span>
               <progress value={this.state.opponentHP} max="100"></progress>
             </div>
             </div>
             <div className="jumbotron">
               <Display display={this.state.message}/>
+              <div>You have <span id="timer">{this.state.timer}</span> seconds left!</div>
               <Question question={this.state.question}/>
               <form>
                 <input id='answerForm' type='text' placeholder='Enter Answer'></input>
