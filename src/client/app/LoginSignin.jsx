@@ -17,14 +17,6 @@ class Login extends React.Component {
     }
   }
 
-  componentWillMount() {
-    this.props.dispatch(setUser({
-      username: 'test',
-      userlvl: 2,
-      userAvatar: 'https://yt3.ggpht.com/-8lHYUQlJIlE/AAAAAAAAAAI/AAAAAAAAAAA/T7aeL1TFNWQ/s100-c-k-no-mo-rj-c0xffffff/photo.jpg',
-    }));
-  }
-
   handleSubmit(e) {
     e.preventDefault();
   }
@@ -43,7 +35,7 @@ class Login extends React.Component {
         console.log(res.data);
         context.props.dispatch(setUser({
           username: res.data.username,
-          userlvl: 1,
+          userlvl: res.data.level,
           userAvatar: res.data.imageUrl,
         }));
         browserHistory.push('/Arena');
@@ -67,7 +59,7 @@ class Login extends React.Component {
         console.log(res.data);
         context.props.dispatch(setUser({
           username: res.data.username,
-          userlvl: 1,
+          userlvl: res.data.level,
           userAvatar: res.data.imageUrl,
         }));
         browserHistory.push('/Arena');
@@ -120,7 +112,7 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  username : state.user,
+  username : state.username,
   userlvl: state.userlvl,
   userAvatar: state.userAvatar,
 });
