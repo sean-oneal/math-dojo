@@ -8,4 +8,4 @@ var userSchema = new Schema({
   level: {type: Number, default: 1}
 });
 
-module.exports.User = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
