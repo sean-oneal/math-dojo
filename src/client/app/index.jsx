@@ -19,7 +19,7 @@ class Root extends React.Component {
           <Route path="/Arena" component={Arena}/>
         </Router>
       </Provider>
-    )
+    );
   }
   
 }
