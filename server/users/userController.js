@@ -48,6 +48,7 @@ exports.logoutUser = function (req, res) {
 };
 
 exports.retrieveUser = function (req, res) {
+	console.log('retrieving');
 	User.findOne(req.params, function(err, user) {
 		if (err) {
 			console.log('Error retrieving User:', err);

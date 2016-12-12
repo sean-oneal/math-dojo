@@ -6,16 +6,19 @@ import {Question} from './Question.jsx';
 import {Display} from './Display.jsx';
 import Axios from '../../../node_modules/axios/lib/axios.js'; 
 import {Link} from 'react-router';
+import {browserHistory} from 'react-router'
+import { connect } from 'react-redux';
+import {setUser} from './actions/index.jsx';
+import {Navbar} from './Navbar.jsx';
+import {Topbar} from './Topbar.jsx';
 
 class Arena extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      user: 100,
-      userlvl: 1,
-      userAvatar: 'https://cdn.meme.am/cache/images/folder803/100x100/8313803.jpg',
-      opponent: 100,
+      userHP: 100,
+      opponentHP: 100,
       question: '',
       evilCatAvatar: '',
       answer: '',
@@ -26,7 +29,6 @@ class Arena extends React.Component {
   componentWillMount() {
     this.generateQuestion();
     this.getEvilAvatar();
-    this.getAvatar();
   }
 
   componentDidMount() {
@@ -37,7 +39,7 @@ class Arena extends React.Component {
 
   attack() {
     this.setState({
-      opponent: this.state.opponent - 20,
+      opponentHP: this.state.opponentHP - 20,
       message: this.state.message = 'Great job! You\'ve damaged the enemy.',
     });
 
@@ -45,29 +47,33 @@ class Arena extends React.Component {
 
   miss() {
     this.setState({
-      user: this.state.user - 20,
+      userHP: this.state.userHP - 20,
       message: this.state.message = 'Oh no! You\'ve been hit!',
     });
   }
 
   checkHealth() {
-    if (this.state.user <= 0) {
+    if (this.state.userHP <= 0) {
       this.setState({
         message: 'Sorry...try again',
       });
-    } else if (this.state.opponent <= 0) {
+    } else if (this.state.opponentHP <= 0) {
       this.setState({
         message: 'You win!',
-        userlvl: this.state.userlvl + 1,
-        opponent: 100,
-        user: 100,
+        opponentHP: 100,
+        userHP: 100,
       });
+      // POOR IMPLEMENTATION, NEED TO MAKE NEW LVL UP ACTION
+      this.props.dispatch(setUser({
+        username: this.props.username,
+        userlvl: this.props.userlvl + 1,
+        userAvatar: this.props.userAvatar,
+      }))
     }
   }
 
   generateQuestion() {
-    // Level 1 - addition/subtraction of single digits
-    var userlvl = this.state.userlvl;
+    var userlvl = this.props.userlvl;
     var operands = ['+', '-', '*', '/'];
     var firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
     var secondDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
@@ -110,63 +116,45 @@ class Arena extends React.Component {
     });
   }
 
-  getAvatar() {
-    
+  signOut() {
+    var context = this;
+    Axios.put('http://localhost:3000/user/' + context.props.username, {
+      level: this.props.userlvl,
+    })
+    .then(function(res) {
+      console.log(res);
+      browserHistory.push('/');
+    })
   }
 
   render () {
     return (
-      <div>
-      <nav className="navbar navbar-inverse navbar-fixed-top">
-      <div className="container-fluid">
-        <div className="navbar-header">
-          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </button>
-          <a className="navbar-brand" href="#">Cat Fight</a>
-        </div>
-        <div id="navbar" className="navbar-collapse collapse">
-          <ul className="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Help</a></li>
-          </ul>
-          <form className="navbar-form navbar-right">
-            <input type="text" className="form-control" placeholder="Search..."></input>
-          </form>
-        </div>
-      </div>
-    </nav>
+    <div>
+
+    <Topbar signOut={() => this.signOut()}/>
 
     <div className="container-fluid">
       <div className="row">
-        <div className="col-sm-3 col-md-2 sidebar">
-          <ul className="nav nav-sidebar">
-            <li className="active"><a href="#">Overview <span className="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-        </div>
+
+        <Navbar />
+
         <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 className="page-header">Arena</h1>
 
           <div className="row placeholders">
 
             <div className="col-xs-6 col-sm-3 placeholder userContainer">
-              <User userImage={this.state.userAvatar} user={this.state.user}/>
-              <h4>You Lvl.{this.state.userlvl}</h4>
+              <User userImage={this.props.userAvatar} user={this.state.user}/>
+              <h4>You Lvl.{this.props.userlvl}</h4>
               <span className="text-muted">Health</span>
-              <progress value={this.state.user} max="100"></progress>
+              <progress value={this.state.userHP} max="100"></progress>
             </div>
 
             <div className="col-xs-6 col-sm-3 placeholder opponentContainer">
               <Opponent opponentImage={this.state.evilCatAvatar} opponent={this.state.opponent}/>
               <h4>Opponent</h4>
               <span className="text-muted">Health</span>
-              <progress value={this.state.opponent} max="100"></progress>
+              <progress value={this.state.opponentHP} max="100"></progress>
             </div>
             </div>
             <div className="jumbotron">
@@ -186,5 +174,12 @@ class Arena extends React.Component {
   }
 }
 
-export {Arena}
+const mapStateToProps = (state) => ({
+  username : state.username,
+  userlvl: state.userlvl,
+  userAvatar: state.userAvatar,
+});
 
+Arena = connect(mapStateToProps)(Arena);
+
+export {Arena};
