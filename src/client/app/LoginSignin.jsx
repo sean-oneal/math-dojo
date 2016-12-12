@@ -100,10 +100,6 @@ class Login extends React.Component {
 
     return (
       <div className="container" onSubmit={this.handleSubmit}>
-        <ul role="nav">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/Arena">Battle!</Link></li>
-        </ul>
         <form className="form-signin">
           <h2 className="form-signin-heading">Please sign in</h2>
           <label className="sr-only">Username</label>
