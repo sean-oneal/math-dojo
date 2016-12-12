@@ -77,7 +77,7 @@ class Arena extends React.Component {
       // POOR IMPLEMENTATION, NEED TO MAKE NEW LVL UP ACTION
       this.props.dispatch(setUser({
         username: this.props.username,
-        userlvl: this.props.userlvl,
+        userlvl: this.props.userlvl + 1,
         userAvatar: this.props.userAvatar,
       }))
     }
@@ -145,7 +145,8 @@ class Arena extends React.Component {
       this.attack();
       this.checkHealth();
       this.generateQuestion();
-      this.resetTimer();
+      //this.resetTimer();
+
     } else {
       var newIncorrect = Object.assign({}, context.props.incorrectAnswers);
       newIncorrect[context.state.operand]++;
@@ -154,7 +155,7 @@ class Arena extends React.Component {
       this.miss();
       this.checkHealth();
       this.generateQuestion();
-      this.resetTimer();
+      //this.resetTimer();
     }
     document.getElementById('answerForm').value = '';
   }
