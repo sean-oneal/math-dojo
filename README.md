@@ -39,7 +39,9 @@ From within the root directory:
 ```sh
 sudo npm install -g bower
 npm install
-bower install
+npm run build
+npm run start
+--> NOT NEEDED RIGHT NOW: bower install
 ```
 
 ### Roadmap
