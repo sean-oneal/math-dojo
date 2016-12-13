@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/catFight');
 
 var insertData = function() {
+  var usersToInsert = dummyData.length;
   dummyData.forEach(function(user) {
     User.create({
       username: user.username,
@@ -19,6 +20,11 @@ var insertData = function() {
         console.log('Error inserting users');
       } else {
         console.log(user.username, 'has been inserted into the database');
+        usersToInsert--;
+        if (usersToInsert === 0) {
+          console.log('All users inserted successfully.');
+          process.exit();
+        }
       }
     });
   });
