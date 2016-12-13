@@ -43,6 +43,15 @@ npm run build
 npm run start
 --> NOT NEEDED RIGHT NOW: bower install
 ```
+####Reset the Database
+```sh
+npm run reset
+```
+
+####Load the database with dummy data
+```sh
+npm run db
+```
 
 ### Roadmap
 
