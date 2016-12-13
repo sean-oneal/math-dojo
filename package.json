@@ -45,16 +45,18 @@
   "scripts": {
     "dev": "webpack -d --watch",
     "build": "webpack -p",
-    "start": "nodemon --ignore node_modules ./server/server.js"
+    "start": "nodemon --ignore node_modules ./server/server.js",
+    "reset": "mongo catFight --eval \"db.dropDatabase()\"",
+    "db": "node ./server/insertDummyData.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rob0h/hrsf51-greenfield.git"
+    "url": "git+https://github.com/BrilliantBroccoli/hrsf51-legacy.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Rob0h/hrsf51-greenfield/issues"
+    "url": "https://github.com/BrilliantBroccoli/hrsf51-legacy/issues"
   },
-  "homepage": "https://github.com/Rob0h/hrsf51-greenfield#readme"
+  "homepage": "https://github.com/BrilliantBroccoli/hrsf51-legacy#readme"
 }
