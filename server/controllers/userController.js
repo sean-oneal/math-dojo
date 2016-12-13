@@ -1,6 +1,6 @@
 
-var User = require('./userModel.js');
-var util = require('../config/utility.js');
+var User = require('./../models/userModel.js');
+var util = require('./../config/utility.js');
 
 exports.createUser = function (req, res) {
   var username = req.body.username;
