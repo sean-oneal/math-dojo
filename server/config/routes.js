@@ -1,5 +1,5 @@
 var userRouter = require('express').Router();
-var userController = require('./userController.js');
+var userController = require('./../controllers/userController.js');
 
 userRouter.post('/login', userController.loginUser);
 userRouter.post('/signup', userController.createUser);
