@@ -1,6 +1,6 @@
 // use node insertDummyData.js to run
 var dummyData = require('./userDummyData.js');
-var User = require('./users/userModel.js');
+var User = require('./../models/userModel.js');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/catFight');
 
