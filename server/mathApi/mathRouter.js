@@ -1,5 +1,5 @@
 const userRouter = require('express').Router();
 const mathController = require('./mathController.js');
 
-userRouter.get('/Arena', mathController.generateQuestion);
-// userRouter.get('/Arena', mathController.checkAnswer);
+userRouter.get('/getQuestion', mathController.generateQuestion);
+// userRouter.get('/', mathController.checkAnswer);
