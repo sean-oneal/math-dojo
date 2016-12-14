@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navbar } from './Navbar.jsx';
 import { Topbar } from './Topbar.jsx';
-import { Chart } from '../../../node_modules/chart.js/dist/Chart.js';
-import Axios from '../../../node_modules/axios/lib/axios.js';
+import { Chart } from '../../node_modules/chart.js/dist/Chart.js';
+import Axios from '../../node_modules/axios/lib/axios.js';
 import { connect } from 'react-redux';
 import {browserHistory} from 'react-router'
 

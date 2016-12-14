@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import Axios from '../../../node_modules/axios/lib/axios.js'; 
+import Axios from '../../node_modules/axios/lib/axios.js'; 
 import { connect } from 'react-redux';
 import {setUser, setCorrect, setIncorrect} from './actions/index.jsx';
 import {Link} from 'react-router';
@@ -113,7 +113,7 @@ class Login extends React.Component {
         <div id='alerts'>
           {alertToUser}
         </div>
-        
+
         {displayChoices}
 
       </div>
