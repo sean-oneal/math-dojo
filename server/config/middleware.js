@@ -22,5 +22,5 @@ module.exports = function(app, express) {
   app.use(session({secret: '1234567890QWERTY', resave: true,
     saveUninitialized: true}));
   app.use('/user', Router);
-  app.use(express.static(__dirname + '/../../src/client'));
+  app.use(express.static(__dirname + '/../../client'));
 };

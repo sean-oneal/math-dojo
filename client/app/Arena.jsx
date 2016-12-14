@@ -4,7 +4,7 @@ import {User} from './User.jsx';
 import {Opponent} from './Opponent.jsx';
 import {Question} from './Question.jsx';
 import {Display} from './Display.jsx';
-import Axios from '../../../node_modules/axios/lib/axios.js';
+import Axios from '../../node_modules/axios/lib/axios.js';
 import {Link} from 'react-router';
 import {browserHistory} from 'react-router';
 import { connect } from 'react-redux';
@@ -17,7 +17,7 @@ import {ReactCSSTransitionGroup} from 'react-addons-css-transition-group';
 class Arena extends React.Component {
   constructor() {
     super();
-    
+
     this.state = {
       userHP: 100,
       opponentHP: 100,
@@ -154,7 +154,7 @@ class Arena extends React.Component {
       var newCorrect = Object.assign({}, context.props.correctAnswers);
       newCorrect[context.state.operand]++;
       context.props.dispatch(setCorrect(newCorrect));
-      
+
       this.attack();
       var user = document.getElementById('userContainer');
       // user.style.animation = 'attack2 1000ms paused';
