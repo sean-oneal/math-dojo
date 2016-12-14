@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var userSchema = new Schema({
+var studentSchema = new Schema({
   username:  {type: String, unique: true},
   password:  String,
+  classroom:  String,
   imageUrl:  String,
   level: {type: Number, default: 1},
   correctAnswers: {
@@ -11,7 +12,7 @@ var userSchema = new Schema({
     subtraction: {type: Number, default: 0},
     multiplication: {type: Number, default: 0},
     division: {type: Number, default: 0}
-  }, 
+  },
   incorrectAnswers: {
     addition: {type: Number, default: 0},
     subtraction: {type: Number, default: 0},
@@ -21,4 +22,4 @@ var userSchema = new Schema({
   score: {type: Number, default: 0}
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Student', studentSchema);

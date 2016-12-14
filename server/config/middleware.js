@@ -1,6 +1,7 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var Router = require('./routes.js');
+var teacherRouter = require('./teacherRouter.js');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
@@ -22,5 +23,6 @@ module.exports = function(app, express) {
   app.use(session({secret: '1234567890QWERTY', resave: true,
     saveUninitialized: true}));
   app.use('/user', Router);
+  app.use('/teacher', teacherRouter);
   app.use(express.static(__dirname + '/../../client'));
 };
