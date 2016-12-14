@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 
 module.exports = {
 
-  //generate a math problem when you load the age
+  //generate a math problem when you load the page
   generateQuestion: (req, res) => {
 
     const userlvl = req.body.level;
