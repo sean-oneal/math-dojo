@@ -9,5 +9,4 @@ userRouter.get('/:username', userController.retrieveUser);
 userRouter.put('/:username', userController.updateUser);
 userRouter.delete('/:username', userController.deleteUser);
 
-
 module.exports = userRouter;
