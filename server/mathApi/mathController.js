@@ -1,4 +1,4 @@
-const axios = require('axios');
+const Axios = require('axios');
 const bodyParser = require('body-parser');
 
 module.exports = {
