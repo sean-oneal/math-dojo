@@ -5,8 +5,8 @@ module.exports = {
 
   //generate a math problem when you load the page
   generateQuestion: (req, res) => {
-
-    const userlvl = req.body.level;
+    console.log('BODYYYYYYY', req.body);
+    const userlvl = req.body.level; //***
     const operands = ['+', '-', '*', '/'];
     const firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
     const secondDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
@@ -29,15 +29,16 @@ module.exports = {
     }
 
     //send back anwser, quest, oprand (respectively)
-    res.send({
+    res.status(200).send({
       answer: answer, 
       question: question,
       operand: operand 
     });
   }
 
-  checkAnswer: (req, res) => {
-    //to be implemented
-  }
+  // checkAnswer: (req, res) => {
+  //   // console.log('CHECK ANSWER BODY', req);
+  // }
+
 }
 
