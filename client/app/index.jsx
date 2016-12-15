@@ -9,6 +9,8 @@ import { StudentLogin } from './student/StudentLogin.jsx';
 import { TeacherSignup } from './teacher/Signup.jsx';
 import { TeacherDashboard } from './teacher/TeacherDashboard.jsx';
 import { StudentProfile } from './teacher/StudentProfile.jsx';
+import { Arena } from './student/Arena.jsx';
+import { Chart } from './student/Chart.jsx';
 
 let store = createStore(user);
 
@@ -23,6 +25,8 @@ class Root extends React.Component {
           <Route path="teachersignup" component={TeacherSignup}/>
           <Route path="teacherdashboard" component={TeacherDashboard}/>
           <Route path="studentprofile" component={StudentProfile}/>
+          <Route path="arena" component={Arena}/>
+          <Route path="chart" component={Chart}/>
         </Router>
       </Provider>
     );
