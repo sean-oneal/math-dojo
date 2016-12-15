@@ -1,11 +1,11 @@
 import React from 'react';
 import {render} from 'react-dom';
-import Axios from '../../node_modules/axios/lib/axios.js';
+import Axios from '../../../node_modules/axios/lib/axios.js';
 import { connect } from 'react-redux';
-import {setUser, setCorrect, setIncorrect} from './actions/index.jsx';
+import {setUser, setCorrect, setIncorrect} from './../actions/index.jsx';
 import {Link} from 'react-router';
 import {browserHistory} from 'react-router'
-import {Alerts} from './Alerts.jsx';
+import {Alerts} from './../partials/Alerts.jsx';
 
 class TeacherSignup extends React.Component {
   constructor() {
