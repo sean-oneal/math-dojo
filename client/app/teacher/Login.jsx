@@ -19,6 +19,11 @@ class Login extends React.Component {
     e.preventDefault();
   }
 
+  clearFields() {
+    $('#inputUsername').val('');
+    $('#inputPassword').val('');
+  }
+
   login(username, password) {
     if (!username || !password) {
       context.setState({alertToUser: 'invalidformsubmission'});
@@ -43,8 +48,12 @@ class Login extends React.Component {
         console.log('Login Props:' + JSON.stringify(context.props));
         browserHistory.push('teacherdashboard');
       }
-    })
+    }).catch(function(err){
+      context.clearFields();
+      context.setState({alertToUser: 'unsuccessfulsignin'});
+    });
   }
+
 
   dismissAlert() {
     this.setState({alertToUser: null});
@@ -63,7 +72,7 @@ class Login extends React.Component {
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" required/>
           <button onClick={() => this.login($('#inputUsername').val(), $('#inputPassword').val())} className="btn btn-lg btn-primary btn-block" type="submit">Login</button>
           <hr></hr>
-          <button onClick={() => browserHistory.push('teachersignup') } className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+          <button onClick={() => { this.clearFields(); browserHistory.push('teachersignup'); }} className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </form>
         <div id='alerts'>
           {alertToUser}
