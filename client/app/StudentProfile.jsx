@@ -12,7 +12,7 @@ import {AddStudent} from './AddStudent.jsx';
 import {ReactCSSTransitionGroup} from 'react-addons-css-transition-group';
 
 
-class TeacherDashboard extends React.Component {
+class StudentProfile extends React.Component {
   constructor() {
     super();
   }
@@ -41,13 +41,10 @@ class TeacherDashboard extends React.Component {
       <div className="row">
         <Navbar />
         <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 className="page-header">Room: {this.props.classroom}</h1>
-            <div className="row"><AddStudent /></div>
-            <div className="row">
-            {this.props.students.map((student) => (
-              <StudentListItem student={student}/>
-            ))}
-            </div>
+        <h2>Username: {this.props.studentUsername}</h2>
+        <h2>Password: {this.props.studentPassword}</h2>
+        <h2>Classroom: {this.props.classroom}</h2>
+        <h2>Current Level: {this.props.level}</h2>
         </div>
       </div>
     </div>
@@ -59,9 +56,12 @@ class TeacherDashboard extends React.Component {
 const mapStateToProps = (state) => ({
   username : state.username,
   classroom : state.classroom,
-  students : state.students
+  students : state.students,
+  studentUsername : state.studentUsername,
+  studentPassword : state.studentPassword,
+  level : state.level
 });
 
-TeacherDashboard = connect(mapStateToProps)(TeacherDashboard);
+StudentProfile = connect(mapStateToProps)(StudentProfile);
 
-export {TeacherDashboard};
+export {StudentProfile};

@@ -11,8 +11,8 @@ const user = (state = {}, action) => {
     case 'SET_STUDENT':
       return {
         ...state,
-        username: action.student.username,
-        password: action.student.password,
+        studentUsername: action.student.studentUsername,
+        studentPassword: action.student.studentPassword,
         classroom: action.student.classroom,
         level: action.student.level,
       };
