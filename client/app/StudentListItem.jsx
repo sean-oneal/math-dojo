@@ -28,10 +28,10 @@ class StudentListItem extends React.Component {
   //set on state
   //move browserHistory to StudentProfile
 
-  getStudent(username) {
+  getStudent(studentUsername) {
     var context = this;
     Axios.post('http://localhost:3000/teacher/getstudent', {
-      username: username,
+      username: studentUsername,
       teacher: this.props.username,
       classroom: this.props.classroom
     })
@@ -42,12 +42,12 @@ class StudentListItem extends React.Component {
       } else {
         console.log(res.data);
         context.props.dispatch(setStudent({
-          username: res.data.username,
+          studentUsername: res.data.username,
           classroom: res.data.classroom,
-          password: res.data.password,
+          studentPassword: res.data.password,
           level: res.data.level
         }));
-        console.log('AFTER PROP DISPATCH');
+        console.log('AFTER PROP DISPATCH:');
         browserHistory.push('studentprofile');
       }
     })
@@ -68,6 +68,8 @@ const mapStateToProps = (state) => ({
   classroom : state.classroom,
   students : state.students,
   password: state.password,
+  studentUsername: state.studentUsername,
+  studentPassword: state.studentPassword,
   level: state.level,
 });
 
