@@ -7,6 +7,7 @@ import { Router, Route, hashHistory, browserHistory } from 'react-router';
 import { Login } from './Login.jsx';
 import { TeacherSignup } from './Signup.jsx';
 import { TeacherDashboard } from './TeacherDashboard.jsx';
+import { StudentProfile } from './StudentProfile.jsx';
 
 let store = createStore(user);
 
@@ -19,6 +20,7 @@ class Root extends React.Component {
           <Route path="/" component={Login}/>
           <Route path="teachersignup" component={TeacherSignup}/>
           <Route path="teacherdashboard" component={TeacherDashboard}/>
+          <Route path="studentprofile" component={StudentProfile}/>
         </Router>
       </Provider>
     );

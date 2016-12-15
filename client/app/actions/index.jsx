@@ -5,6 +5,13 @@ export const setUser = (user) => {
   }
 }
 
+export const setStudent = (student) => {
+  return {
+    type: 'SET_STUDENT',
+    student
+  }
+}
+
 export const setCorrect = (correctAnswers) => {
   return {
     type: 'SET_CORRECT',
