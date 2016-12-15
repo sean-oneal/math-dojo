@@ -8,6 +8,14 @@ const user = (state = {}, action) => {
         classroom: action.user.classroom,
         students: action.user.students,
       };
+    case 'SET_STUDENT':
+      return {
+        ...state,
+        username: action.student.username,
+        password: action.student.password,
+        classroom: action.student.classroom,
+        level: action.student.level,
+      };
     case 'SET_CORRECT':
       return {
         ...state,

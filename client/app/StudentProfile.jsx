@@ -31,7 +31,7 @@ class TeacherDashboard extends React.Component {
   }
 
   render () {
-    console.log('teacher view render:' + JSON.stringify(this.props));
+    console.log('StudentProfile view render:' + JSON.stringify(this.props));
     return (
     <div>
 
@@ -44,9 +44,9 @@ class TeacherDashboard extends React.Component {
           <h1 className="page-header">Room: {this.props.classroom}</h1>
             <div className="row"><AddStudent /></div>
             <div className="row">
-              {this.props.students.map((student) => (
-                <StudentListItem student={student}/>
-              ))}
+            {this.props.students.map((student) => (
+              <StudentListItem student={student}/>
+            ))}
             </div>
         </div>
       </div>
