@@ -98,7 +98,7 @@ class Arena extends React.Component {
 
   generateQuestion() {
 
-    let userlvl = 2; //*** currently hardcoded
+    let userlvl = this.props.userlvl; //hardcoded and getting userlvl from the server
     Axios.get('http://localhost:3000/mathApi/arena')
     .then((result) => {
       console.log('This is RESULT obj:', result);
