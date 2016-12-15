@@ -1,6 +1,7 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var Router = require('./routes.js');
+var userRouter = require('./routes.js');
+var mathRouter = require('../mathApi/mathRouter.js'); // Added router for mathApi, route for mathRouter
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
@@ -21,6 +22,7 @@ module.exports = function(app, express) {
   app.use(cookieParser());
   app.use(session({secret: '1234567890QWERTY', resave: true,
     saveUninitialized: true}));
-  app.use('/user', Router);
+  app.use('/user', userRouter);
+  app.use('/mathApi', mathRouter); // Math route
   app.use(express.static(__dirname + '/../../client'));
 };
