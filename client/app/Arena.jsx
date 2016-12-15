@@ -98,17 +98,51 @@ class Arena extends React.Component {
 
   generateQuestion() {
 
-    var userlvl = this.props.userlvl;
-    Axios.get('/getQuestion')
+    let userlvl = 2; //*** currently hardcoded
+    Axios.get('http://localhost:3000/mathApi/arena')
     .then((result) => {
       console.log('This is RESULT obj:', result);
       this.setState({
-      answer: result.answer,
-      question: result.question,
-      operand: result.operand
+        answer: result.data.answer,
+        question: result.data.question,
+        operand: result.data.operand
       })
     .catch((err) => console.error('No question generated.'))
     });
+
+
+    //Original code//
+    /*
+      generateQuestion() {
+        var userlvl = this.props.userlvl;
+        var operands = ['+', '-', '*', '/'];
+        var firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
+        var secondDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
+        var operandIndex = Math.floor(Math.random() * 2);
+
+        var answer = eval(firstDigit + operands[operandIndex] + secondDigit);
+        this.setState({
+          answer: answer
+        });
+        this.setState({
+          question: firstDigit + ' ' + operands[operandIndex] + ' ' + secondDigit + ' = '
+        });
+        var operand;
+        if (operands[operandIndex] === '+') {
+          operand = 'addition';
+        } else if (operands[operandIndex] === '-') {
+          operand = 'subtraction';
+        } else if (operands[operandIndex] === '*') {
+          operand = 'multiplcation';
+        } else if (operands[operandIndex] === '/') {
+          operand = 'division';
+        }
+        this.setState({
+          operand: operand
+        });
+      }
+  
+    */
   
   }
 
