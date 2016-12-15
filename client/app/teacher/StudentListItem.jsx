@@ -3,8 +3,8 @@ import {render} from 'react-dom';
 import {Link} from 'react-router';
 import {browserHistory} from 'react-router';
 import { connect } from 'react-redux';
-import {setUser, setStudent, setCorrect, setIncorrect} from './actions/index.jsx';
-import Axios from '../../node_modules/axios/lib/axios.js';
+import {setUser, setStudent, setCorrect, setIncorrect} from './../actions/index.jsx';
+import Axios from '../../../node_modules/axios/lib/axios.js';
 
 class StudentListItem extends React.Component {
 

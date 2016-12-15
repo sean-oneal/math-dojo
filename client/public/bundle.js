@@ -67,15 +67,15 @@
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 209);
 	
-	var _Login = __webpack_require__(/*! ./Login.jsx */ 262);
+	var _Login = __webpack_require__(/*! ./teacher/Login.jsx */ 310);
 	
-	var _StudentLogin = __webpack_require__(/*! ./StudentLogin.jsx */ 289);
+	var _StudentLogin = __webpack_require__(/*! ./student/StudentLogin.jsx */ 311);
 	
-	var _Signup = __webpack_require__(/*! ./Signup.jsx */ 290);
+	var _Signup = __webpack_require__(/*! ./teacher/Signup.jsx */ 312);
 	
-	var _TeacherDashboard = __webpack_require__(/*! ./TeacherDashboard.jsx */ 291);
+	var _TeacherDashboard = __webpack_require__(/*! ./teacher/TeacherDashboard.jsx */ 313);
 	
-	var _StudentProfile = __webpack_require__(/*! ./StudentProfile.jsx */ 309);
+	var _StudentProfile = __webpack_require__(/*! ./teacher/StudentProfile.jsx */ 317);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -28897,169 +28897,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 3)))
 
 /***/ },
-/* 262 */
-/*!******************************!*\
-  !*** ./client/app/Login.jsx ***!
-  \******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Login = undefined;
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 32);
-	
-	var _axios = __webpack_require__(/*! ../../~/axios/lib/axios.js */ 263);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
-	
-	var _index = __webpack_require__(/*! ./actions/index.jsx */ 287);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 209);
-	
-	var _Alerts = __webpack_require__(/*! ./Alerts.jsx */ 288);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Login = function (_React$Component) {
-	  _inherits(Login, _React$Component);
-	
-	  function Login() {
-	    _classCallCheck(this, Login);
-	
-	    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this));
-	
-	    _this.state = {
-	      alertToUser: null
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(Login, [{
-	    key: 'handleSubmit',
-	    value: function handleSubmit(e) {
-	      e.preventDefault();
-	    }
-	  }, {
-	    key: 'login',
-	    value: function login(username, password) {
-	      if (!username || !password) {
-	        context.setState({ alertToUser: 'invalidformsubmission' });
-	        return;
-	      }
-	      var context = this;
-	      _axios2.default.post('http://localhost:3000/teacher/login', {
-	        username: username,
-	        password: password
-	      }).then(function (res) {
-	        if (res.data.error) {
-	          console.log('unable to login');
-	          context.setState({ alertToUser: 'unsuccessfulsignin' });
-	        } else {
-	          console.log('res.data:' + JSON.stringify(res.data));
-	          context.props.dispatch((0, _index.setUser)({
-	            username: res.data.username,
-	            classroom: res.data.classroom,
-	            students: res.data.students
-	          }));
-	          console.log('Login Props:' + JSON.stringify(context.props));
-	          _reactRouter.browserHistory.push('teacherdashboard');
-	        }
-	      });
-	    }
-	  }, {
-	    key: 'dismissAlert',
-	    value: function dismissAlert() {
-	      this.setState({ alertToUser: null });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      var alertToUser = this.state.alertToUser !== null ? _react2.default.createElement(_Alerts.Alerts, { alert: this.state.alertToUser, dismiss: this.dismissAlert.bind(this) }) : _react2.default.createElement('div', null);
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'container', onSubmit: this.handleSubmit },
-	        _react2.default.createElement(
-	          'form',
-	          { className: 'form-signin' },
-	          _react2.default.createElement(
-	            'h2',
-	            { className: 'form-signin-heading' },
-	            'Teacher login'
-	          ),
-	          _react2.default.createElement(
-	            'label',
-	            { className: 'sr-only' },
-	            'Username'
-	          ),
-	          _react2.default.createElement('input', { type: 'username', id: 'inputUsername', className: 'form-control', placeholder: 'Username', required: true, autoFocus: true }),
-	          _react2.default.createElement(
-	            'label',
-	            { className: 'sr-only' },
-	            'Password'
-	          ),
-	          _react2.default.createElement('input', { type: 'password', id: 'inputPassword', className: 'form-control', placeholder: 'Password', required: true }),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: function onClick() {
-	                return _this2.login($('#inputUsername').val(), $('#inputPassword').val());
-	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
-	            'Login'
-	          ),
-	          _react2.default.createElement('hr', null),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: function onClick() {
-	                return _reactRouter.browserHistory.push('teachersignup');
-	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
-	            'Register'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { id: 'alerts' },
-	          alertToUser
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Login;
-	}(_react2.default.Component);
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    username: state.username,
-	    classroom: state.classroom,
-	    students: state.students
-	  };
-	};
-	
-	exports.Login = Login = (0, _reactRedux.connect)(mapStateToProps)(Login);
-	
-	exports.Login = Login;
-
-/***/ },
+/* 262 */,
 /* 263 */
 /*!******************************!*\
   !*** ./~/axios/lib/axios.js ***!
@@ -30655,975 +30493,14 @@
 	};
 
 /***/ },
-/* 288 */
-/*!*******************************!*\
-  !*** ./client/app/Alerts.jsx ***!
-  \*******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Alerts = undefined;
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Alerts = function Alerts(props) {
-	
-	  var alertToDisplay = props.alert;
-	
-	  if (alertToDisplay === 'unsuccessfulregister') {
-	    return _react2.default.createElement(
-	      'div',
-	      { onClick: function onClick() {
-	          return props.dismiss();
-	        }, className: 'alert alert-warning' },
-	      _react2.default.createElement(
-	        'strong',
-	        null,
-	        'Sorry'
-	      ),
-	      ' This username already exists. Please try another username.'
-	    );
-	  } else if (alertToDisplay === 'unsuccessfulsignin') {
-	    return _react2.default.createElement(
-	      'div',
-	      { onClick: function onClick() {
-	          return props.dismiss();
-	        }, className: 'alert alert-danger' },
-	      _react2.default.createElement(
-	        'strong',
-	        null,
-	        'Warning!'
-	      ),
-	      ' Username and Password do not match our records. Try again.'
-	    );
-	  } else if (alertToDisplay === 'invalidformsubmission') {
-	    return _react2.default.createElement(
-	      'div',
-	      { onClick: function onClick() {
-	          return props.dismiss();
-	        }, className: 'alert alert-danger' },
-	      'Please fill out all the required fields!'
-	    );
-	  }
-	};
-	
-	exports.Alerts = Alerts;
-
-/***/ },
-/* 289 */
-/*!*************************************!*\
-  !*** ./client/app/StudentLogin.jsx ***!
-  \*************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.StudentLogin = undefined;
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 32);
-	
-	var _axios = __webpack_require__(/*! ../../~/axios/lib/axios.js */ 263);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
-	
-	var _index = __webpack_require__(/*! ./actions/index.jsx */ 287);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 209);
-	
-	var _Alerts = __webpack_require__(/*! ./Alerts.jsx */ 288);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var StudentLogin = function (_React$Component) {
-	  _inherits(StudentLogin, _React$Component);
-	
-	  function StudentLogin() {
-	    _classCallCheck(this, StudentLogin);
-	
-	    var _this = _possibleConstructorReturn(this, (StudentLogin.__proto__ || Object.getPrototypeOf(StudentLogin)).call(this));
-	
-	    _this.state = {
-	      alertToUser: null,
-	      classrooms: []
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(StudentLogin, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.getClassrooms();
-	    }
-	  }, {
-	    key: 'handleSubmit',
-	    value: function handleSubmit(e) {
-	      e.preventDefault();
-	    }
-	  }, {
-	    key: 'getClassrooms',
-	    value: function getClassrooms() {
-	      var context = this;
-	      _axios2.default.get('http://localhost:3000/classrooms').then(function (res) {
-	        if (res.data.error) {
-	          console.log('unable to login');
-	          context.setState({ alertToUser: 'unsuccessfulsignin' });
-	        } else {
-	          console.log('res.data:' + JSON.stringify(res.data));
-	          context.setState({ classrooms: res.data });
-	        }
-	      });
-	    }
-	  }, {
-	    key: 'login',
-	    value: function login(username, password, classroom) {
-	      var context = this;
-	      if (!username || !password || !classroom) {
-	        context.setState({ alertToUser: 'invalidformsubmission' });
-	        return;
-	      }
-	      var context = this;
-	      _axios2.default.post('http://localhost:3000/student/login', {
-	        username: username,
-	        password: password,
-	        classroom: classroom
-	      }).then(function (res) {
-	        if (res.data.error) {
-	          console.log('unable to login');
-	          context.setState({ alertToUser: 'unsuccessfulsignin' });
-	        } else {
-	          console.log('res.data:' + JSON.stringify(res.data));
-	          context.props.dispatch((0, _index.setUser)({
-	            username: res.data.username,
-	            classroom: res.data.classroom,
-	            students: res.data.students
-	          }));
-	          console.log('Login Props:' + JSON.stringify(context.props));
-	          _reactRouter.browserHistory.push('arena');
-	        }
-	      });
-	    }
-	  }, {
-	    key: 'dismissAlert',
-	    value: function dismissAlert() {
-	      this.setState({ alertToUser: null });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      var alertToUser = this.state.alertToUser !== null ? _react2.default.createElement(_Alerts.Alerts, { alert: this.state.alertToUser, dismiss: this.dismissAlert.bind(this) }) : _react2.default.createElement('div', null);
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'container', onSubmit: this.handleSubmit },
-	        _react2.default.createElement(
-	          'form',
-	          { className: 'form-signin' },
-	          this.state.classrooms.map(function (classroom) {
-	            return _react2.default.createElement(
-	              'div',
-	              { className: 'radio' },
-	              _react2.default.createElement(
-	                'label',
-	                null,
-	                _react2.default.createElement('input', { type: 'radio', name: 'classroom', id: classroom, value: classroom }),
-	                classroom
-	              )
-	            );
-	          }),
-	          _react2.default.createElement(
-	            'h2',
-	            { className: 'form-signin-heading' },
-	            'Student login'
-	          ),
-	          _react2.default.createElement(
-	            'label',
-	            { className: 'sr-only' },
-	            'Username'
-	          ),
-	          _react2.default.createElement('input', { type: 'username', id: 'inputUsername', className: 'form-control', placeholder: 'Username', required: true, autoFocus: true }),
-	          _react2.default.createElement(
-	            'label',
-	            { className: 'sr-only' },
-	            'Password'
-	          ),
-	          _react2.default.createElement('input', { type: 'password', id: 'inputPassword', className: 'form-control', placeholder: 'Password', required: true }),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: function onClick() {
-	                return _this2.login($('#inputUsername').val(), $('#inputPassword').val(), $('input[name=classroom]:checked').val());
-	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
-	            'Login'
-	          ),
-	          _react2.default.createElement('hr', null),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: function onClick() {
-	                return _reactRouter.browserHistory.push('teacherlogin');
-	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
-	            'Teacher Login'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { id: 'alerts' },
-	          alertToUser
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return StudentLogin;
-	}(_react2.default.Component);
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    username: state.username,
-	    classroom: state.classroom,
-	    students: state.students
-	  };
-	};
-	
-	exports.StudentLogin = StudentLogin = (0, _reactRedux.connect)(mapStateToProps)(StudentLogin);
-	
-	exports.StudentLogin = StudentLogin;
-
-/***/ },
-/* 290 */
-/*!*******************************!*\
-  !*** ./client/app/Signup.jsx ***!
-  \*******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.TeacherSignup = undefined;
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 32);
-	
-	var _axios = __webpack_require__(/*! ../../~/axios/lib/axios.js */ 263);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
-	
-	var _index = __webpack_require__(/*! ./actions/index.jsx */ 287);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 209);
-	
-	var _Alerts = __webpack_require__(/*! ./Alerts.jsx */ 288);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var TeacherSignup = function (_React$Component) {
-	  _inherits(TeacherSignup, _React$Component);
-	
-	  function TeacherSignup() {
-	    _classCallCheck(this, TeacherSignup);
-	
-	    var _this = _possibleConstructorReturn(this, (TeacherSignup.__proto__ || Object.getPrototypeOf(TeacherSignup)).call(this));
-	
-	    _this.state = {
-	      alertToUser: null
-	    };
-	    return _this;
-	  }
-	  //
-	
-	
-	  _createClass(TeacherSignup, [{
-	    key: 'handleSubmit',
-	    value: function handleSubmit(e) {
-	      e.preventDefault();
-	    }
-	  }, {
-	    key: 'register',
-	    value: function register(username, password, classroomName) {
-	      if (!username || !password || !classroomName) {
-	        context.setState({ alertToUser: 'invalidformsubmission' });
-	        return;
-	      }
-	      var context = this;
-	      _axios2.default.post('http://localhost:3000/teacher/signup', {
-	        username: username,
-	        password: password,
-	        classroom: classroomName
-	      }).then(function (res) {
-	        if (res.data.error) {
-	          console.log('unable to register');
-	          context.setState({ alertToUser: 'unsuccessfulregister' });
-	        } else {
-	          console.log(res.data);
-	          context.props.dispatch((0, _index.setUser)({
-	            username: res.data.username,
-	            classroom: res.data.classroom,
-	            students: res.data.students
-	          }));
-	          _reactRouter.browserHistory.push('/teacherdashboard');
-	        }
-	      });
-	    }
-	  }, {
-	    key: 'dismissAlert',
-	    value: function dismissAlert() {
-	      this.setState({ alertToUser: null });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      var alertToUser = this.state.alertToUser !== null ? _react2.default.createElement(_Alerts.Alerts, { alert: this.state.alertToUser, dismiss: this.dismissAlert.bind(this) }) : _react2.default.createElement('div', null);
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'container', onSubmit: this.handleSubmit },
-	        _react2.default.createElement(
-	          'form',
-	          { className: 'form-signin' },
-	          _react2.default.createElement(
-	            'h2',
-	            { className: 'form-signin-heading' },
-	            'Teacher Signup'
-	          ),
-	          _react2.default.createElement(
-	            'label',
-	            { className: 'sr-only' },
-	            'Username'
-	          ),
-	          _react2.default.createElement('input', { type: 'username', id: 'inputUsername', className: 'form-control', placeholder: 'Username', required: true, autoFocus: true }),
-	          _react2.default.createElement(
-	            'label',
-	            { className: 'sr-only' },
-	            'Password'
-	          ),
-	          _react2.default.createElement('input', { type: 'password', id: 'inputPassword', className: 'form-control', placeholder: 'Password', required: true }),
-	          _react2.default.createElement(
-	            'label',
-	            { className: 'sr-only' },
-	            'Classroom Name'
-	          ),
-	          _react2.default.createElement('input', { type: 'classroomname', id: 'inputClassroomName', className: 'form-control', placeholder: 'Classroom Name', required: true, autoFocus: true }),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: function onClick() {
-	                return _this2.register($('#inputUsername').val(), $('#inputPassword').val(), $('#inputClassroomName').val());
-	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
-	            'Register'
-	          ),
-	          _react2.default.createElement('hr', null),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: function onClick() {
-	                return _reactRouter.browserHistory.push('/');
-	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
-	            'Login'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { id: 'alerts' },
-	          alertToUser
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return TeacherSignup;
-	}(_react2.default.Component);
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    username: state.username,
-	    classroom: state.classroom,
-	    students: state.students
-	  };
-	};
-	
-	exports.TeacherSignup = TeacherSignup = (0, _reactRedux.connect)(mapStateToProps)(TeacherSignup);
-	
-	exports.TeacherSignup = TeacherSignup;
-
-/***/ },
-/* 291 */
-/*!*****************************************!*\
-  !*** ./client/app/TeacherDashboard.jsx ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.TeacherDashboard = undefined;
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 32);
-	
-	var _axios = __webpack_require__(/*! ../../~/axios/lib/axios.js */ 263);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 209);
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
-	
-	var _index = __webpack_require__(/*! ./actions/index.jsx */ 287);
-	
-	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 292);
-	
-	var _Topbar = __webpack_require__(/*! ./Topbar.jsx */ 293);
-	
-	var _StudentListItem = __webpack_require__(/*! ./StudentListItem.jsx */ 294);
-	
-	var _AddStudent = __webpack_require__(/*! ./AddStudent.jsx */ 295);
-	
-	var _reactAddonsCssTransitionGroup = __webpack_require__(/*! react-addons-css-transition-group */ 296);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var TeacherDashboard = function (_React$Component) {
-	  _inherits(TeacherDashboard, _React$Component);
-	
-	  function TeacherDashboard() {
-	    _classCallCheck(this, TeacherDashboard);
-	
-	    return _possibleConstructorReturn(this, (TeacherDashboard.__proto__ || Object.getPrototypeOf(TeacherDashboard)).call(this));
-	  }
-	
-	  _createClass(TeacherDashboard, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {}
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
-	  }, {
-	    key: 'signOut',
-	    value: function signOut() {
-	      var context = this;
-	      _axios2.default.post('http://localhost:3000/teacher/logout').then(function (res) {
-	        console.log(res);
-	        _reactRouter.browserHistory.push('/');
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      console.log('teacher view render:' + JSON.stringify(this.props));
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_Topbar.Topbar, { signOut: function signOut() {
-	            return _this2.signOut();
-	          } }),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'container-fluid' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement(_Navbar.Navbar, null),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main' },
-	              _react2.default.createElement(
-	                'h1',
-	                { className: 'page-header' },
-	                'Room: ',
-	                this.props.classroom
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                _react2.default.createElement(_AddStudent.AddStudent, null)
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                this.props.students.map(function (student) {
-	                  return _react2.default.createElement(_StudentListItem.StudentListItem, { student: student });
-	                })
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return TeacherDashboard;
-	}(_react2.default.Component);
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    username: state.username,
-	    classroom: state.classroom,
-	    students: state.students
-	  };
-	};
-	
-	exports.TeacherDashboard = TeacherDashboard = (0, _reactRedux.connect)(mapStateToProps)(TeacherDashboard);
-	
-	exports.TeacherDashboard = TeacherDashboard;
-
-/***/ },
-/* 292 */
-/*!*******************************!*\
-  !*** ./client/app/Navbar.jsx ***!
-  \*******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Navbar = undefined;
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 209);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Navbar = function Navbar() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'col-sm-3 col-md-2 sidebar' },
-	    _react2.default.createElement(
-	      'ul',
-	      { className: 'nav nav-sidebar' },
-	      _react2.default.createElement(
-	        'li',
-	        null,
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: 'teacherdashboard' },
-	          'Dashboard'
-	        )
-	      )
-	    )
-	  );
-	};
-	
-	exports.Navbar = Navbar;
-
-/***/ },
-/* 293 */
-/*!*******************************!*\
-  !*** ./client/app/Topbar.jsx ***!
-  \*******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Topbar = undefined;
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Topbar = function Topbar(props) {
-	  return _react2.default.createElement(
-	    "nav",
-	    { className: "navbar navbar-inverse navbar-fixed-top" },
-	    _react2.default.createElement(
-	      "div",
-	      { className: "container-fluid" },
-	      _react2.default.createElement(
-	        "div",
-	        { className: "navbar-header" },
-	        _react2.default.createElement(
-	          "button",
-	          { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" },
-	          _react2.default.createElement(
-	            "span",
-	            { className: "sr-only" },
-	            "Toggle navigation"
-	          ),
-	          _react2.default.createElement("span", { className: "icon-bar" }),
-	          _react2.default.createElement("span", { className: "icon-bar" }),
-	          _react2.default.createElement("span", { className: "icon-bar" })
-	        ),
-	        _react2.default.createElement(
-	          "a",
-	          { className: "navbar-brand", href: "#" },
-	          "Math Dojo"
-	        )
-	      ),
-	      _react2.default.createElement(
-	        "div",
-	        { id: "navbar", className: "navbar-collapse collapse" },
-	        _react2.default.createElement(
-	          "ul",
-	          { className: "nav navbar-nav navbar-right" },
-	          _react2.default.createElement(
-	            "li",
-	            null,
-	            _react2.default.createElement(
-	              "a",
-	              { onClick: props.signOut },
-	              "Sign Out"
-	            )
-	          )
-	        )
-	      )
-	    )
-	  );
-	};
-	
-	exports.Topbar = Topbar;
-
-/***/ },
-/* 294 */
-/*!****************************************!*\
-  !*** ./client/app/StudentListItem.jsx ***!
-  \****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.StudentListItem = undefined;
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 32);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 209);
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
-	
-	var _index = __webpack_require__(/*! ./actions/index.jsx */ 287);
-	
-	var _axios = __webpack_require__(/*! ../../~/axios/lib/axios.js */ 263);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var StudentListItem = function (_React$Component) {
-	  _inherits(StudentListItem, _React$Component);
-	
-	  function StudentListItem() {
-	    _classCallCheck(this, StudentListItem);
-	
-	    var _this = _possibleConstructorReturn(this, (StudentListItem.__proto__ || Object.getPrototypeOf(StudentListItem)).call(this));
-	
-	    _this.state = {
-	      alertToUser: null
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(StudentListItem, [{
-	    key: 'handleSubmit',
-	    value: function handleSubmit(e) {
-	      e.preventDefault();
-	    }
-	  }, {
-	    key: 'dismissAlert',
-	    value: function dismissAlert() {
-	      this.setState({ alertToUser: null });
-	    }
-	
-	    //on click
-	    //fetch user data
-	    //set on state
-	    //move browserHistory to StudentProfile
-	
-	  }, {
-	    key: 'getStudent',
-	    value: function getStudent(studentUsername) {
-	      var context = this;
-	      _axios2.default.post('http://localhost:3000/teacher/getstudent', {
-	        username: studentUsername,
-	        teacher: this.props.username,
-	        classroom: this.props.classroom
-	      }).then(function (res) {
-	        if (res.data.error) {
-	          console.log('unable to load student');
-	          context.setState({ alertToUser: 'unsuccessfulregister' });
-	        } else {
-	          console.log(res.data);
-	          context.props.dispatch((0, _index.setStudent)({
-	            studentUsername: res.data.username,
-	            classroom: res.data.classroom,
-	            studentPassword: res.data.password,
-	            level: res.data.level
-	          }));
-	          console.log('AFTER PROP DISPATCH:');
-	          _reactRouter.browserHistory.push('studentprofile');
-	        }
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'col-sm-3 col-md-2' },
-	        _react2.default.createElement(
-	          'a',
-	          { onClick: function onClick() {
-	              return _this2.getStudent(_this2.props.student);
-	            } },
-	          this.props.student
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return StudentListItem;
-	}(_react2.default.Component);
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    username: state.username,
-	    classroom: state.classroom,
-	    students: state.students,
-	    password: state.password,
-	    studentUsername: state.studentUsername,
-	    studentPassword: state.studentPassword,
-	    level: state.level
-	  };
-	};
-	
-	exports.StudentListItem = StudentListItem = (0, _reactRedux.connect)(mapStateToProps)(StudentListItem);
-	
-	exports.StudentListItem = StudentListItem;
-
-/***/ },
-/* 295 */
-/*!***********************************!*\
-  !*** ./client/app/AddStudent.jsx ***!
-  \***********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.AddStudent = undefined;
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 32);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 209);
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
-	
-	var _index = __webpack_require__(/*! ./actions/index.jsx */ 287);
-	
-	var _axios = __webpack_require__(/*! ../../~/axios/lib/axios.js */ 263);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var AddStudent = function (_React$Component) {
-	  _inherits(AddStudent, _React$Component);
-	
-	  function AddStudent() {
-	    _classCallCheck(this, AddStudent);
-	
-	    var _this = _possibleConstructorReturn(this, (AddStudent.__proto__ || Object.getPrototypeOf(AddStudent)).call(this));
-	
-	    _this.state = {
-	      alertToUser: null
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(AddStudent, [{
-	    key: 'handleSubmit',
-	    value: function handleSubmit(e) {
-	      e.preventDefault();
-	    }
-	  }, {
-	    key: 'dismissAlert',
-	    value: function dismissAlert() {
-	      this.setState({ alertToUser: null });
-	    }
-	  }, {
-	    key: 'addStudent',
-	    value: function addStudent(username, password) {
-	      if (!username || !password) {
-	        context.setState({ alertToUser: 'invalidformsubmission' });
-	        return;
-	      }
-	      var context = this;
-	      _axios2.default.post('http://localhost:3000/teacher/student', {
-	        username: username,
-	        password: password,
-	        teacher: this.props.username,
-	        classroom: this.props.classroom
-	      }).then(function (res) {
-	        if (res.data.error) {
-	          console.log('unable to add student');
-	          context.setState({ alertToUser: 'unsuccessfulregister' });
-	        } else {
-	          console.log(res.data);
-	          context.props.dispatch((0, _index.setUser)({
-	            username: res.data.username,
-	            classroom: res.data.classroom,
-	            students: res.data.students
-	          }));
-	          _reactRouter.browserHistory.push('/teacherdashboard');
-	        }
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      var alertToUser = this.state.alertToUser !== null ? _react2.default.createElement(Alerts, { alert: this.state.alertToUser, dismiss: this.dismissAlert.bind(this) }) : _react2.default.createElement('div', null);
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'col-sm-6 col-md-6' },
-	        _react2.default.createElement(
-	          'form',
-	          { className: 'form-signin', onSubmit: this.handleSubmit },
-	          _react2.default.createElement(
-	            'h2',
-	            { className: 'form-signin-heading' },
-	            'Add Student'
-	          ),
-	          _react2.default.createElement(
-	            'label',
-	            { className: 'sr-only' },
-	            'Username'
-	          ),
-	          _react2.default.createElement('input', { type: 'username', id: 'inputUsername', className: 'form-control', placeholder: 'Username', required: true, autoFocus: true }),
-	          _react2.default.createElement(
-	            'label',
-	            { className: 'sr-only' },
-	            'Password'
-	          ),
-	          _react2.default.createElement('input', { type: 'username', id: 'inputPassword', className: 'form-control', placeholder: 'Password', required: true }),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: function onClick() {
-	                return _this2.addStudent($('#inputUsername').val(), $('#inputPassword').val());
-	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
-	            'Add Student'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { id: 'alerts' },
-	          alertToUser
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return AddStudent;
-	}(_react2.default.Component);
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    username: state.username,
-	    classroom: state.classroom,
-	    students: state.students
-	  };
-	};
-	
-	exports.AddStudent = AddStudent = (0, _reactRedux.connect)(mapStateToProps)(AddStudent);
-	
-	exports.AddStudent = AddStudent;
-
-/***/ },
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
 /* 296 */
 /*!******************************************************!*\
   !*** ./~/react-addons-css-transition-group/index.js ***!
@@ -33797,10 +32674,1009 @@
 	module.exports = ReactTransitionEvents;
 
 /***/ },
-/* 309 */
+/* 309 */,
+/* 310 */
+/*!**************************************!*\
+  !*** ./client/app/teacher/Login.jsx ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Login = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _axios = __webpack_require__(/*! ../../../~/axios/lib/axios.js */ 263);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
+	
+	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	var _Alerts = __webpack_require__(/*! ./../partials/Alerts.jsx */ 319);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Login = function (_React$Component) {
+	  _inherits(Login, _React$Component);
+	
+	  function Login() {
+	    _classCallCheck(this, Login);
+	
+	    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this));
+	
+	    _this.state = {
+	      alertToUser: null
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(Login, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	    }
+	  }, {
+	    key: 'login',
+	    value: function login(username, password) {
+	      if (!username || !password) {
+	        context.setState({ alertToUser: 'invalidformsubmission' });
+	        return;
+	      }
+	      var context = this;
+	      _axios2.default.post('http://localhost:3000/teacher/login', {
+	        username: username,
+	        password: password
+	      }).then(function (res) {
+	        if (res.data.error) {
+	          console.log('unable to login');
+	          context.setState({ alertToUser: 'unsuccessfulsignin' });
+	        } else {
+	          console.log('res.data:' + JSON.stringify(res.data));
+	          context.props.dispatch((0, _index.setUser)({
+	            username: res.data.username,
+	            classroom: res.data.classroom,
+	            students: res.data.students
+	          }));
+	          console.log('Login Props:' + JSON.stringify(context.props));
+	          _reactRouter.browserHistory.push('teacherdashboard');
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'dismissAlert',
+	    value: function dismissAlert() {
+	      this.setState({ alertToUser: null });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      var alertToUser = this.state.alertToUser !== null ? _react2.default.createElement(_Alerts.Alerts, { alert: this.state.alertToUser, dismiss: this.dismissAlert.bind(this) }) : _react2.default.createElement('div', null);
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'container', onSubmit: this.handleSubmit },
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'form-signin' },
+	          _react2.default.createElement(
+	            'h2',
+	            { className: 'form-signin-heading' },
+	            'Teacher login'
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'sr-only' },
+	            'Username'
+	          ),
+	          _react2.default.createElement('input', { type: 'username', id: 'inputUsername', className: 'form-control', placeholder: 'Username', required: true, autoFocus: true }),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'sr-only' },
+	            'Password'
+	          ),
+	          _react2.default.createElement('input', { type: 'password', id: 'inputPassword', className: 'form-control', placeholder: 'Password', required: true }),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: function onClick() {
+	                return _this2.login($('#inputUsername').val(), $('#inputPassword').val());
+	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
+	            'Login'
+	          ),
+	          _react2.default.createElement('hr', null),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: function onClick() {
+	                return _reactRouter.browserHistory.push('teachersignup');
+	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
+	            'Register'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'alerts' },
+	          alertToUser
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Login;
+	}(_react2.default.Component);
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    username: state.username,
+	    classroom: state.classroom,
+	    students: state.students
+	  };
+	};
+	
+	exports.Login = Login = (0, _reactRedux.connect)(mapStateToProps)(Login);
+	
+	exports.Login = Login;
+
+/***/ },
+/* 311 */
+/*!*********************************************!*\
+  !*** ./client/app/student/StudentLogin.jsx ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.StudentLogin = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _axios = __webpack_require__(/*! ../../../~/axios/lib/axios.js */ 263);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
+	
+	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	var _Alerts = __webpack_require__(/*! ./../partials/Alerts.jsx */ 319);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var StudentLogin = function (_React$Component) {
+	  _inherits(StudentLogin, _React$Component);
+	
+	  function StudentLogin() {
+	    _classCallCheck(this, StudentLogin);
+	
+	    var _this = _possibleConstructorReturn(this, (StudentLogin.__proto__ || Object.getPrototypeOf(StudentLogin)).call(this));
+	
+	    _this.state = {
+	      alertToUser: null,
+	      classrooms: []
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(StudentLogin, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.getClassrooms();
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	    }
+	  }, {
+	    key: 'getClassrooms',
+	    value: function getClassrooms() {
+	      var context = this;
+	      _axios2.default.get('http://localhost:3000/classrooms').then(function (res) {
+	        if (res.data.error) {
+	          console.log('unable to login');
+	          context.setState({ alertToUser: 'unsuccessfulsignin' });
+	        } else {
+	          console.log('res.data:' + JSON.stringify(res.data));
+	          context.setState({ classrooms: res.data });
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'login',
+	    value: function login(username, password, classroom) {
+	      var context = this;
+	      if (!username || !password || !classroom) {
+	        context.setState({ alertToUser: 'invalidformsubmission' });
+	        return;
+	      }
+	      var context = this;
+	      _axios2.default.post('http://localhost:3000/student/login', {
+	        username: username,
+	        password: password,
+	        classroom: classroom
+	      }).then(function (res) {
+	        if (res.data.error) {
+	          console.log('unable to login');
+	          context.setState({ alertToUser: 'unsuccessfulsignin' });
+	        } else {
+	          console.log('res.data:' + JSON.stringify(res.data));
+	          context.props.dispatch((0, _index.setUser)({
+	            username: res.data.username,
+	            classroom: res.data.classroom,
+	            students: res.data.students
+	          }));
+	          console.log('Login Props:' + JSON.stringify(context.props));
+	          _reactRouter.browserHistory.push('arena');
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'dismissAlert',
+	    value: function dismissAlert() {
+	      this.setState({ alertToUser: null });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      var alertToUser = this.state.alertToUser !== null ? _react2.default.createElement(_Alerts.Alerts, { alert: this.state.alertToUser, dismiss: this.dismissAlert.bind(this) }) : _react2.default.createElement('div', null);
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'container', onSubmit: this.handleSubmit },
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'form-signin' },
+	          this.state.classrooms.map(function (classroom) {
+	            return _react2.default.createElement(
+	              'div',
+	              { className: 'radio' },
+	              _react2.default.createElement(
+	                'label',
+	                null,
+	                _react2.default.createElement('input', { type: 'radio', name: 'classroom', id: classroom, value: classroom }),
+	                classroom
+	              )
+	            );
+	          }),
+	          _react2.default.createElement(
+	            'h2',
+	            { className: 'form-signin-heading' },
+	            'Student login'
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'sr-only' },
+	            'Username'
+	          ),
+	          _react2.default.createElement('input', { type: 'username', id: 'inputUsername', className: 'form-control', placeholder: 'Username', required: true, autoFocus: true }),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'sr-only' },
+	            'Password'
+	          ),
+	          _react2.default.createElement('input', { type: 'password', id: 'inputPassword', className: 'form-control', placeholder: 'Password', required: true }),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: function onClick() {
+	                return _this2.login($('#inputUsername').val(), $('#inputPassword').val(), $('input[name=classroom]:checked').val());
+	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
+	            'Login'
+	          ),
+	          _react2.default.createElement('hr', null),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: function onClick() {
+	                return _reactRouter.browserHistory.push('teacherlogin');
+	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
+	            'Teacher Login'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'alerts' },
+	          alertToUser
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return StudentLogin;
+	}(_react2.default.Component);
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    username: state.username,
+	    classroom: state.classroom,
+	    students: state.students
+	  };
+	};
+	
+	exports.StudentLogin = StudentLogin = (0, _reactRedux.connect)(mapStateToProps)(StudentLogin);
+	
+	exports.StudentLogin = StudentLogin;
+
+/***/ },
+/* 312 */
 /*!***************************************!*\
-  !*** ./client/app/StudentProfile.jsx ***!
+  !*** ./client/app/teacher/Signup.jsx ***!
   \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.TeacherSignup = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _axios = __webpack_require__(/*! ../../../~/axios/lib/axios.js */ 263);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
+	
+	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	var _Alerts = __webpack_require__(/*! ./../partials/Alerts.jsx */ 319);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TeacherSignup = function (_React$Component) {
+	  _inherits(TeacherSignup, _React$Component);
+	
+	  function TeacherSignup() {
+	    _classCallCheck(this, TeacherSignup);
+	
+	    var _this = _possibleConstructorReturn(this, (TeacherSignup.__proto__ || Object.getPrototypeOf(TeacherSignup)).call(this));
+	
+	    _this.state = {
+	      alertToUser: null
+	    };
+	    return _this;
+	  }
+	  //
+	
+	
+	  _createClass(TeacherSignup, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	    }
+	  }, {
+	    key: 'register',
+	    value: function register(username, password, classroomName) {
+	      if (!username || !password || !classroomName) {
+	        context.setState({ alertToUser: 'invalidformsubmission' });
+	        return;
+	      }
+	      var context = this;
+	      _axios2.default.post('http://localhost:3000/teacher/signup', {
+	        username: username,
+	        password: password,
+	        classroom: classroomName
+	      }).then(function (res) {
+	        if (res.data.error) {
+	          console.log('unable to register');
+	          context.setState({ alertToUser: 'unsuccessfulregister' });
+	        } else {
+	          console.log(res.data);
+	          context.props.dispatch((0, _index.setUser)({
+	            username: res.data.username,
+	            classroom: res.data.classroom,
+	            students: res.data.students
+	          }));
+	          _reactRouter.browserHistory.push('/teacherdashboard');
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'dismissAlert',
+	    value: function dismissAlert() {
+	      this.setState({ alertToUser: null });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      var alertToUser = this.state.alertToUser !== null ? _react2.default.createElement(_Alerts.Alerts, { alert: this.state.alertToUser, dismiss: this.dismissAlert.bind(this) }) : _react2.default.createElement('div', null);
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'container', onSubmit: this.handleSubmit },
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'form-signin' },
+	          _react2.default.createElement(
+	            'h2',
+	            { className: 'form-signin-heading' },
+	            'Teacher Signup'
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'sr-only' },
+	            'Username'
+	          ),
+	          _react2.default.createElement('input', { type: 'username', id: 'inputUsername', className: 'form-control', placeholder: 'Username', required: true, autoFocus: true }),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'sr-only' },
+	            'Password'
+	          ),
+	          _react2.default.createElement('input', { type: 'password', id: 'inputPassword', className: 'form-control', placeholder: 'Password', required: true }),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'sr-only' },
+	            'Classroom Name'
+	          ),
+	          _react2.default.createElement('input', { type: 'classroomname', id: 'inputClassroomName', className: 'form-control', placeholder: 'Classroom Name', required: true, autoFocus: true }),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: function onClick() {
+	                return _this2.register($('#inputUsername').val(), $('#inputPassword').val(), $('#inputClassroomName').val());
+	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
+	            'Register'
+	          ),
+	          _react2.default.createElement('hr', null),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: function onClick() {
+	                return _reactRouter.browserHistory.push('/');
+	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
+	            'Login'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'alerts' },
+	          alertToUser
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return TeacherSignup;
+	}(_react2.default.Component);
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    username: state.username,
+	    classroom: state.classroom,
+	    students: state.students
+	  };
+	};
+	
+	exports.TeacherSignup = TeacherSignup = (0, _reactRedux.connect)(mapStateToProps)(TeacherSignup);
+	
+	exports.TeacherSignup = TeacherSignup;
+
+/***/ },
+/* 313 */
+/*!*************************************************!*\
+  !*** ./client/app/teacher/TeacherDashboard.jsx ***!
+  \*************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.TeacherDashboard = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _axios = __webpack_require__(/*! ../../../~/axios/lib/axios.js */ 263);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
+	
+	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
+	
+	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 314);
+	
+	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 318);
+	
+	var _StudentListItem = __webpack_require__(/*! ./StudentListItem.jsx */ 315);
+	
+	var _AddStudent = __webpack_require__(/*! ./AddStudent.jsx */ 316);
+	
+	var _reactAddonsCssTransitionGroup = __webpack_require__(/*! react-addons-css-transition-group */ 296);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TeacherDashboard = function (_React$Component) {
+	  _inherits(TeacherDashboard, _React$Component);
+	
+	  function TeacherDashboard() {
+	    _classCallCheck(this, TeacherDashboard);
+	
+	    return _possibleConstructorReturn(this, (TeacherDashboard.__proto__ || Object.getPrototypeOf(TeacherDashboard)).call(this));
+	  }
+	
+	  _createClass(TeacherDashboard, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {}
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'signOut',
+	    value: function signOut() {
+	      var context = this;
+	      _axios2.default.post('http://localhost:3000/teacher/logout').then(function (res) {
+	        console.log(res);
+	        _reactRouter.browserHistory.push('/');
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      console.log('teacher view render:' + JSON.stringify(this.props));
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_Topbar.Topbar, { signOut: function signOut() {
+	            return _this2.signOut();
+	          } }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container-fluid' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(_Navbar.Navbar, null),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main' },
+	              _react2.default.createElement(
+	                'h1',
+	                { className: 'page-header' },
+	                'Room: ',
+	                this.props.classroom
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement(_AddStudent.AddStudent, null)
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                this.props.students.map(function (student) {
+	                  return _react2.default.createElement(_StudentListItem.StudentListItem, { student: student });
+	                })
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return TeacherDashboard;
+	}(_react2.default.Component);
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    username: state.username,
+	    classroom: state.classroom,
+	    students: state.students
+	  };
+	};
+	
+	exports.TeacherDashboard = TeacherDashboard = (0, _reactRedux.connect)(mapStateToProps)(TeacherDashboard);
+	
+	exports.TeacherDashboard = TeacherDashboard;
+
+/***/ },
+/* 314 */
+/*!***************************************!*\
+  !*** ./client/app/teacher/Navbar.jsx ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Navbar = undefined;
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Navbar = function Navbar() {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'col-sm-3 col-md-2 sidebar' },
+	    _react2.default.createElement(
+	      'ul',
+	      { className: 'nav nav-sidebar' },
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: 'teacherdashboard' },
+	          'Dashboard'
+	        )
+	      )
+	    )
+	  );
+	};
+	
+	exports.Navbar = Navbar;
+
+/***/ },
+/* 315 */
+/*!************************************************!*\
+  !*** ./client/app/teacher/StudentListItem.jsx ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.StudentListItem = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
+	
+	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
+	
+	var _axios = __webpack_require__(/*! ../../../~/axios/lib/axios.js */ 263);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var StudentListItem = function (_React$Component) {
+	  _inherits(StudentListItem, _React$Component);
+	
+	  function StudentListItem() {
+	    _classCallCheck(this, StudentListItem);
+	
+	    var _this = _possibleConstructorReturn(this, (StudentListItem.__proto__ || Object.getPrototypeOf(StudentListItem)).call(this));
+	
+	    _this.state = {
+	      alertToUser: null
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(StudentListItem, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	    }
+	  }, {
+	    key: 'dismissAlert',
+	    value: function dismissAlert() {
+	      this.setState({ alertToUser: null });
+	    }
+	
+	    //on click
+	    //fetch user data
+	    //set on state
+	    //move browserHistory to StudentProfile
+	
+	  }, {
+	    key: 'getStudent',
+	    value: function getStudent(studentUsername) {
+	      var context = this;
+	      _axios2.default.post('http://localhost:3000/teacher/getstudent', {
+	        username: studentUsername,
+	        teacher: this.props.username,
+	        classroom: this.props.classroom
+	      }).then(function (res) {
+	        if (res.data.error) {
+	          console.log('unable to load student');
+	          context.setState({ alertToUser: 'unsuccessfulregister' });
+	        } else {
+	          console.log(res.data);
+	          context.props.dispatch((0, _index.setStudent)({
+	            studentUsername: res.data.username,
+	            classroom: res.data.classroom,
+	            studentPassword: res.data.password,
+	            level: res.data.level
+	          }));
+	          console.log('AFTER PROP DISPATCH:');
+	          _reactRouter.browserHistory.push('studentprofile');
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col-sm-3 col-md-2' },
+	        _react2.default.createElement(
+	          'a',
+	          { onClick: function onClick() {
+	              return _this2.getStudent(_this2.props.student);
+	            } },
+	          this.props.student
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return StudentListItem;
+	}(_react2.default.Component);
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    username: state.username,
+	    classroom: state.classroom,
+	    students: state.students,
+	    password: state.password,
+	    studentUsername: state.studentUsername,
+	    studentPassword: state.studentPassword,
+	    level: state.level
+	  };
+	};
+	
+	exports.StudentListItem = StudentListItem = (0, _reactRedux.connect)(mapStateToProps)(StudentListItem);
+	
+	exports.StudentListItem = StudentListItem;
+
+/***/ },
+/* 316 */
+/*!*******************************************!*\
+  !*** ./client/app/teacher/AddStudent.jsx ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.AddStudent = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
+	
+	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
+	
+	var _axios = __webpack_require__(/*! ../../../~/axios/lib/axios.js */ 263);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var AddStudent = function (_React$Component) {
+	  _inherits(AddStudent, _React$Component);
+	
+	  function AddStudent() {
+	    _classCallCheck(this, AddStudent);
+	
+	    var _this = _possibleConstructorReturn(this, (AddStudent.__proto__ || Object.getPrototypeOf(AddStudent)).call(this));
+	
+	    _this.state = {
+	      alertToUser: null
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(AddStudent, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	    }
+	  }, {
+	    key: 'dismissAlert',
+	    value: function dismissAlert() {
+	      this.setState({ alertToUser: null });
+	    }
+	  }, {
+	    key: 'addStudent',
+	    value: function addStudent(username, password) {
+	      if (!username || !password) {
+	        context.setState({ alertToUser: 'invalidformsubmission' });
+	        return;
+	      }
+	      var context = this;
+	      _axios2.default.post('http://localhost:3000/teacher/student', {
+	        username: username,
+	        password: password,
+	        teacher: this.props.username,
+	        classroom: this.props.classroom
+	      }).then(function (res) {
+	        if (res.data.error) {
+	          console.log('unable to add student');
+	          context.setState({ alertToUser: 'unsuccessfulregister' });
+	        } else {
+	          console.log(res.data);
+	          context.props.dispatch((0, _index.setUser)({
+	            username: res.data.username,
+	            classroom: res.data.classroom,
+	            students: res.data.students
+	          }));
+	          _reactRouter.browserHistory.push('/teacherdashboard');
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      var alertToUser = this.state.alertToUser !== null ? _react2.default.createElement(Alerts, { alert: this.state.alertToUser, dismiss: this.dismissAlert.bind(this) }) : _react2.default.createElement('div', null);
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col-sm-6 col-md-6' },
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'form-signin', onSubmit: this.handleSubmit },
+	          _react2.default.createElement(
+	            'h2',
+	            { className: 'form-signin-heading' },
+	            'Add Student'
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'sr-only' },
+	            'Username'
+	          ),
+	          _react2.default.createElement('input', { type: 'username', id: 'inputUsername', className: 'form-control', placeholder: 'Username', required: true, autoFocus: true }),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'sr-only' },
+	            'Password'
+	          ),
+	          _react2.default.createElement('input', { type: 'username', id: 'inputPassword', className: 'form-control', placeholder: 'Password', required: true }),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: function onClick() {
+	                return _this2.addStudent($('#inputUsername').val(), $('#inputPassword').val());
+	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
+	            'Add Student'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'alerts' },
+	          alertToUser
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return AddStudent;
+	}(_react2.default.Component);
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    username: state.username,
+	    classroom: state.classroom,
+	    students: state.students
+	  };
+	};
+	
+	exports.AddStudent = AddStudent = (0, _reactRedux.connect)(mapStateToProps)(AddStudent);
+	
+	exports.AddStudent = AddStudent;
+
+/***/ },
+/* 317 */
+/*!***********************************************!*\
+  !*** ./client/app/teacher/StudentProfile.jsx ***!
+  \***********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33818,7 +33694,7 @@
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 32);
 	
-	var _axios = __webpack_require__(/*! ../../~/axios/lib/axios.js */ 263);
+	var _axios = __webpack_require__(/*! ../../../~/axios/lib/axios.js */ 263);
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
@@ -33826,15 +33702,15 @@
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
 	
-	var _index = __webpack_require__(/*! ./actions/index.jsx */ 287);
+	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
 	
-	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 292);
+	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 314);
 	
-	var _Topbar = __webpack_require__(/*! ./Topbar.jsx */ 293);
+	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 318);
 	
-	var _StudentListItem = __webpack_require__(/*! ./StudentListItem.jsx */ 294);
+	var _StudentListItem = __webpack_require__(/*! ./StudentListItem.jsx */ 315);
 	
-	var _AddStudent = __webpack_require__(/*! ./AddStudent.jsx */ 295);
+	var _AddStudent = __webpack_require__(/*! ./AddStudent.jsx */ 316);
 	
 	var _reactAddonsCssTransitionGroup = __webpack_require__(/*! react-addons-css-transition-group */ 296);
 	
@@ -33940,6 +33816,140 @@
 	exports.StudentProfile = StudentProfile = (0, _reactRedux.connect)(mapStateToProps)(StudentProfile);
 	
 	exports.StudentProfile = StudentProfile;
+
+/***/ },
+/* 318 */
+/*!****************************************!*\
+  !*** ./client/app/partials/Topbar.jsx ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Topbar = undefined;
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Topbar = function Topbar(props) {
+	  return _react2.default.createElement(
+	    "nav",
+	    { className: "navbar navbar-inverse navbar-fixed-top" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "container-fluid" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "navbar-header" },
+	        _react2.default.createElement(
+	          "button",
+	          { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" },
+	          _react2.default.createElement(
+	            "span",
+	            { className: "sr-only" },
+	            "Toggle navigation"
+	          ),
+	          _react2.default.createElement("span", { className: "icon-bar" }),
+	          _react2.default.createElement("span", { className: "icon-bar" }),
+	          _react2.default.createElement("span", { className: "icon-bar" })
+	        ),
+	        _react2.default.createElement(
+	          "a",
+	          { className: "navbar-brand", href: "#" },
+	          "Math Dojo"
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { id: "navbar", className: "navbar-collapse collapse" },
+	        _react2.default.createElement(
+	          "ul",
+	          { className: "nav navbar-nav navbar-right" },
+	          _react2.default.createElement(
+	            "li",
+	            null,
+	            _react2.default.createElement(
+	              "a",
+	              { onClick: props.signOut },
+	              "Sign Out"
+	            )
+	          )
+	        )
+	      )
+	    )
+	  );
+	};
+	
+	exports.Topbar = Topbar;
+
+/***/ },
+/* 319 */
+/*!****************************************!*\
+  !*** ./client/app/partials/Alerts.jsx ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Alerts = undefined;
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Alerts = function Alerts(props) {
+	
+	  var alertToDisplay = props.alert;
+	
+	  if (alertToDisplay === 'unsuccessfulregister') {
+	    return _react2.default.createElement(
+	      'div',
+	      { onClick: function onClick() {
+	          return props.dismiss();
+	        }, className: 'alert alert-warning' },
+	      _react2.default.createElement(
+	        'strong',
+	        null,
+	        'Sorry'
+	      ),
+	      ' This username already exists. Please try another username.'
+	    );
+	  } else if (alertToDisplay === 'unsuccessfulsignin') {
+	    return _react2.default.createElement(
+	      'div',
+	      { onClick: function onClick() {
+	          return props.dismiss();
+	        }, className: 'alert alert-danger' },
+	      _react2.default.createElement(
+	        'strong',
+	        null,
+	        'Warning!'
+	      ),
+	      ' Username and Password do not match our records. Try again.'
+	    );
+	  } else if (alertToDisplay === 'invalidformsubmission') {
+	    return _react2.default.createElement(
+	      'div',
+	      { onClick: function onClick() {
+	          return props.dismiss();
+	        }, className: 'alert alert-danger' },
+	      'Please fill out all the required fields!'
+	    );
+	  }
+	};
+	
+	exports.Alerts = Alerts;
 
 /***/ }
 /******/ ]);
