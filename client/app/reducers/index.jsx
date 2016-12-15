@@ -13,6 +13,7 @@ const user = (state = {}, action) => {
         ...state,
         studentUsername: action.student.studentUsername,
         studentPassword: action.student.studentPassword,
+        imageUrl: action.student.imageUrl,
         classroom: action.student.classroom,
         level: action.student.level,
       };
