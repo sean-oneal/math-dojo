@@ -45,7 +45,8 @@ class StudentListItem extends React.Component {
           studentUsername: res.data.username,
           classroom: res.data.classroom,
           studentPassword: res.data.password,
-          level: res.data.level
+          level: res.data.level,
+          imageUrl: res.data.imageUrl
         }));
         console.log('AFTER PROP DISPATCH:');
         browserHistory.push('studentprofile');
@@ -70,6 +71,7 @@ const mapStateToProps = (state) => ({
   password: state.password,
   studentUsername: state.studentUsername,
   studentPassword: state.studentPassword,
+  imageUrl: state.imageUrl,
   level: state.level,
 });
 

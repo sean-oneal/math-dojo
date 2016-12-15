@@ -79,7 +79,7 @@
 	
 	var _Arena = __webpack_require__(/*! ./student/Arena.jsx */ 310);
 	
-	var _Chart = __webpack_require__(/*! ./student/Chart.jsx */ 316);
+	var _Chart = __webpack_require__(/*! ./student/Chart.jsx */ 312);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -23933,6 +23933,7 @@
 	      return _extends({}, state, {
 	        studentUsername: action.student.studentUsername,
 	        studentPassword: action.student.studentPassword,
+	        imageUrl: action.student.imageUrl,
 	        classroom: action.student.classroom,
 	        level: action.student.level
 	      });
@@ -30823,10 +30824,11 @@
 	          context.setState({ alertToUser: 'unsuccessfulsignin' });
 	        } else {
 	          console.log('res.data:' + JSON.stringify(res.data));
-	          context.props.dispatch((0, _index.setUser)({
-	            username: res.data.username,
+	          context.props.dispatch((0, _index.setStudent)({
+	            studentUsername: res.data.username,
 	            classroom: res.data.classroom,
-	            students: res.data.students
+	            level: res.data.level,
+	            imageUrl: res.data.imageUrl
 	          }));
 	          console.log('Login Props:' + JSON.stringify(context.props));
 	          _reactRouter.browserHistory.push('arena');
@@ -30910,9 +30912,10 @@
 	
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
-	    username: state.username,
 	    classroom: state.classroom,
-	    students: state.students
+	    studentUsername: state.studentUsername,
+	    level: state.level,
+	    imageUrl: state.imageUrl
 	  };
 	};
 	
@@ -31430,7 +31433,8 @@
 	            studentUsername: res.data.username,
 	            classroom: res.data.classroom,
 	            studentPassword: res.data.password,
-	            level: res.data.level
+	            level: res.data.level,
+	            imageUrl: res.data.imageUrl
 	          }));
 	          console.log('AFTER PROP DISPATCH:');
 	          _reactRouter.browserHistory.push('studentprofile');
@@ -31467,6 +31471,7 @@
 	    password: state.password,
 	    studentUsername: state.studentUsername,
 	    studentPassword: state.studentPassword,
+	    imageUrl: state.imageUrl,
 	    level: state.level
 	  };
 	};
@@ -33898,6 +33903,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main' },
+	              _react2.default.createElement('img', { src: this.props.imageUrl }),
 	              _react2.default.createElement(
 	                'h2',
 	                null,
@@ -33936,6 +33942,7 @@
 	  return {
 	    username: state.username,
 	    classroom: state.classroom,
+	    imageUrl: state.imageUrl,
 	    students: state.students,
 	    studentUsername: state.studentUsername,
 	    studentPassword: state.studentPassword,
@@ -33979,7 +33986,7 @@
 	
 	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
 	
-	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 315);
+	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 311);
 	
 	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 293);
 	
@@ -34025,7 +34032,7 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      if (this.state.opponent === 0) {
-	        this.state.userlvl++;
+	        this.state.level++;
 	      }
 	    }
 	  }, {
@@ -34086,20 +34093,20 @@
 	          userHP: 100
 	        });
 	        // POOR IMPLEMENTATION, NEED TO MAKE NEW LVL UP ACTION
-	        this.props.dispatch((0, _index.setUser)({
-	          username: this.props.username,
-	          userlvl: this.props.userlvl + 1,
-	          userAvatar: this.props.userAvatar
+	        this.props.dispatch((0, _index.setStudent)({
+	          studentUsername: this.props.studentUsername,
+	          level: this.props.level + 1,
+	          imageUrl: this.props.imageUrl
 	        }));
 	      }
 	    }
 	  }, {
 	    key: 'generateQuestion',
 	    value: function generateQuestion() {
-	      var userlvl = this.props.userlvl;
+	      var level = this.props.level;
 	      var operands = ['+', '-', '*', '/'];
-	      var firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
-	      var secondDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
+	      var firstDigit = Math.floor(Math.random() * Math.pow(10, level));
+	      var secondDigit = Math.floor(Math.random() * Math.pow(10, level));
 	      var operandIndex = Math.floor(Math.random() * 2);
 	
 	      var answer = eval(firstDigit + operands[operandIndex] + secondDigit);
@@ -34214,8 +34221,8 @@
 	        console.log(res);
 	        _reactRouter.browserHistory.push('/');
 	      });
-	      // Axios.put('http://localhost:3000/user/' + context.props.username, {
-	      //   level: this.props.userlvl,
+	      // Axios.put('http://localhost:3000/user/' + context.props.studentUsername, {
+	      //   level: this.props.level,
 	      //   score: score,
 	      //   correctAnswers: context.props.correctAnswers,
 	      //   incorrectAnswers: context.props.incorrectAnswers,
@@ -34260,12 +34267,12 @@
 	                  _react2.default.createElement(
 	                    'div',
 	                    null,
-	                    _react2.default.createElement('img', { src: this.props.userAvatar, className: 'img-responsive' })
+	                    _react2.default.createElement('img', { src: this.props.imageUrl, className: 'img-responsive' })
 	                  ),
 	                  _react2.default.createElement(
 	                    'h4',
 	                    null,
-	                    this.props.username,
+	                    this.props.studentUsername,
 	                    ' Cat '
 	                  ),
 	                  _react2.default.createElement(
@@ -34287,7 +34294,7 @@
 	                    'h4',
 	                    null,
 	                    'Rival Cat Lvl:',
-	                    this.props.userlvl
+	                    this.props.level
 	                  ),
 	                  _react2.default.createElement(
 	                    'span',
@@ -34354,11 +34361,12 @@
 	
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
-	    username: state.username,
-	    userlvl: state.userlvl,
-	    userAvatar: state.userAvatar,
 	    correctAnswers: state.userCorrectAnswers,
-	    incorrectAnswers: state.userIncorrectAnswers
+	    incorrectAnswers: state.userIncorrectAnswers,
+	    classroom: state.classroom,
+	    studentUsername: state.studentUsername,
+	    level: state.level,
+	    imageUrl: state.imageUrl
 	  };
 	};
 	
@@ -34367,11 +34375,7 @@
 	exports.Arena = Arena;
 
 /***/ },
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */
+/* 311 */
 /*!***************************************!*\
   !*** ./client/app/student/Navbar.jsx ***!
   \***************************************/
@@ -34438,7 +34442,7 @@
 	exports.Navbar = Navbar;
 
 /***/ },
-/* 316 */
+/* 312 */
 /*!**************************************!*\
   !*** ./client/app/student/Chart.jsx ***!
   \**************************************/
@@ -34457,11 +34461,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 315);
+	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 311);
 	
 	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 293);
 	
-	var _Chart = __webpack_require__(/*! ../../../~/chart.js/dist/Chart.js */ 317);
+	var _Chart = __webpack_require__(/*! ../../../~/chart.js/dist/Chart.js */ 313);
 	
 	var _axios = __webpack_require__(/*! ../../../~/axios/lib/axios.js */ 263);
 	
@@ -34593,7 +34597,7 @@
 	exports.ChartPage = ChartPage;
 
 /***/ },
-/* 317 */
+/* 313 */
 /*!**********************************!*\
   !*** ./~/chart.js/dist/Chart.js ***!
   \**********************************/

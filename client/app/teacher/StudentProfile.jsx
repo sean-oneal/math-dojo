@@ -41,6 +41,7 @@ class StudentProfile extends React.Component {
       <div className="row">
         <Navbar />
         <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <img src={this.props.imageUrl}></img>
         <h2>Username: {this.props.studentUsername}</h2>
         <h2>Password: {this.props.studentPassword}</h2>
         <h2>Classroom: {this.props.classroom}</h2>
@@ -56,6 +57,7 @@ class StudentProfile extends React.Component {
 const mapStateToProps = (state) => ({
   username : state.username,
   classroom : state.classroom,
+  imageUrl : state.imageUrl,
   students : state.students,
   studentUsername : state.studentUsername,
   studentPassword : state.studentPassword,

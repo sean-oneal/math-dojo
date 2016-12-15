@@ -54,7 +54,8 @@ exports.addStudent = function (req, res) {
               Student.create({
                 username: username,
                 password: password,
-                classroom: classroomName
+                classroom: classroomName,
+                imageUrl: 'https://yt3.ggpht.com/-l-0QzYzy4pc/AAAAAAAAAAI/AAAAAAAAAAA/YvzI2PYIcHs/s100-c-k-no-mo-rj-c0xffffff/photo.jpg'
               }, function(err, student){
                 if (err) {
                   res.status(500);
@@ -99,8 +100,9 @@ exports.getStudent = function (req, res) {
               if (!student) {
                 res.status(404);
                 res.send({ error: 'Student does not exist' });
+              } else {
+                res.send(student);
               }
-              res.send(student);
             }
           });
         }

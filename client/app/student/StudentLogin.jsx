@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import Axios from '../../../node_modules/axios/lib/axios.js';
 import { connect } from 'react-redux';
-import {setUser, setCorrect, setIncorrect} from './../actions/index.jsx';
+import {setUser, setStudent,setCorrect, setIncorrect} from './../actions/index.jsx';
 import {Link} from 'react-router';
 import {browserHistory} from 'react-router'
 import {Alerts} from './../partials/Alerts.jsx';
@@ -56,10 +56,11 @@ class StudentLogin extends React.Component {
         context.setState({alertToUser: 'unsuccessfulsignin'});
       } else {
         console.log('res.data:' + JSON.stringify(res.data));
-        context.props.dispatch(setUser({
-          username: res.data.username,
+        context.props.dispatch(setStudent({
+          studentUsername: res.data.username,
           classroom: res.data.classroom,
-          students: res.data.students,
+          level: res.data.level,
+          imageUrl: res.data.imageUrl
         }));
         console.log('Login Props:' + JSON.stringify(context.props));
         browserHistory.push('arena');
@@ -103,9 +104,10 @@ class StudentLogin extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  username : state.username,
   classroom : state.classroom,
-  students : state.students
+  studentUsername: state.studentUsername,
+  level: state.level,
+  imageUrl: state.imageUrl
 });
 
 StudentLogin = connect(mapStateToProps)(StudentLogin);

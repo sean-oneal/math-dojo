@@ -4,7 +4,7 @@ import Axios from '../../../node_modules/axios/lib/axios.js';
 import {Link} from 'react-router';
 import {browserHistory} from 'react-router';
 import { connect } from 'react-redux';
-import {setUser, setCorrect, setIncorrect} from './../actions/index.jsx';
+import {setUser, setStudent, setCorrect, setIncorrect} from './../actions/index.jsx';
 import {Navbar} from './Navbar.jsx';
 import {Topbar} from './../partials/Topbar.jsx';
 import {ReactCSSTransitionGroup} from 'react-addons-css-transition-group';
@@ -34,7 +34,7 @@ class Arena extends React.Component {
 
   componentDidMount() {
     if (this.state.opponent === 0) {
-      this.state.userlvl++;
+      this.state.level++;
     }
   }
 
@@ -84,19 +84,19 @@ class Arena extends React.Component {
         userHP: 100,
       });
       // POOR IMPLEMENTATION, NEED TO MAKE NEW LVL UP ACTION
-      this.props.dispatch(setUser({
-        username: this.props.username,
-        userlvl: this.props.userlvl + 1,
-        userAvatar: this.props.userAvatar,
+      this.props.dispatch(setStudent({
+        studentUsername: this.props.studentUsername,
+        level: this.props.level + 1,
+        imageUrl: this.props.imageUrl,
       }));
     }
   }
 
   generateQuestion() {
-    var userlvl = this.props.userlvl;
+    var level = this.props.level;
     var operands = ['+', '-', '*', '/'];
-    var firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
-    var secondDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
+    var firstDigit = Math.floor(Math.random() * Math.pow(10, level));
+    var secondDigit = Math.floor(Math.random() * Math.pow(10, level));
     var operandIndex = Math.floor(Math.random() * 2);
 
     var answer = eval(firstDigit + operands[operandIndex] + secondDigit);
@@ -205,8 +205,8 @@ class Arena extends React.Component {
       console.log(res);
       browserHistory.push('/');
     });
-    // Axios.put('http://localhost:3000/user/' + context.props.username, {
-    //   level: this.props.userlvl,
+    // Axios.put('http://localhost:3000/user/' + context.props.studentUsername, {
+    //   level: this.props.level,
     //   score: score,
     //   correctAnswers: context.props.correctAnswers,
     //   incorrectAnswers: context.props.incorrectAnswers,
@@ -234,15 +234,15 @@ class Arena extends React.Component {
           <div className="row placeholders">
 
             <div className="col-xs-6 col-sm-3 placeholder" id="userContainer">
-              <div><img src={this.props.userAvatar} className="img-responsive"></img></div>
-              <h4>{this.props.username} Cat </h4>
+              <div><img src={this.props.imageUrl} className="img-responsive"></img></div>
+              <h4>{this.props.studentUsername} Cat </h4>
               <span className="text-muted">Health</span>
               <progress value={this.state.userHP} max="100"></progress>
             </div>
 
             <div className="col-xs-6 col-sm-3 placeholder" id="opponentContainer">
               <div><img src={this.state.evilCatAvatar} className="img-responsive"></img></div>
-              <h4>Rival Cat Lvl:{this.props.userlvl}</h4>
+              <h4>Rival Cat Lvl:{this.props.level}</h4>
               <span className="text-muted">Health</span>
               <progress value={this.state.opponentHP} max="100"></progress>
             </div>
@@ -268,11 +268,12 @@ class Arena extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  username : state.username,
-  userlvl: state.userlvl,
-  userAvatar: state.userAvatar,
   correctAnswers: state.userCorrectAnswers,
   incorrectAnswers: state.userIncorrectAnswers,
+  classroom : state.classroom,
+  studentUsername: state.studentUsername,
+  level: state.level,
+  imageUrl: state.imageUrl
 });
 
 Arena = connect(mapStateToProps)(Arena);
