@@ -28965,6 +28965,12 @@
 	      e.preventDefault();
 	    }
 	  }, {
+	    key: 'clearFields',
+	    value: function clearFields() {
+	      $('#inputUsername').val('');
+	      $('#inputPassword').val('');
+	    }
+	  }, {
 	    key: 'login',
 	    value: function login(username, password) {
 	      if (!username || !password) {
@@ -28989,6 +28995,9 @@
 	          console.log('Login Props:' + JSON.stringify(context.props));
 	          _reactRouter.browserHistory.push('teacherdashboard');
 	        }
+	      }).catch(function (err) {
+	        context.clearFields();
+	        context.setState({ alertToUser: 'unsuccessfulsignin' });
 	      });
 	    }
 	  }, {
@@ -29037,7 +29046,7 @@
 	          _react2.default.createElement(
 	            'button',
 	            { onClick: function onClick() {
-	                return _reactRouter.browserHistory.push('teachersignup');
+	                _this2.clearFields();_reactRouter.browserHistory.push('teachersignup');
 	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
 	            'Register'
 	          )
@@ -30792,6 +30801,13 @@
 	      e.preventDefault();
 	    }
 	  }, {
+	    key: 'clearFields',
+	    value: function clearFields() {
+	      $('input[name=classroom]:checked').val('');
+	      $('#inputUsername').val('');
+	      $('#inputPassword').val('');
+	    }
+	  }, {
 	    key: 'getClassrooms',
 	    value: function getClassrooms() {
 	      var context = this;
@@ -30833,6 +30849,9 @@
 	          console.log('Login Props:' + JSON.stringify(context.props));
 	          _reactRouter.browserHistory.push('arena');
 	        }
+	      }).catch(function (err) {
+	        context.clearFields();
+	        context.setState({ alertToUser: 'unsuccessfulsignin' });
 	      });
 	    }
 	  }, {
@@ -30893,7 +30912,7 @@
 	          _react2.default.createElement(
 	            'button',
 	            { onClick: function onClick() {
-	                return _reactRouter.browserHistory.push('teacherlogin');
+	                _this2.clearFields();_reactRouter.browserHistory.push('teacherlogin');
 	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
 	            'Teacher Login'
 	          )
@@ -30987,6 +31006,13 @@
 	      e.preventDefault();
 	    }
 	  }, {
+	    key: 'clearFields',
+	    value: function clearFields() {
+	      $('#inputUsername').val('');
+	      $('#inputPassword').val('');
+	      $('#inputClassroomName').val('');
+	    }
+	  }, {
 	    key: 'register',
 	    value: function register(username, password, classroomName) {
 	      if (!username || !password || !classroomName) {
@@ -31011,6 +31037,9 @@
 	          }));
 	          _reactRouter.browserHistory.push('/teacherdashboard');
 	        }
+	      }).catch(function (err) {
+	        context.clearFields();
+	        context.setState({ alertToUser: 'unsuccessfulregister' });
 	      });
 	    }
 	  }, {
@@ -31065,7 +31094,7 @@
 	          _react2.default.createElement(
 	            'button',
 	            { onClick: function onClick() {
-	                return _reactRouter.browserHistory.push('/');
+	                _this2.clearFields();_reactRouter.browserHistory.push('/');
 	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
 	            'Login'
 	          )

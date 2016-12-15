@@ -19,6 +19,12 @@ class TeacherSignup extends React.Component {
     e.preventDefault();
   }
 
+  clearFields() {
+    $('#inputUsername').val('');
+    $('#inputPassword').val('');
+    $('#inputClassroomName').val('');
+  }
+
   register(username, password, classroomName) {
     if (!username || !password || !classroomName) {
       context.setState({alertToUser: 'invalidformsubmission'});
@@ -43,7 +49,10 @@ class TeacherSignup extends React.Component {
         }));
         browserHistory.push('/teacherdashboard');
       }
-    })
+    }).catch(function(err){
+      context.clearFields();
+      context.setState({alertToUser: 'unsuccessfulregister'});
+    });
   }
 
   dismissAlert() {
@@ -66,7 +75,7 @@ class TeacherSignup extends React.Component {
           <input type="classroomname" id="inputClassroomName" className="form-control" placeholder="Classroom Name" required autoFocus/>
           <button onClick={() => this.register( $('#inputUsername').val(), $('#inputPassword').val(), $('#inputClassroomName').val() ) } className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
           <hr></hr>
-          <button onClick={() => browserHistory.push('/') } className="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+          <button onClick={() => {this.clearFields(); browserHistory.push('/');}} className="btn btn-lg btn-primary btn-block" type="submit">Login</button>
         </form>
         <div id='alerts'>
           {alertToUser}

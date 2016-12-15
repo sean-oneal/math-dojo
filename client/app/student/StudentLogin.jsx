@@ -24,6 +24,12 @@ class StudentLogin extends React.Component {
     e.preventDefault();
   }
 
+  clearFields() {
+    $('input[name=classroom]:checked').val('');
+    $('#inputUsername').val('');
+    $('#inputPassword').val('');
+  }
+
   getClassrooms(){
     var context = this;
     Axios.get('http://localhost:3000/classrooms')
@@ -65,6 +71,9 @@ class StudentLogin extends React.Component {
         console.log('Login Props:' + JSON.stringify(context.props));
         browserHistory.push('arena');
       }
+    }).catch(function(err){
+      context.clearFields();
+      context.setState({alertToUser: 'unsuccessfulsignin'});
     });
   }
 
@@ -93,7 +102,7 @@ class StudentLogin extends React.Component {
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" required/>
           <button onClick={() => this.login($('#inputUsername').val(), $('#inputPassword').val(), $('input[name=classroom]:checked').val())} className="btn btn-lg btn-primary btn-block" type="submit">Login</button>
           <hr></hr>
-          <button onClick={() => browserHistory.push('teacherlogin') } className="btn btn-lg btn-primary btn-block" type="submit">Teacher Login</button>
+          <button onClick={() => {this.clearFields(); browserHistory.push('teacherlogin');}} className="btn btn-lg btn-primary btn-block" type="submit">Teacher Login</button>
         </form>
         <div id='alerts'>
           {alertToUser}
