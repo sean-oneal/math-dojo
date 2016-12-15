@@ -5,17 +5,17 @@ module.exports = {
 
   //generate a math problem when you load the page
   generateQuestion: (req, res) => {
-    const userlvl = 2; //*** CURRENTLY hard coded
+    let userlvl = req.cookies.userlvl; 
     const operands = ['+', '-', '*', '/'];
-    const firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
-    const secondDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
+    const firstDigit = Math.floor(Math.random() * Math.pow(5, userlvl));
+    const secondDigit = Math.floor(Math.random() * Math.pow(5, userlvl));
     const operandIndex = Math.floor(Math.random() * 2);
 
     const answer = eval(firstDigit + operands[operandIndex] + secondDigit);
 
     const question = firstDigit + ' ' + operands[operandIndex] + ' ' + secondDigit + ' = ';
 
-    var operand;
+    let operand;
 
     if (operands[operandIndex] === '+') {
       operand = 'addition';
@@ -34,10 +34,6 @@ module.exports = {
       operand: operand 
     });
   }
-
-  // checkAnswer: (req, res) => {
-  //   // console.log('CHECK ANSWER BODY', req);
-  // }
 
 }
 

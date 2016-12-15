@@ -25,7 +25,7 @@ class Arena extends React.Component {
       evilCatAvatar: '',
       answer: '',
       message: '',
-      timer: 20,
+      timer: 10,
       reset: false,
     };
   }
@@ -73,7 +73,7 @@ class Arena extends React.Component {
     setTimeout(() => { user.style.animation = 'shake 1000ms paused'; }, 1000);
      setTimeout(function(){
       context.state.message = '';
-    },2000)
+    }, 2000)
   }
 
   checkHealth() {
@@ -98,69 +98,35 @@ class Arena extends React.Component {
 
   generateQuestion() {
 
-    let userlvl = this.props.userlvl; //hardcoded and getting userlvl from the server
+    let userlvl = this.props.userlvl; //this userlvl corrlates to the evil cat 
+    document.cookie = `userlvl=${userlvl}`;
     Axios.get('http://localhost:3000/mathApi/arena')
     .then((result) => {
-      console.log('This is RESULT obj:', result);
       this.setState({
         answer: result.data.answer,
         question: result.data.question,
         operand: result.data.operand
       })
-    .catch((err) => console.error('No question generated.'))
+    .catch((error) => console.log(error))
     });
-
-
-    //Original code//
-    /*
-      generateQuestion() {
-        var userlvl = this.props.userlvl;
-        var operands = ['+', '-', '*', '/'];
-        var firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
-        var secondDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
-        var operandIndex = Math.floor(Math.random() * 2);
-
-        var answer = eval(firstDigit + operands[operandIndex] + secondDigit);
-        this.setState({
-          answer: answer
-        });
-        this.setState({
-          question: firstDigit + ' ' + operands[operandIndex] + ' ' + secondDigit + ' = '
-        });
-        var operand;
-        if (operands[operandIndex] === '+') {
-          operand = 'addition';
-        } else if (operands[operandIndex] === '-') {
-          operand = 'subtraction';
-        } else if (operands[operandIndex] === '*') {
-          operand = 'multiplcation';
-        } else if (operands[operandIndex] === '/') {
-          operand = 'division';
-        }
-        this.setState({
-          operand: operand
-        });
-      }
-  
-    */
   
   }
 
   timer(){
-    var context = this;
+    let context = this;
     this.setState({
-      reset:false
+      reset: false
     });
-    var sec = 20;
+    var sec = 10;
     var timerOn = setInterval(function(){
     var a = new Date();
         document.getElementById("timer").innerHTML =" : " + sec ;
         sec--;
         context.setState({timer:sec})
-        if(sec === 0 || context.state.reset === true){
+        if (sec === 0 || context.state.reset === true){
            clearInterval(timerOn);
-           if(sec===0){ context.miss();}
-        }},1000);
+           if (sec === 0) { context.miss()}
+        }}, 1000);
   }
 
   resetTimer(){
@@ -182,7 +148,7 @@ class Arena extends React.Component {
 
       this.checkHealth();
       this.generateQuestion();
-      //this.resetTimer();
+      this.resetTimer();
 
     } else {
       var newIncorrect = Object.assign({}, context.props.incorrectAnswers);
@@ -195,7 +161,7 @@ class Arena extends React.Component {
 
       this.checkHealth();
       this.generateQuestion();
-      //this.resetTimer();
+      this.resetTimer();
     }
     document.getElementById('answerForm').value = '';
   }
@@ -210,9 +176,7 @@ class Arena extends React.Component {
         evilCatAvatar: evilCat
       });
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+    .catch((error) => console.log(error));
   }
 
   signOut() {
