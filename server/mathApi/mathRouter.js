@@ -1,5 +1,7 @@
-const userRouter = require('express').Router();
+const mathRouter = require('express').Router();
 const mathController = require('./mathController.js');
 
-userRouter.get('/getQuestion', mathController.generateQuestion);
-// userRouter.get('/checkAnswer', mathController.checkAnswer);
+mathRouter.get('/arena', mathController.generateQuestion);
+// // userRouter.get('/checkAnswer', mathController.checkAnswer);
+
+module.exports = mathRouter;

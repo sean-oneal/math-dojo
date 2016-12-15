@@ -5,8 +5,7 @@ module.exports = {
 
   //generate a math problem when you load the page
   generateQuestion: (req, res) => {
-    console.log('BODYYYYYYY', req.body);
-    const userlvl = req.body.level; //***
+    const userlvl = 2; //*** CURRENTLY hard coded
     const operands = ['+', '-', '*', '/'];
     const firstDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
     const secondDigit = Math.floor(Math.random() * Math.pow(10, userlvl));
@@ -16,7 +15,7 @@ module.exports = {
 
     const question = firstDigit + ' ' + operands[operandIndex] + ' ' + secondDigit + ' = ';
 
-    const operand;
+    var operand;
 
     if (operands[operandIndex] === '+') {
       operand = 'addition';
