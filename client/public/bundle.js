@@ -34216,8 +34216,22 @@
 	      for (var operand in context.props.incorrectAnswers) {
 	        score -= context.props.incorrectAnswers[operand];
 	      }
-	      var context = this;
-	      _axios2.default.post('http://localhost:3000/student/logout').then(function (res) {
+	      console.log(JSON.stringify({
+	        username: context.props.studentUsername,
+	        classroom: context.props.classroom,
+	        level: context.props.level,
+	        score: score,
+	        correctAnswers: context.props.correctAnswers,
+	        incorrectAnswers: context.props.incorrectAnswers
+	      }));
+	      _axios2.default.post('http://localhost:3000/student/logout', {
+	        username: context.props.studentUsername,
+	        classroom: context.props.classroom,
+	        level: context.props.level,
+	        score: score,
+	        correctAnswers: context.props.correctAnswers,
+	        incorrectAnswers: context.props.incorrectAnswers
+	      }).then(function (res) {
 	        console.log(res);
 	        _reactRouter.browserHistory.push('/');
 	      });

@@ -199,8 +199,22 @@ class Arena extends React.Component {
     for (var operand in context.props.incorrectAnswers) {
       score -= context.props.incorrectAnswers[operand];
     }
-    var context = this;
-    Axios.post('http://localhost:3000/student/logout')
+    console.log(JSON.stringify({
+      username: context.props.studentUsername,
+      classroom: context.props.classroom,
+      level: context.props.level,
+      score: score,
+      correctAnswers: context.props.correctAnswers,
+      incorrectAnswers: context.props.incorrectAnswers,
+    }));
+    Axios.post('http://localhost:3000/student/logout', {
+      username: context.props.studentUsername,
+      classroom: context.props.classroom,
+      level: context.props.level,
+      score: score,
+      correctAnswers: context.props.correctAnswers,
+      incorrectAnswers: context.props.incorrectAnswers,
+    })
     .then(function(res) {
       console.log(res);
       browserHistory.push('/');
