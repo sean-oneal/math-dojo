@@ -148,7 +148,7 @@ class Arena extends React.Component {
 
       this.checkHealth();
       this.generateQuestion();
-      this.resetTimer();
+      this.resetTimer(); //reset the timer when the answer is correct
 
     } else {
       var newIncorrect = Object.assign({}, context.props.incorrectAnswers);
