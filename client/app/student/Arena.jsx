@@ -34,7 +34,7 @@ class Arena extends React.Component {
 
   componentDidMount() {
     if (this.state.opponent === 0) {
-      this.state.level++;
+      this.state.userlvl++;
     }
   }
 
@@ -84,36 +84,35 @@ class Arena extends React.Component {
         userHP: 100,
       });
       // POOR IMPLEMENTATION, NEED TO MAKE NEW LVL UP ACTION
+      // this.props.dispatch(setUser({
+      //   username: this.props.username,
+      //   userlvl: this.props.userlvl + 1,
+      //   userAvatar: this.props.userAvatar,
+      // }));
+      //AARON CHANGE
       this.props.dispatch(setStudent({
         studentUsername: this.props.studentUsername,
+        classroom: this.props.classroom,
         level: this.props.level + 1,
         imageUrl: this.props.imageUrl,
       }));
     }
   }
 
+  //new
   generateQuestion() {
-<<<<<<< HEAD:client/app/student/Arena.jsx
-    var level = this.props.level;
-    var operands = ['+', '-', '*', '/'];
-    var firstDigit = Math.floor(Math.random() * Math.pow(10, level));
-    var secondDigit = Math.floor(Math.random() * Math.pow(10, level));
-    var operandIndex = Math.floor(Math.random() * 2);
-=======
->>>>>>> 8e8fc2a443977bbed0ac01e9f9ff03bd21dc7a58:client/app/Arena.jsx
-
-    let userlvl = this.props.userlvl; //this userlvl corrlates to the evil cat 
+    var context = this;
+    let userlvl = this.props.level; //this userlvl corrlates to the evil cat
     document.cookie = `userlvl=${userlvl}`;
     Axios.get('http://localhost:3000/mathApi/arena')
     .then((result) => {
-      this.setState({
+      context.setState({
         answer: result.data.answer,
         question: result.data.question,
         operand: result.data.operand
       })
-    .catch((error) => console.log(error))
-    });
-  
+    })
+    .catch((error) => console.log(error));
   }
 
   timer(){
@@ -184,6 +183,27 @@ class Arena extends React.Component {
     .catch((error) => console.log(error));
   }
 
+  // signOutOLD() {
+  //   var context = this;
+  //   var score = 0;
+  //   for (var operand in context.props.correctAnswers) {
+  //     score += context.props.correctAnswers[operand];
+  //   }
+  //   for (var operand in context.props.incorrectAnswers) {
+  //     score -= context.props.incorrectAnswers[operand];
+  //   }
+  //   Axios.put('http://localhost:3000/user/' + context.props.username, {
+  //     level: this.props.userlvl,
+  //     score: score,
+  //     correctAnswers: context.props.correctAnswers,
+  //     incorrectAnswers: context.props.incorrectAnswers,
+  //   })
+  //   .then(function(res) {
+  //     console.log(res);
+  //     browserHistory.push('/');
+  //   });
+  // }
+
   signOut() {
     var context = this;
     var score = 0;
@@ -213,16 +233,6 @@ class Arena extends React.Component {
       console.log(res);
       browserHistory.push('/');
     });
-    // Axios.put('http://localhost:3000/user/' + context.props.studentUsername, {
-    //   level: this.props.level,
-    //   score: score,
-    //   correctAnswers: context.props.correctAnswers,
-    //   incorrectAnswers: context.props.incorrectAnswers,
-    // })
-    // .then(function(res) {
-    //   console.log(res);
-    //   browserHistory.push('/');
-    // });
   }
 
   render () {
