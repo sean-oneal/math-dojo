@@ -1,27 +1,111 @@
 
 var Teacher = require('./../models/teacherModel.js');
+var Student = require('./../models/studentModel.js');
 var util = require('./../config/utility.js');
 
 exports.createTeacher = function (req, res) {
   var username = req.body.username;
   var password = req.body.password;
   var classroom = req.body.classroom;
-  var imageUrl = req.body.imageUrl;
-  if (!username || !password || !imageUrl) {
-    res.send({ error: 'Please fill out all fields' });
+  if (!username || !password || !classroom) {
+    res.status(406);
+    res.send({ error: 'Username and Password Required' });
   } else {
     Teacher.create({
       username: username,
       password: password,
       classroom: classroom,
-      imageUrl: imageUrl
       students: []
-    }, function(err, user) {
+    }, function(err, teacher) {
       if (err) {
+        res.status(409);
         res.send({ error: 'Username is already taken' });
       } else {
-        console.log('Saved', req.body.username, 'to the database');
-        res.send(user);
+        res.send(teacher);
+      }
+    });
+  }
+};
+
+exports.addStudent = function (req, res) {
+  var username = req.body.username;
+  var password = req.body.password;
+  var classroomName = req.body.classroom;
+  var teacher = req.body.teacher;
+  if (!username || !password || !classroomName || !teacher) {
+    res.status(406);
+    res.send({ error: 'Username, Password, Classroom, and Teacher Required' });
+  } else {
+    Teacher.findOne({ username: teacher, classroom: classroomName }, function(err, classroom) {
+      if (err) {
+        res.status(500);
+        res.send({ error: 'Error retrieving classroom' });
+      } else {
+        if (classroom.students.includes(username)) {
+          res.status(409);
+          res.send({ error: 'Student username is already taken' });
+        } else {
+          classroom.students.push(username);
+          classroom.save(function (err, teacher){
+            if (err) {
+              res.status(500);
+              res.send({ error: 'Error saving student to classroom' });
+            } else {
+              Student.create({
+                username: username,
+                password: password,
+                classroom: classroomName,
+                imageUrl: 'https://yt3.ggpht.com/-l-0QzYzy4pc/AAAAAAAAAAI/AAAAAAAAAAA/YvzI2PYIcHs/s100-c-k-no-mo-rj-c0xffffff/photo.jpg'
+              }, function(err, student){
+                if (err) {
+                  res.status(500);
+                  res.send({ error: 'Error saving student to database' });
+                } else {
+                  res.send(teacher);
+                }
+              });
+            }
+          });
+        }
+      }
+    });
+  }
+};
+
+exports.getStudent = function (req, res) {
+  var username = req.body.username;
+  var classroomName = req.body.classroom;
+  var teacher = req.body.teacher;
+  console.log("Get Student:" + JSON.stringify(req.body));
+  if (!username || !classroomName || !teacher) {
+    res.status(406);
+    res.send({ error: 'Username, Password, Classroom, and Teacher Required' });
+  } else {
+    Teacher.findOne({ username: teacher, classroom: classroomName }, function(err, classroom) {
+      if (err) {
+        res.status(500);
+        res.send({ error: 'Error retrieving classroom' });
+      } else {
+        if (!classroom.students.includes(username)) {
+          res.status(409);
+          res.send({ error: 'Student does not exist' });
+        } else {
+          Student.findOne({
+            username: username, classroom: classroomName
+          }, function(err, student){
+            if (err) {
+              res.status(500);
+              res.send({ error: 'Error saving student to database' });
+            } else {
+              if (!student) {
+                res.status(404);
+                res.send({ error: 'Student does not exist' });
+              } else {
+                res.send(student);
+              }
+            }
+          });
+        }
       }
     });
   }
@@ -30,69 +114,19 @@ exports.createTeacher = function (req, res) {
 exports.loginTeacher = function (req, res) {
   Teacher.findOne({username: req.body.username}, function(err, user) {
     if (err) {
-      console.log('Error retrieving user:', err);
-      res.send({ error: 'Error retrieving user' });
-    } else if (!user) {
-      res.send(200, { error: 'User does not exist, please create an account' });
+      res.status(500);
+      res.send({ error: 'Error retrieving teacher record' });
+    } else if (!user || req.body.password !== user.password ) {
+      res.status(401);
+      res.send({ error: 'Invalid username or password' });
     } else {
-      // TODO: password needs to be hashed before entering
-      if (req.body.password !== user.password) {
-        res.send({ error: 'Password does not match' });
-      } else {
-        util.createSession(req, res, user);
-        res.send(200, user);
-      }
+      util.createSession(req, res, user);
+      res.send(user);
     }
   });
 };
 
 exports.logoutTeacher = function (req, res) {
   req.session.destroy();
-  console.log('session over');
-};
-
-exports.retrieveAll = function (req, res) {
-	Teacher.find({}, function(err, users) {
-		if (err) {
-			console.log('Error retrieving database:', err);
-			res.status(400).send(err);
-		} else {
-			res.send(users);
-		}
-	});
-}
-
-exports.retrieveTeacher = function (req, res) {
-  console.log('retrieving');
-  Teacher.findOne(req.params, function(err, user) {
-    if (err) {
-      console.log('Error retrieving User:', err);
-      res.status(400).send(err);
-    } else {
-      res.send(user);
-    }
-  });
-};
-
-exports.updateTeacher = function (req, res) {
-  Teacher.findOneAndUpdate(req.params, req.body, {new: true}, function(err, user) {
-    if (err) {
-      console.log('Error updating user:', err);
-      res.status(400).send(err);
-    } else {
-      res.send(user);
-    }
-  });
-};
-
-exports.deleteTeacher = function (req, res) {
-  Teacher.findOneAndRemove(req.params, function(err, user) {
-    if (err) {
-      console.log('Error deleting user:', err);
-      res.status(400).send(err);
-    } else {
-      console.log('User deleted');
-      res.send(user);
-    }
-  });
+  res.redirect('/');
 };
