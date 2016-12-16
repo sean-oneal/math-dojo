@@ -5,7 +5,8 @@ module.exports = {
 
   //generate a math problem when you load the page
   generateQuestion: (req, res) => {
-    let userlvl = req.cookies.userlvl; 
+    let userlvl = parseInt(req.cookies.userlvl); 
+    console.log('######', typeof req.cookies.userlvl);
     const operands = ['+', '-', '*', '/'];
     const firstDigit = Math.floor(Math.random() * Math.pow(5, userlvl));
     const secondDigit = Math.floor(Math.random() * Math.pow(5, userlvl));
