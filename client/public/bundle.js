@@ -79,7 +79,7 @@
 	
 	var _Arena = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./student/Arena.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	
-	var _Chart = __webpack_require__(/*! ./student/Chart.jsx */ 312);
+	var _Chart = __webpack_require__(/*! ./student/Chart.jsx */ 310);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33984,75 +33984,7 @@
 	exports.StudentProfile = StudentProfile;
 
 /***/ },
-/* 310 */,
-/* 311 */
-/*!***************************************!*\
-  !*** ./client/app/student/Navbar.jsx ***!
-  \***************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Navbar = undefined;
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 209);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Navbar = function Navbar() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'col-sm-3 col-md-2 sidebar' },
-	    _react2.default.createElement(
-	      'ul',
-	      { className: 'nav nav-sidebar' },
-	      _react2.default.createElement(
-	        'li',
-	        { className: 'active' },
-	        _react2.default.createElement(
-	          'a',
-	          { href: '#' },
-	          'Overview ',
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'sr-only' },
-	            '(current)'
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        null,
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/arena' },
-	          'Arena'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        null,
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/chart' },
-	          'Chart'
-	        )
-	      )
-	    )
-	  );
-	};
-	
-	exports.Navbar = Navbar;
-
-/***/ },
-/* 312 */
+/* 310 */
 /*!**************************************!*\
   !*** ./client/app/student/Chart.jsx ***!
   \**************************************/
@@ -34075,7 +34007,7 @@
 	
 	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 293);
 	
-	var _Chart = __webpack_require__(/*! ../../../~/chart.js/dist/Chart.js */ 313);
+	var _Chart = __webpack_require__(/*! ../../../~/chart.js/dist/Chart.js */ 312);
 	
 	var _axios = __webpack_require__(/*! ../../../~/axios/lib/axios.js */ 263);
 	
@@ -34207,7 +34139,74 @@
 	exports.ChartPage = ChartPage;
 
 /***/ },
-/* 313 */
+/* 311 */
+/*!***************************************!*\
+  !*** ./client/app/student/Navbar.jsx ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Navbar = undefined;
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Navbar = function Navbar() {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'col-sm-3 col-md-2 sidebar' },
+	    _react2.default.createElement(
+	      'ul',
+	      { className: 'nav nav-sidebar' },
+	      _react2.default.createElement(
+	        'li',
+	        { className: 'active' },
+	        _react2.default.createElement(
+	          'a',
+	          { href: '#' },
+	          'Overview ',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'sr-only' },
+	            '(current)'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/arena' },
+	          'Arena'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/chart' },
+	          'Chart'
+	        )
+	      )
+	    )
+	  );
+	};
+	
+	exports.Navbar = Navbar;
+
+/***/ },
+/* 312 */
 /*!**********************************!*\
   !*** ./~/chart.js/dist/Chart.js ***!
   \**********************************/
