@@ -148,7 +148,7 @@ class Arena extends React.Component {
 
       this.checkHealth();
       this.generateQuestion();
-      this.resetTimer();
+      this.resetTimer(); //reset the timer when the answer is correct
 
     } else {
       var newIncorrect = Object.assign({}, context.props.incorrectAnswers);
@@ -162,6 +162,7 @@ class Arena extends React.Component {
       this.checkHealth();
       this.generateQuestion();
       this.resetTimer();
+      this.checkHealth(); //This resets and checks the playe/evil cat's health after the timer runs out and gives the user a 'second' chance
     }
     document.getElementById('answerForm').value = '';
   }
