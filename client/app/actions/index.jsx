@@ -1,7 +1,14 @@
 export const setUser = (user) => {
   return {
     type: 'SET_USER',
-    user,
+    user
+  }
+}
+
+export const setStudent = (student) => {
+  return {
+    type: 'SET_STUDENT',
+    student
   }
 }
 
@@ -18,4 +25,3 @@ export const setIncorrect = (incorrectAnswers) => {
     incorrectAnswers,
   }
 }
-

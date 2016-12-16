@@ -1,16 +1,12 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {User} from './User.jsx';
-import {Opponent} from './Opponent.jsx';
-import {Question} from './Question.jsx';
-import {Display} from './Display.jsx';
-import Axios from '../../node_modules/axios/lib/axios.js';
+import Axios from '../../../node_modules/axios/lib/axios.js';
 import {Link} from 'react-router';
 import {browserHistory} from 'react-router';
 import { connect } from 'react-redux';
-import {setUser, setCorrect, setIncorrect} from './actions/index.jsx';
+import {setUser, setStudent, setCorrect, setIncorrect} from './../actions/index.jsx';
 import {Navbar} from './Navbar.jsx';
-import {Topbar} from './Topbar.jsx';
+import {Topbar} from './../partials/Topbar.jsx';
 import {ReactCSSTransitionGroup} from 'react-addons-css-transition-group';
 
 
@@ -88,28 +84,35 @@ class Arena extends React.Component {
         userHP: 100,
       });
       // POOR IMPLEMENTATION, NEED TO MAKE NEW LVL UP ACTION
-      this.props.dispatch(setUser({
-        username: this.props.username,
-        userlvl: this.props.userlvl + 1,
-        userAvatar: this.props.userAvatar,
+      // this.props.dispatch(setUser({
+      //   username: this.props.username,
+      //   userlvl: this.props.userlvl + 1,
+      //   userAvatar: this.props.userAvatar,
+      // }));
+      //AARON CHANGE
+      this.props.dispatch(setStudent({
+        studentUsername: this.props.studentUsername,
+        classroom: this.props.classroom,
+        level: this.props.level + 1,
+        imageUrl: this.props.imageUrl,
       }));
     }
   }
 
+  //new
   generateQuestion() {
-
-    let userlvl = this.props.userlvl; //this userlvl corrlates to the evil cat 
+    var context = this;
+    let userlvl = this.props.level; //this userlvl corrlates to the evil cat
     document.cookie = `userlvl=${userlvl}`;
     Axios.get('http://localhost:3000/mathApi/arena')
     .then((result) => {
-      this.setState({
+      context.setState({
         answer: result.data.answer,
         question: result.data.question,
         operand: result.data.operand
       })
-    .catch((error) => console.log(error))
-    });
-  
+    })
+    .catch((error) => console.log(error));
   }
 
   timer(){
@@ -180,6 +183,27 @@ class Arena extends React.Component {
     .catch((error) => console.log(error));
   }
 
+  // signOutOLD() {
+  //   var context = this;
+  //   var score = 0;
+  //   for (var operand in context.props.correctAnswers) {
+  //     score += context.props.correctAnswers[operand];
+  //   }
+  //   for (var operand in context.props.incorrectAnswers) {
+  //     score -= context.props.incorrectAnswers[operand];
+  //   }
+  //   Axios.put('http://localhost:3000/user/' + context.props.username, {
+  //     level: this.props.userlvl,
+  //     score: score,
+  //     correctAnswers: context.props.correctAnswers,
+  //     incorrectAnswers: context.props.incorrectAnswers,
+  //   })
+  //   .then(function(res) {
+  //     console.log(res);
+  //     browserHistory.push('/');
+  //   });
+  // }
+
   signOut() {
     var context = this;
     var score = 0;
@@ -189,8 +213,18 @@ class Arena extends React.Component {
     for (var operand in context.props.incorrectAnswers) {
       score -= context.props.incorrectAnswers[operand];
     }
-    Axios.put('http://localhost:3000/user/' + context.props.username, {
-      level: this.props.userlvl,
+    console.log(JSON.stringify({
+      username: context.props.studentUsername,
+      classroom: context.props.classroom,
+      level: context.props.level,
+      score: score,
+      correctAnswers: context.props.correctAnswers,
+      incorrectAnswers: context.props.incorrectAnswers,
+    }));
+    Axios.post('http://localhost:3000/student/logout', {
+      username: context.props.studentUsername,
+      classroom: context.props.classroom,
+      level: context.props.level,
       score: score,
       correctAnswers: context.props.correctAnswers,
       incorrectAnswers: context.props.incorrectAnswers,
@@ -218,23 +252,23 @@ class Arena extends React.Component {
           <div className="row placeholders">
 
             <div className="col-xs-6 col-sm-3 placeholder" id="userContainer">
-              <User userImage={this.props.userAvatar} user={this.state.user}/>
-              <h4>{this.props.username} Cat </h4>
+              <div><img src={this.props.imageUrl} className="img-responsive"></img></div>
+              <h4>{this.props.studentUsername} Cat </h4>
               <span className="text-muted">Health</span>
               <progress value={this.state.userHP} max="100"></progress>
             </div>
 
             <div className="col-xs-6 col-sm-3 placeholder" id="opponentContainer">
-              <Opponent opponentImage={this.state.evilCatAvatar} opponent={this.state.opponent}/>
-              <h4>Rival Cat Lvl:{this.props.userlvl}</h4>
+              <div><img src={this.state.evilCatAvatar} className="img-responsive"></img></div>
+              <h4>Rival Cat Lvl:{this.props.level}</h4>
               <span className="text-muted">Health</span>
               <progress value={this.state.opponentHP} max="100"></progress>
             </div>
             </div>
             <div className="jumbotron">
-              <Display display={this.state.message}/>
+              <div>{this.state.message}</div>
               <div>You have <span id="timer">{this.state.timer}</span> seconds left!</div>
-              <Question question={this.state.question}/>
+              <div><h1>{this.state.question}</h1></div>
               <form>
                 <input id='answerForm' type='text' placeholder='Enter Answer'></input>
               </form>
@@ -252,11 +286,12 @@ class Arena extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  username : state.username,
-  userlvl: state.userlvl,
-  userAvatar: state.userAvatar,
   correctAnswers: state.userCorrectAnswers,
   incorrectAnswers: state.userIncorrectAnswers,
+  classroom : state.classroom,
+  studentUsername: state.studentUsername,
+  level: state.level,
+  imageUrl: state.imageUrl
 });
 
 Arena = connect(mapStateToProps)(Arena);

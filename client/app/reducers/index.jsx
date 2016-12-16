@@ -1,11 +1,21 @@
 const user = (state = {}, action) => {
+  console.log('reducer:' + JSON.stringify(action));
   switch (action.type) {
     case 'SET_USER':
       return {
         ...state,
         username: action.user.username,
-        userlvl: action.user.userlvl,
-        userAvatar: action.user.userAvatar,
+        classroom: action.user.classroom,
+        students: action.user.students,
+      };
+    case 'SET_STUDENT':
+      return {
+        ...state,
+        studentUsername: action.student.studentUsername,
+        studentPassword: action.student.studentPassword,
+        imageUrl: action.student.imageUrl,
+        classroom: action.student.classroom,
+        level: action.student.level,
       };
     case 'SET_CORRECT':
       return {
@@ -18,7 +28,7 @@ const user = (state = {}, action) => {
         ...state,
         userIncorrectAnswers: action.incorrectAnswers,
       };
-    default: 
+    default:
       return state;
   }
 }

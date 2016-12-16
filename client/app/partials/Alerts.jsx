@@ -1,8 +1,8 @@
 import React from 'react';
 
 var Alerts = function(props) {
-  
-  const alertToDisplay = props.alert; 
+
+  const alertToDisplay = props.alert;
 
   if (alertToDisplay === 'unsuccessfulregister') {
     return (
@@ -14,7 +14,13 @@ var Alerts = function(props) {
     return (
       <div onClick={() => props.dismiss()} className="alert alert-danger">
         <strong>Warning!</strong> Username and Password do not match our records. Try again.
-      </div>   
+      </div>
+    );
+  } else if (alertToDisplay === 'invalidformsubmission') {
+    return (
+      <div onClick={() => props.dismiss()} className="alert alert-danger">
+        Please fill out all the required fields!
+      </div>
     );
   }
 }
