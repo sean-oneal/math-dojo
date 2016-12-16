@@ -77,9 +77,9 @@
 	
 	var _StudentProfile = __webpack_require__(/*! ./teacher/StudentProfile.jsx */ 309);
 	
-	var _Arena = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./student/Arena.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _Arena = __webpack_require__(/*! ./student/Arena.jsx */ 310);
 	
-	var _Chart = __webpack_require__(/*! ./student/Chart.jsx */ 310);
+	var _Chart = __webpack_require__(/*! ./student/Chart.jsx */ 312);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33986,6 +33986,516 @@
 /***/ },
 /* 310 */
 /*!**************************************!*\
+  !*** ./client/app/student/Arena.jsx ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Arena = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _axios = __webpack_require__(/*! ../../../~/axios/lib/axios.js */ 263);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
+	
+	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
+	
+	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 311);
+	
+	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 293);
+	
+	var _reactAddonsCssTransitionGroup = __webpack_require__(/*! react-addons-css-transition-group */ 296);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Arena = function (_React$Component) {
+	  _inherits(Arena, _React$Component);
+	
+	  function Arena() {
+	    _classCallCheck(this, Arena);
+	
+	    var _this = _possibleConstructorReturn(this, (Arena.__proto__ || Object.getPrototypeOf(Arena)).call(this));
+	
+	    _this.state = {
+	      userHP: 100,
+	      opponentHP: 100,
+	      question: '',
+	      evilCatAvatar: '',
+	      answer: '',
+	      message: '',
+	      timer: 10,
+	      reset: false
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(Arena, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.generateQuestion();
+	      this.getEvilAvatar();
+	      this.timer();
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.state.opponent === 0) {
+	        this.state.userlvl++;
+	      }
+	    }
+	  }, {
+	    key: 'attack',
+	    value: function attack() {
+	      var user = document.getElementById('userContainer');
+	      var opponent = document.getElementById('opponentContainer');
+	      var context = this;
+	
+	      this.setState({
+	        opponentHP: this.state.opponentHP - 20,
+	        message: this.state.message = 'Great job! You\'ve damaged the enemy.'
+	      });
+	
+	      user.style.animation = 'attack2 1000ms infinite';
+	      opponent.style.animation = 'shake 1000ms infinite';
+	      setTimeout(function () {
+	        user.style.animation = 'attack2 1000ms paused';
+	      }, 1000);
+	      setTimeout(function () {
+	        opponent.style.animation = 'shake 1000ms paused';
+	      }, 1000);
+	    }
+	  }, {
+	    key: 'miss',
+	    value: function miss() {
+	      var opponent = document.getElementById('opponentContainer');
+	      var user = document.getElementById('userContainer');
+	      var context = this;
+	
+	      this.setState({
+	        userHP: this.state.userHP - 20,
+	        message: this.state.message = 'Oh no! You\'ve been hit! Meow!'
+	      });
+	      opponent.style.animation = 'attack 1000ms infinite';
+	      user.style.animation = 'shake 1000ms infinite';
+	      setTimeout(function () {
+	        opponent.style.animation = 'attack 1000ms paused';
+	      }, 1000);
+	      setTimeout(function () {
+	        user.style.animation = 'shake 1000ms paused';
+	      }, 1000);
+	      setTimeout(function () {
+	        context.state.message = '';
+	      }, 2000);
+	    }
+	  }, {
+	    key: 'checkHealth',
+	    value: function checkHealth() {
+	      if (this.state.userHP <= 0) {
+	        this.setState({
+	          message: 'Sorry...try again'
+	        });
+	      } else if (this.state.opponentHP <= 0) {
+	        this.setState({
+	          message: 'You win!',
+	          opponentHP: 100,
+	          userHP: 100
+	        });
+	        // POOR IMPLEMENTATION, NEED TO MAKE NEW LVL UP ACTION
+	        // this.props.dispatch(setUser({
+	        //   username: this.props.username,
+	        //   userlvl: this.props.userlvl + 1,
+	        //   userAvatar: this.props.userAvatar,
+	        // }));
+	        //AARON CHANGE
+	        this.props.dispatch((0, _index.setStudent)({
+	          studentUsername: this.props.studentUsername,
+	          classroom: this.props.classroom,
+	          level: this.props.level + 1,
+	          imageUrl: this.props.imageUrl
+	        }));
+	      }
+	    }
+	
+	    //new
+	
+	  }, {
+	    key: 'generateQuestion',
+	    value: function generateQuestion() {
+	      var context = this;
+	      var userlvl = this.props.level; //this userlvl corrlates to the evil cat
+	      document.cookie = 'userlvl=' + userlvl;
+	      _axios2.default.get('http://localhost:3000/mathApi/arena').then(function (result) {
+	        context.setState({
+	          answer: result.data.answer,
+	          question: result.data.question,
+	          operand: result.data.operand
+	        });
+	      }).catch(function (error) {
+	        return console.log(error);
+	      });
+	    }
+	  }, {
+	    key: 'timer',
+	    value: function timer() {
+	      var context = this;
+	      this.setState({
+	        reset: false
+	      });
+	      var sec = 10;
+	      var timerOn = setInterval(function () {
+	        var a = new Date();
+	        document.getElementById("timer").innerHTML = " : " + sec;
+	        sec--;
+	        context.setState({ timer: sec });
+	        if (sec === 0 || context.state.reset === true) {
+	          clearInterval(timerOn);
+	          if (sec === 0) {
+	            context.miss();
+	          }
+	        }
+	      }, 1000);
+	    }
+	  }, {
+	    key: 'resetTimer',
+	    value: function resetTimer() {
+	      var context = this;
+	      this.setState({ reset: true });
+	      setTimeout(function () {
+	        context.timer();
+	      }, 1000);
+	    }
+	  }, {
+	    key: 'checkAnswer',
+	    value: function checkAnswer(answer) {
+	      var context = this;
+	      if (answer === '' + this.state.answer) {
+	        var newCorrect = Object.assign({}, context.props.correctAnswers);
+	        newCorrect[context.state.operand]++;
+	        context.props.dispatch((0, _index.setCorrect)(newCorrect));
+	
+	        this.attack();
+	        var user = document.getElementById('userContainer');
+	        // user.style.animation = 'attack2 1000ms paused';
+	
+	        this.checkHealth();
+	        this.generateQuestion();
+	        this.resetTimer(); //reset the timer when the answer is correct
+	      } else {
+	        var newIncorrect = Object.assign({}, context.props.incorrectAnswers);
+	        newIncorrect[context.state.operand]++;
+	        context.props.dispatch((0, _index.setIncorrect)(newIncorrect));
+	
+	        this.miss();
+	        var opponent = document.getElementById('opponentContainer');
+	        // opponent.style.animation = 'attack 1000ms paused';
+	
+	        this.checkHealth();
+	        this.generateQuestion();
+	        this.resetTimer();
+	        this.checkHealth(); //This resets and checks the playe/evil cat's health after the timer runs out and gives the user a 'second' chance
+	      }
+	      document.getElementById('answerForm').value = '';
+	    }
+	  }, {
+	    key: 'getEvilAvatar',
+	    value: function getEvilAvatar() {
+	      var context = this;
+	      _axios2.default.get('https://www.googleapis.com/customsearch/v1?key=' + window.GMAP_KEY + '&cx=009407302250325958776:7xs2zpwdaho&q=evil%20cat%20gif&searchType=image').then(function (response) {
+	        var randomIndex = Math.floor(Math.random() * response.data.items.length);
+	        var evilCat = response.data.items[randomIndex].link;
+	        context.setState({
+	          evilCatAvatar: evilCat
+	        });
+	      }).catch(function (error) {
+	        return console.log(error);
+	      });
+	    }
+	
+	    // signOutOLD() {
+	    //   var context = this;
+	    //   var score = 0;
+	    //   for (var operand in context.props.correctAnswers) {
+	    //     score += context.props.correctAnswers[operand];
+	    //   }
+	    //   for (var operand in context.props.incorrectAnswers) {
+	    //     score -= context.props.incorrectAnswers[operand];
+	    //   }
+	    //   Axios.put('http://localhost:3000/user/' + context.props.username, {
+	    //     level: this.props.userlvl,
+	    //     score: score,
+	    //     correctAnswers: context.props.correctAnswers,
+	    //     incorrectAnswers: context.props.incorrectAnswers,
+	    //   })
+	    //   .then(function(res) {
+	    //     console.log(res);
+	    //     browserHistory.push('/');
+	    //   });
+	    // }
+	
+	  }, {
+	    key: 'signOut',
+	    value: function signOut() {
+	      var context = this;
+	      var score = 0;
+	      for (var operand in context.props.correctAnswers) {
+	        score += context.props.correctAnswers[operand];
+	      }
+	      for (var operand in context.props.incorrectAnswers) {
+	        score -= context.props.incorrectAnswers[operand];
+	      }
+	      console.log(JSON.stringify({
+	        username: context.props.studentUsername,
+	        classroom: context.props.classroom,
+	        level: context.props.level,
+	        score: score,
+	        correctAnswers: context.props.correctAnswers,
+	        incorrectAnswers: context.props.incorrectAnswers
+	      }));
+	      _axios2.default.post('http://localhost:3000/student/logout', {
+	        username: context.props.studentUsername,
+	        classroom: context.props.classroom,
+	        level: context.props.level,
+	        score: score,
+	        correctAnswers: context.props.correctAnswers,
+	        incorrectAnswers: context.props.incorrectAnswers
+	      }).then(function (res) {
+	        console.log(res);
+	        _reactRouter.browserHistory.push('/');
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_Topbar.Topbar, { signOut: function signOut() {
+	            return _this2.signOut();
+	          } }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container-fluid' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(_Navbar.Navbar, null),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main' },
+	              _react2.default.createElement(
+	                'h1',
+	                { className: 'page-header' },
+	                'Arena'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row placeholders' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col-xs-6 col-sm-3 placeholder', id: 'userContainer' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement('img', { src: this.props.imageUrl, className: 'img-responsive' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    this.props.studentUsername,
+	                    ' Cat '
+	                  ),
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'text-muted' },
+	                    'Health'
+	                  ),
+	                  _react2.default.createElement('progress', { value: this.state.userHP, max: '100' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col-xs-6 col-sm-3 placeholder', id: 'opponentContainer' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement('img', { src: this.state.evilCatAvatar, className: 'img-responsive' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'Rival Cat Lvl:',
+	                    this.props.level
+	                  ),
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'text-muted' },
+	                    'Health'
+	                  ),
+	                  _react2.default.createElement('progress', { value: this.state.opponentHP, max: '100' })
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'jumbotron' },
+	                _react2.default.createElement(
+	                  'div',
+	                  null,
+	                  this.state.message
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  null,
+	                  'You have ',
+	                  _react2.default.createElement(
+	                    'span',
+	                    { id: 'timer' },
+	                    this.state.timer
+	                  ),
+	                  ' seconds left!'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  null,
+	                  _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    this.state.question
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'form',
+	                  null,
+	                  _react2.default.createElement('input', { id: 'answerForm', type: 'text', placeholder: 'Enter Answer' })
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  _react2.default.createElement(
+	                    'a',
+	                    { onClick: function onClick() {
+	                        return _this2.checkAnswer(document.getElementById('answerForm').value);
+	                      }, className: 'btn btn-lg btn-success', href: '#', role: 'button' },
+	                    'Answer'
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Arena;
+	}(_react2.default.Component);
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    correctAnswers: state.userCorrectAnswers,
+	    incorrectAnswers: state.userIncorrectAnswers,
+	    classroom: state.classroom,
+	    studentUsername: state.studentUsername,
+	    level: state.level,
+	    imageUrl: state.imageUrl
+	  };
+	};
+	
+	exports.Arena = Arena = (0, _reactRedux.connect)(mapStateToProps)(Arena);
+	
+	exports.Arena = Arena;
+
+/***/ },
+/* 311 */
+/*!***************************************!*\
+  !*** ./client/app/student/Navbar.jsx ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Navbar = undefined;
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Navbar = function Navbar() {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'col-sm-3 col-md-2 sidebar' },
+	    _react2.default.createElement(
+	      'ul',
+	      { className: 'nav nav-sidebar' },
+	      _react2.default.createElement(
+	        'li',
+	        { className: 'active' },
+	        _react2.default.createElement(
+	          'a',
+	          { href: '#' },
+	          'Overview ',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'sr-only' },
+	            '(current)'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/arena' },
+	          'Arena'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/chart' },
+	          'Chart'
+	        )
+	      )
+	    )
+	  );
+	};
+	
+	exports.Navbar = Navbar;
+
+/***/ },
+/* 312 */
+/*!**************************************!*\
   !*** ./client/app/student/Chart.jsx ***!
   \**************************************/
 /***/ function(module, exports, __webpack_require__) {
@@ -34007,7 +34517,7 @@
 	
 	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 293);
 	
-	var _Chart = __webpack_require__(/*! ../../../~/chart.js/dist/Chart.js */ 312);
+	var _Chart = __webpack_require__(/*! ../../../~/chart.js/dist/Chart.js */ 313);
 	
 	var _axios = __webpack_require__(/*! ../../../~/axios/lib/axios.js */ 263);
 	
@@ -34139,74 +34649,7 @@
 	exports.ChartPage = ChartPage;
 
 /***/ },
-/* 311 */
-/*!***************************************!*\
-  !*** ./client/app/student/Navbar.jsx ***!
-  \***************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Navbar = undefined;
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 209);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Navbar = function Navbar() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'col-sm-3 col-md-2 sidebar' },
-	    _react2.default.createElement(
-	      'ul',
-	      { className: 'nav nav-sidebar' },
-	      _react2.default.createElement(
-	        'li',
-	        { className: 'active' },
-	        _react2.default.createElement(
-	          'a',
-	          { href: '#' },
-	          'Overview ',
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'sr-only' },
-	            '(current)'
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        null,
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/arena' },
-	          'Arena'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        null,
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/chart' },
-	          'Chart'
-	        )
-	      )
-	    )
-	  );
-	};
-	
-	exports.Navbar = Navbar;
-
-/***/ },
-/* 312 */
+/* 313 */
 /*!**********************************!*\
   !*** ./~/chart.js/dist/Chart.js ***!
   \**********************************/

@@ -18,7 +18,6 @@ class StudentProfile extends React.Component {
   }
 
   componentWillMount() {}
-
   componentDidMount() {}
 
   signOut() {

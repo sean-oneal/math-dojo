@@ -1,10 +1,8 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var Router = require('./routes.js');
 var teacherRouter = require('./teacherRouter.js');
 var studentRouter = require('./studentRouter.js');
 var classroomRouter = require('./classroomRouter.js');
-var userRouter = require('./routes.js');
 var mathRouter = require('../mathApi/mathRouter.js'); // Added router for mathApi, route for mathRouter
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
@@ -29,7 +27,6 @@ module.exports = function(app, express) {
   app.use('/student', studentRouter);
   app.use('/teacher', teacherRouter);
   app.use('/classrooms', classroomRouter);
-  app.use('/user', userRouter);
   app.use('/mathApi', mathRouter); // Math route
   app.use(express.static(__dirname + '/../../client'));
 };
