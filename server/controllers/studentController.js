@@ -1,5 +1,6 @@
 
 var Student = require('./../models/studentModel.js');
+var Teacher = require('./../models/teacherModel.js');
 var util = require('./../config/utility.js');
 
 exports.loginStudent = function (req, res) {
@@ -41,4 +42,50 @@ exports.logoutStudent = function (req, res) {
       });
     }
   });
-};
+
+  exports.generateQuestion = function (req, res) {
+    let userlvl = parseInt(req.cookies.userlvl);
+    console.log('######', typeof req.cookies.userlvl);
+    const operands = ['+', '-', '*', '/'];
+    const firstDigit = Math.floor(Math.random() * Math.pow(5, userlvl));
+    const secondDigit = Math.floor(Math.random() * Math.pow(5, userlvl));
+    const operandIndex = Math.floor(Math.random() * 2);
+
+    const answer = eval(firstDigit + operands[operandIndex] + secondDigit);
+
+    const question = firstDigit + ' ' + operands[operandIndex] + ' ' + secondDigit + ' = ';
+
+    let operand;
+
+    if (operands[operandIndex] === '+') {
+      operand = 'addition';
+    } else if (operands[operandIndex] === '-') {
+      operand = 'subtraction';
+    } else if (operands[operandIndex] === '*') {
+      operand = 'multiplcation';
+    } else if (operands[operandIndex] === '/') {
+      operand = 'division';
+    }
+
+    //send back anwser, quest, oprand (respectively)
+    res.status(200).send({
+      answer: answer,
+      question: question,
+      operand: operand
+    });
+  };
+
+  exports.getClassrooms = function (req, res) {
+    Teacher.find( function(err, teachers) {
+      if (err) {
+        res.status(500);
+        res.send({ error: 'Error retrieving classrooms' });
+      } else {
+        var classrooms = [];
+        teachers.forEach( function(teacher) {
+          classrooms.push(teacher.classroom);
+        });
+        res.send(classrooms);
+      }
+    });
+  };
