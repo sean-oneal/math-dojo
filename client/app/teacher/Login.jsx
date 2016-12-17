@@ -15,9 +15,10 @@ class Login extends React.Component {
     }
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-  }
+  // handleClick(e) {
+  //   e.preventDefault();
+
+  // }
 
   clearFields() {
     $('#inputUsername').val('');
@@ -63,7 +64,7 @@ class Login extends React.Component {
     let alertToUser = this.state.alertToUser !== null ? <Alerts alert={this.state.alertToUser} dismiss={this.dismissAlert.bind(this)}/> : <div></div>
 
     return (
-      <div className="container" onSubmit={this.handleSubmit}>
+      <div className="container" onSubmit={this.handleClick}>
         <form className="form-signin">
           <h2 className="form-signin-heading">Teacher login</h2>
           <label className="sr-only">Username</label>
@@ -72,7 +73,7 @@ class Login extends React.Component {
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" required/>
           <button onClick={() => this.login($('#inputUsername').val(), $('#inputPassword').val())} className="btn btn-lg btn-primary btn-block" type="submit">Login</button>
           <hr></hr>
-          <button onClick={() => { this.clearFields(); browserHistory.push('teachersignup'); }} className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+          <button onClick={function() {location.href = 'http://127.0.0.1:3000/auth/google';}} className="btn btn-lg btn-primary btn-block" type="button">Google Login</button>
         </form>
         <div id='alerts'>
           {alertToUser}

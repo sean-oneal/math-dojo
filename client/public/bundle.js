@@ -28959,12 +28959,12 @@
 	    return _this;
 	  }
 	
+	  // handleClick(e) {
+	  //   e.preventDefault();
+	
+	  // }
+	
 	  _createClass(Login, [{
-	    key: 'handleSubmit',
-	    value: function handleSubmit(e) {
-	      e.preventDefault();
-	    }
-	  }, {
 	    key: 'clearFields',
 	    value: function clearFields() {
 	      $('#inputUsername').val('');
@@ -29014,7 +29014,7 @@
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'container', onSubmit: this.handleSubmit },
+	        { className: 'container', onSubmit: this.handleClick },
 	        _react2.default.createElement(
 	          'form',
 	          { className: 'form-signin' },
@@ -29046,9 +29046,9 @@
 	          _react2.default.createElement(
 	            'button',
 	            { onClick: function onClick() {
-	                _this2.clearFields();_reactRouter.browserHistory.push('teachersignup');
-	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
-	            'Register'
+	                location.href = 'http://127.0.0.1:3000/auth/google';
+	              }, className: 'btn btn-lg btn-primary btn-block', type: 'button' },
+	            'Google Login'
 	          )
 	        ),
 	        _react2.default.createElement(
