@@ -42,9 +42,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/*!******************************!*\
-  !*** ./client/app/index.jsx ***!
-  \******************************/
+/*!**********************************!*\
+  !*** ./client/teacher/index.jsx ***!
+  \**********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -90,6 +90,8 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var store = (0, _redux.createStore)(_index2.default);
+	
+	var socket = io.connect();
 	
 	var Root = function (_React$Component) {
 	  _inherits(Root, _React$Component);
@@ -23904,9 +23906,9 @@
 
 /***/ },
 /* 208 */
-/*!***************************************!*\
-  !*** ./client/app/reducers/index.jsx ***!
-  \***************************************/
+/*!*******************************************!*\
+  !*** ./client/teacher/reducers/index.jsx ***!
+  \*******************************************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28905,9 +28907,9 @@
 
 /***/ },
 /* 262 */
-/*!**************************************!*\
-  !*** ./client/app/teacher/Login.jsx ***!
-  \**************************************/
+/*!******************************************!*\
+  !*** ./client/teacher/teacher/Login.jsx ***!
+  \******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30632,9 +30634,9 @@
 
 /***/ },
 /* 287 */
-/*!**************************************!*\
-  !*** ./client/app/actions/index.jsx ***!
-  \**************************************/
+/*!******************************************!*\
+  !*** ./client/teacher/actions/index.jsx ***!
+  \******************************************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30672,9 +30674,9 @@
 
 /***/ },
 /* 288 */
-/*!****************************************!*\
-  !*** ./client/app/partials/Alerts.jsx ***!
-  \****************************************/
+/*!********************************************!*\
+  !*** ./client/teacher/partials/Alerts.jsx ***!
+  \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30735,9 +30737,9 @@
 
 /***/ },
 /* 289 */
-/*!*********************************************!*\
-  !*** ./client/app/student/StudentLogin.jsx ***!
-  \*********************************************/
+/*!*************************************************!*\
+  !*** ./client/teacher/student/StudentLogin.jsx ***!
+  \*************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30944,9 +30946,9 @@
 
 /***/ },
 /* 290 */
-/*!***************************************!*\
-  !*** ./client/app/teacher/Signup.jsx ***!
-  \***************************************/
+/*!*******************************************!*\
+  !*** ./client/teacher/teacher/Signup.jsx ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31125,9 +31127,9 @@
 
 /***/ },
 /* 291 */
-/*!*************************************************!*\
-  !*** ./client/app/teacher/TeacherDashboard.jsx ***!
-  \*************************************************/
+/*!*****************************************************!*\
+  !*** ./client/teacher/teacher/TeacherDashboard.jsx ***!
+  \*****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31261,9 +31263,9 @@
 
 /***/ },
 /* 292 */
-/*!***************************************!*\
-  !*** ./client/app/teacher/Navbar.jsx ***!
-  \***************************************/
+/*!*******************************************!*\
+  !*** ./client/teacher/teacher/Navbar.jsx ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31305,9 +31307,9 @@
 
 /***/ },
 /* 293 */
-/*!****************************************!*\
-  !*** ./client/app/partials/Topbar.jsx ***!
-  \****************************************/
+/*!********************************************!*\
+  !*** ./client/teacher/partials/Topbar.jsx ***!
+  \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31376,9 +31378,9 @@
 
 /***/ },
 /* 294 */
-/*!************************************************!*\
-  !*** ./client/app/teacher/StudentListItem.jsx ***!
-  \************************************************/
+/*!****************************************************!*\
+  !*** ./client/teacher/teacher/StudentListItem.jsx ***!
+  \****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31511,9 +31513,9 @@
 
 /***/ },
 /* 295 */
-/*!*******************************************!*\
-  !*** ./client/app/teacher/AddStudent.jsx ***!
-  \*******************************************/
+/*!***********************************************!*\
+  !*** ./client/teacher/teacher/AddStudent.jsx ***!
+  \***********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33838,9 +33840,9 @@
 
 /***/ },
 /* 309 */
-/*!***********************************************!*\
-  !*** ./client/app/teacher/StudentProfile.jsx ***!
-  \***********************************************/
+/*!***************************************************!*\
+  !*** ./client/teacher/teacher/StudentProfile.jsx ***!
+  \***************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33985,9 +33987,9 @@
 
 /***/ },
 /* 310 */
-/*!**************************************!*\
-  !*** ./client/app/student/Arena.jsx ***!
-  \**************************************/
+/*!******************************************!*\
+  !*** ./client/teacher/student/Arena.jsx ***!
+  \******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34428,9 +34430,9 @@
 
 /***/ },
 /* 311 */
-/*!***************************************!*\
-  !*** ./client/app/student/Navbar.jsx ***!
-  \***************************************/
+/*!*******************************************!*\
+  !*** ./client/teacher/student/Navbar.jsx ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34495,9 +34497,9 @@
 
 /***/ },
 /* 312 */
-/*!**************************************!*\
-  !*** ./client/app/student/Chart.jsx ***!
-  \**************************************/
+/*!******************************************!*\
+  !*** ./client/teacher/student/Chart.jsx ***!
+  \******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
