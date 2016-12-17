@@ -1,5 +1,5 @@
-var teacherRouter = require('express').Router();
-var teacherController = require('./../controllers/teacherController.js');
+const teacherRouter = require('express').Router();
+const teacherController = require('./../controllers/teacherController.js');
 
 teacherRouter.get('/login', teacherController.loginTeacher );
 teacherRouter.get('/teacherdashboard', teacherController.loginTeacher );
