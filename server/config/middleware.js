@@ -29,6 +29,6 @@ module.exports = function(app, express) {
   app.use('/teacher', teacherRouter);
   app.use('/classrooms', classroomRouter);
   app.use('/mathApi', mathRouter); // Math route
-
+  app.use('/teacherdashboard', teacherRouter);
   app.use(express.static(__dirname + '/../../client'));
 };
