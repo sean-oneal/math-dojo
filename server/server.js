@@ -38,7 +38,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/login');
+    res.redirect('/teacherdashboard');
   });
 
 app.listen(port, function() {
