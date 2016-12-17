@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var teacherSchema = new Schema({
   googleId: {type: String, unique: true},
   displayName:  {type: String, unique: true},
-  accessToken:  String,
+  accessToken: String,
   classroom: String,
   students: [ String ]
 });

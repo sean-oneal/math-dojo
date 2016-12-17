@@ -3,15 +3,19 @@ var Teacher = require('./../models/teacherModel.js');
 var Student = require('./../models/studentModel.js');
 var util = require('./../config/utility.js');
 
-
+//find Teacher in Database or Create new one, saving  Google OAuth accessToken
 exports.findOrCreate = function(accessToken, refreshToken, profile, cb) {
+  // googleId
   var id = profile.id;
+  // user's display name on Google
   var name = profile.displayName;
 
 Teacher.findOne({ googleId: id}, function (err, user) {
+  //if error occurs, return the callback and error
   if (err) {
     return cb(err, null);
   }
+  //if a teacher is not found, create and save a new teacher to database
   if (!user) {
     var teacherToSave = {
       googleId: id,
@@ -31,9 +35,11 @@ Teacher.findOne({ googleId: id}, function (err, user) {
       }
     });
   }
-   return cb(err, user);
+
+  return cb(err, user);
 })};
 
+//Local Storage Strategy
 exports.createTeacher = function (req, res) {
 
   var username = req.body.username;
@@ -144,7 +150,8 @@ exports.getStudent = function (req, res) {
 };
 
 exports.loginTeacher = function (req, res) {
-  Teacher.findOne({username: req.body.username}, function(err, user) {
+  console.log(req, 'request from teacher login!');
+  Teacher.findOne({googleId: req.body.id}, function(err, user) {
     if (err) {
       res.status(500);
       res.send({ error: 'Error retrieving teacher record' });
