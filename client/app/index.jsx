@@ -14,6 +14,8 @@ import { Chart } from './student/Chart.jsx';
 
 let store = createStore(user);
 
+var socket = io.connect();
+
 class Root extends React.Component {
 
   render () {
