@@ -22,9 +22,14 @@ module.exports = function(app, express) {
   app.use(cookieParser());
   app.use(session({secret: '1234567890QWERTY', resave: true,
     saveUninitialized: true}));
+
+  app.use(express.static(__dirname + '/../../client'));
+  app.use('/student',express.static(__dirname + '/../../student'));
+  app.use('/teacher',express.static(__dirname + '/../../teacher'));
+
   app.use('/auth', teacherRouter);
   app.use('/student', studentRouter);
   app.use('/teacher', teacherRouter);
   app.use('/teacherdashboard', teacherRouter);
-  app.use(express.static(__dirname + '/../../client'));
+
 };

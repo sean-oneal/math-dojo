@@ -119,7 +119,7 @@ class Arena extends React.Component {
     this.setState({
       reset: false
     });
-    const sec = 10;
+    let sec = 10;
     const timerOn = setInterval(function() {
       const a = new Date();
       document.getElementById( 'timer').innerHTML = ' : ' + sec;
