@@ -41,11 +41,10 @@
 From within the root directory:
 
 ```sh
-sudo npm install -g bower
 npm install
-npm run build
+IN STUDENT DIRECTORY: webpack -d
+IN TEACHER DIRECTORY: webpack -d
 npm run start
---> NOT NEEDED RIGHT NOW: bower install
 ```
 ####Reset the Database
 ```sh
