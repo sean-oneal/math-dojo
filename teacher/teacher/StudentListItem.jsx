@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Axios from '../../../node_modules/axios/lib/axios.js';
+import Axios from '../../node_modules/axios/lib/axios.js';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
