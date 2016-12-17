@@ -2,8 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var teacherSchema = new Schema({
-  username:  {type: String, unique: true},
-  password:  String,
+  googleId: {type: String, unique: true},
+  displayName:  {type: String, unique: true},
+  accessToken:  String,
   classroom: String,
   students: [ String ]
 });

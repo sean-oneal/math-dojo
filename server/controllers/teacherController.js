@@ -3,7 +3,39 @@ var Teacher = require('./../models/teacherModel.js');
 var Student = require('./../models/studentModel.js');
 var util = require('./../config/utility.js');
 
+
+exports.findOrCreate = function(accessToken, refreshToken, profile, cb) {
+  var id = profile.id;
+  var name = profile.displayName;
+
+Teacher.findOne({ googleId: id}, function (err, user) {
+  if (err) {
+    return cb(err, null);
+  }
+  if (!user) {
+    var teacherToSave = {
+      googleId: id,
+      displayName: name,
+      accessToken: accessToken,
+      classroom: '',
+      students: []
+    }
+
+    Teacher.create(teacherToSave, function(err, user) {
+      if (err) {
+        console.log('no teacher found');
+        return cb(err, null)
+      }
+      if (user) {
+        console.log(err, user,'saved');
+      }
+    });
+  }
+   return cb(err, user);
+})};
+
 exports.createTeacher = function (req, res) {
+
   var username = req.body.username;
   var password = req.body.password;
   var classroom = req.body.classroom;
