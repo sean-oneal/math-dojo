@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var teacherSchema = new Schema({
-  googleId: {type: String, unique: true},
-  displayName:  {type: String, unique: true},
+const teacherSchema = new Schema({
+  googleId: { type: String, unique: true },
+  displayName: { type: String, unique: true },
   accessToken: String,
   classroom: String,
   students: [ String ]

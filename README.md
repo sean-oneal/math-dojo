@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: Blake Fleck/Fiona Chiang
-  - __Scrum Master__: Robert Oh
-  - __Development Team Members__: Fiona Chiang, Vernon Quan
+  - __Product Owner__: Aaron Trank
+  - __Scrum Master__: Sean O'Neal
+
 
 ## Table of Contents
 
@@ -24,11 +24,15 @@
 
 ## Requirements
 
+- React 15.4.x
+- Redux 3.6.x
+- Express 4.14.x
+- Mongoose 4.7.x
+- Passport
+- Passport Google OAuth 2.0 1.0.x,
+- Bcrypt-Node.js
 - Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Webpack 1.14.x
 
 ## Development
 
