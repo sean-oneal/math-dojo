@@ -30,13 +30,16 @@ exports.findOrCreate = function(accessToken, refreshToken, profile, cb) {
           console.log('no teacher found');
           return cb(err, null)
         }
-        if (user) {
+        else if (!user) {
           console.log(err, user,'saved');
+          return cb({ error: 'Some error occured!'}, null);
+        } else {
+          return cb(err, user);
         }
       });
+    } else {
+      return cb(err, user);
     }
-
-    return cb(err, user);
   });
 };
 
@@ -80,6 +83,7 @@ exports.addStudent = function (req, res) {
         res.status(500);
         res.send({ error: 'Error retrieving classroom' });
       } else {
+        console.log('CLASSROOM:' + JSON.stringify(classroom));
         if (classroom.students.includes(username)) {
           res.status(409);
           res.send({ error: 'Student username is already taken' });
