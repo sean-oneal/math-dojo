@@ -69,11 +69,13 @@
 	
 	var _Login = __webpack_require__(/*! ./teacher/Login.jsx */ 262);
 	
-	var _Signup = __webpack_require__(/*! ./teacher/Signup.jsx */ 289);
+	var _Auth = __webpack_require__(/*! ./teacher/Auth.jsx */ 289);
 	
-	var _TeacherDashboard = __webpack_require__(/*! ./teacher/TeacherDashboard.jsx */ 290);
+	var _Signup = __webpack_require__(/*! ./teacher/Signup.jsx */ 290);
 	
-	var _StudentProfile = __webpack_require__(/*! ./teacher/StudentProfile.jsx */ 308);
+	var _TeacherDashboard = __webpack_require__(/*! ./teacher/TeacherDashboard.jsx */ 291);
+	
+	var _StudentProfile = __webpack_require__(/*! ./teacher/StudentProfile.jsx */ 309);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -84,8 +86,6 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var store = (0, _redux.createStore)(_index2.default);
-	
-	var socket = io.connect();
 	
 	var Root = function (_React$Component) {
 	  _inherits(Root, _React$Component);
@@ -105,9 +105,10 @@
 	        _react2.default.createElement(
 	          _reactRouter.Router,
 	          { history: _reactRouter.browserHistory },
-	          _react2.default.createElement(_reactRouter.Route, { path: '/teacher', component: _Login.Login }),
+	          _react2.default.createElement(_reactRouter.Route, { path: '/teacher', component: _Auth.Auth }),
+	          _react2.default.createElement(_reactRouter.Route, { path: '/teacher/login', component: _Login.Login }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'teachersignup', component: _Signup.TeacherSignup }),
-	          _react2.default.createElement(_reactRouter.Route, { path: 'teacherdashboard', component: _TeacherDashboard.TeacherDashboard }),
+	          _react2.default.createElement(_reactRouter.Route, { path: '/teacher/teacherdashboard', component: _TeacherDashboard.TeacherDashboard }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'studentprofile', component: _StudentProfile.StudentProfile })
 	        )
 	      );
@@ -30728,6 +30729,112 @@
 
 /***/ },
 /* 289 */
+/*!**************************!*\
+  !*** ./teacher/Auth.jsx ***!
+  \**************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Auth = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _axios = __webpack_require__(/*! ../../~/axios/lib/axios.js */ 263);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
+	
+	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	var _Alerts = __webpack_require__(/*! ./../partials/Alerts.jsx */ 288);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Auth = function (_React$Component) {
+	  _inherits(Auth, _React$Component);
+	
+	  function Auth() {
+	    _classCallCheck(this, Auth);
+	
+	    return _possibleConstructorReturn(this, (Auth.__proto__ || Object.getPrototypeOf(Auth)).call(this));
+	  }
+	
+	  _createClass(Auth, [{
+	    key: 'render',
+	    value: function render() {
+	      var cookie = getCookie('auth');
+	      if (cookie === "") {
+	        _reactRouter.browserHistory.push('/teacher/login');
+	      } else {
+	        var parsedCookie = cookie.split(',');
+	        this.props.dispatch((0, _index.setUser)({
+	          username: parsedCookie[1],
+	          classroom: parsedCookie[2],
+	          students: parsedCookie.splice(3)
+	        }));
+	        console.log('Login Props:' + JSON.stringify(this.props));
+	        _reactRouter.browserHistory.push('/teacher/teacherdashboard');
+	      }
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        'This should NEVER load'
+	      );
+	    }
+	  }]);
+	
+	  return Auth;
+	}(_react2.default.Component);
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    username: state.username,
+	    classroom: state.classroom,
+	    students: state.students
+	  };
+	};
+	
+	var getCookie = function getCookie(cname) {
+	  var name = cname + "=";
+	  var ca = document.cookie.split(';');
+	  for (var i = 0; i < ca.length; i++) {
+	    var c = ca[i];
+	    while (c.charAt(0) == ' ') {
+	      c = c.substring(1);
+	    }
+	    if (c.indexOf(name) == 0) {
+	      return c.substring(name.length, c.length);
+	    }
+	  }
+	  return "";
+	};
+	
+	exports.Auth = Auth = (0, _reactRedux.connect)(mapStateToProps)(Auth);
+	
+	exports.Auth = Auth;
+
+/***/ },
+/* 290 */
 /*!****************************!*\
   !*** ./teacher/Signup.jsx ***!
   \****************************/
@@ -30908,7 +31015,7 @@
 	exports.TeacherSignup = TeacherSignup;
 
 /***/ },
-/* 290 */
+/* 291 */
 /*!**************************************!*\
   !*** ./teacher/TeacherDashboard.jsx ***!
   \**************************************/
@@ -30939,15 +31046,15 @@
 	
 	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
 	
-	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 291);
+	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 292);
 	
-	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 292);
+	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 293);
 	
-	var _StudentListItem = __webpack_require__(/*! ./StudentListItem.jsx */ 293);
+	var _StudentListItem = __webpack_require__(/*! ./StudentListItem.jsx */ 294);
 	
-	var _AddStudent = __webpack_require__(/*! ./AddStudent.jsx */ 294);
+	var _AddStudent = __webpack_require__(/*! ./AddStudent.jsx */ 295);
 	
-	var _reactAddonsCssTransitionGroup = __webpack_require__(/*! react-addons-css-transition-group */ 295);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(/*! react-addons-css-transition-group */ 296);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -31044,7 +31151,7 @@
 	exports.TeacherDashboard = TeacherDashboard;
 
 /***/ },
-/* 291 */
+/* 292 */
 /*!****************************!*\
   !*** ./teacher/Navbar.jsx ***!
   \****************************/
@@ -31088,7 +31195,7 @@
 	exports.Navbar = Navbar;
 
 /***/ },
-/* 292 */
+/* 293 */
 /*!*****************************!*\
   !*** ./partials/Topbar.jsx ***!
   \*****************************/
@@ -31159,7 +31266,7 @@
 	exports.Topbar = Topbar;
 
 /***/ },
-/* 293 */
+/* 294 */
 /*!*************************************!*\
   !*** ./teacher/StudentListItem.jsx ***!
   \*************************************/
@@ -31294,7 +31401,7 @@
 	exports.StudentListItem = StudentListItem;
 
 /***/ },
-/* 294 */
+/* 295 */
 /*!********************************!*\
   !*** ./teacher/AddStudent.jsx ***!
   \********************************/
@@ -31448,16 +31555,16 @@
 	exports.AddStudent = AddStudent;
 
 /***/ },
-/* 295 */
+/* 296 */
 /*!*******************************************************!*\
   !*** ../~/react-addons-css-transition-group/index.js ***!
   \*******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! react/lib/ReactCSSTransitionGroup */ 296);
+	module.exports = __webpack_require__(/*! react/lib/ReactCSSTransitionGroup */ 297);
 
 /***/ },
-/* 296 */
+/* 297 */
 /*!*************************************************!*\
   !*** ../~/react/lib/ReactCSSTransitionGroup.js ***!
   \*************************************************/
@@ -31485,8 +31592,8 @@
 	
 	var React = __webpack_require__(/*! ./React */ 2);
 	
-	var ReactTransitionGroup = __webpack_require__(/*! ./ReactTransitionGroup */ 297);
-	var ReactCSSTransitionGroupChild = __webpack_require__(/*! ./ReactCSSTransitionGroupChild */ 305);
+	var ReactTransitionGroup = __webpack_require__(/*! ./ReactTransitionGroup */ 298);
+	var ReactCSSTransitionGroupChild = __webpack_require__(/*! ./ReactCSSTransitionGroupChild */ 306);
 	
 	function createTransitionTimeoutPropValidator(transitionType) {
 	  var timeoutPropName = 'transition' + transitionType + 'Timeout';
@@ -31569,7 +31676,7 @@
 	module.exports = ReactCSSTransitionGroup;
 
 /***/ },
-/* 297 */
+/* 298 */
 /*!**********************************************!*\
   !*** ../~/react/lib/ReactTransitionGroup.js ***!
   \**********************************************/
@@ -31596,8 +31703,8 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(/*! ./React */ 2);
-	var ReactAddonsDOMDependencies = __webpack_require__(/*! ./ReactAddonsDOMDependencies */ 298);
-	var ReactTransitionChildMapping = __webpack_require__(/*! ./ReactTransitionChildMapping */ 303);
+	var ReactAddonsDOMDependencies = __webpack_require__(/*! ./ReactAddonsDOMDependencies */ 299);
+	var ReactTransitionChildMapping = __webpack_require__(/*! ./ReactTransitionChildMapping */ 304);
 	
 	var emptyFunction = __webpack_require__(/*! fbjs/lib/emptyFunction */ 12);
 	
@@ -31827,7 +31934,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
 
 /***/ },
-/* 298 */
+/* 299 */
 /*!****************************************************!*\
   !*** ../~/react/lib/ReactAddonsDOMDependencies.js ***!
   \****************************************************/
@@ -31857,8 +31964,8 @@
 	};
 	
 	if (process.env.NODE_ENV !== 'production') {
-	  var ReactPerf = __webpack_require__(/*! react-dom/lib/ReactPerf */ 299);
-	  var ReactTestUtils = __webpack_require__(/*! react-dom/lib/ReactTestUtils */ 300);
+	  var ReactPerf = __webpack_require__(/*! react-dom/lib/ReactPerf */ 300);
+	  var ReactTestUtils = __webpack_require__(/*! react-dom/lib/ReactTestUtils */ 301);
 	
 	  exports.getReactPerf = function () {
 	    return ReactPerf;
@@ -31871,7 +31978,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
 
 /***/ },
-/* 299 */
+/* 300 */
 /*!***************************************!*\
   !*** ../~/react-dom/lib/ReactPerf.js ***!
   \***************************************/
@@ -32380,7 +32487,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
 
 /***/ },
-/* 300 */
+/* 301 */
 /*!********************************************!*\
   !*** ../~/react-dom/lib/ReactTestUtils.js ***!
   \********************************************/
@@ -32401,7 +32508,7 @@
 	var _prodInvariant = __webpack_require__(/*! ./reactProdInvariant */ 35),
 	    _assign = __webpack_require__(/*! object-assign */ 4);
 	
-	var EventConstants = __webpack_require__(/*! ./EventConstants */ 301);
+	var EventConstants = __webpack_require__(/*! ./EventConstants */ 302);
 	var EventPluginHub = __webpack_require__(/*! ./EventPluginHub */ 42);
 	var EventPluginRegistry = __webpack_require__(/*! ./EventPluginRegistry */ 43);
 	var EventPropagators = __webpack_require__(/*! ./EventPropagators */ 41);
@@ -32412,7 +32519,7 @@
 	var ReactInstanceMap = __webpack_require__(/*! ./ReactInstanceMap */ 116);
 	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 56);
 	var SyntheticEvent = __webpack_require__(/*! ./SyntheticEvent */ 53);
-	var ReactShallowRenderer = __webpack_require__(/*! ./ReactShallowRenderer */ 302);
+	var ReactShallowRenderer = __webpack_require__(/*! ./ReactShallowRenderer */ 303);
 	
 	var findDOMNode = __webpack_require__(/*! ./findDOMNode */ 172);
 	var invariant = __webpack_require__(/*! fbjs/lib/invariant */ 8);
@@ -32800,7 +32907,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
 
 /***/ },
-/* 301 */
+/* 302 */
 /*!********************************************!*\
   !*** ../~/react-dom/lib/EventConstants.js ***!
   \********************************************/
@@ -32899,7 +33006,7 @@
 	module.exports = EventConstants;
 
 /***/ },
-/* 302 */
+/* 303 */
 /*!**************************************************!*\
   !*** ../~/react-dom/lib/ReactShallowRenderer.js ***!
   \**************************************************/
@@ -33042,7 +33149,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
 
 /***/ },
-/* 303 */
+/* 304 */
 /*!*****************************************************!*\
   !*** ../~/react/lib/ReactTransitionChildMapping.js ***!
   \*****************************************************/
@@ -33060,7 +33167,7 @@
 	
 	'use strict';
 	
-	var flattenChildren = __webpack_require__(/*! ./flattenChildren */ 304);
+	var flattenChildren = __webpack_require__(/*! ./flattenChildren */ 305);
 	
 	var ReactTransitionChildMapping = {
 	  /**
@@ -33153,7 +33260,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
 
 /***/ },
-/* 304 */
+/* 305 */
 /*!*****************************************!*\
   !*** ../~/react/lib/flattenChildren.js ***!
   \*****************************************/
@@ -33237,7 +33344,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
 
 /***/ },
-/* 305 */
+/* 306 */
 /*!******************************************************!*\
   !*** ../~/react/lib/ReactCSSTransitionGroupChild.js ***!
   \******************************************************/
@@ -33256,10 +33363,10 @@
 	'use strict';
 	
 	var React = __webpack_require__(/*! ./React */ 2);
-	var ReactAddonsDOMDependencies = __webpack_require__(/*! ./ReactAddonsDOMDependencies */ 298);
+	var ReactAddonsDOMDependencies = __webpack_require__(/*! ./ReactAddonsDOMDependencies */ 299);
 	
-	var CSSCore = __webpack_require__(/*! fbjs/lib/CSSCore */ 306);
-	var ReactTransitionEvents = __webpack_require__(/*! ./ReactTransitionEvents */ 307);
+	var CSSCore = __webpack_require__(/*! fbjs/lib/CSSCore */ 307);
+	var ReactTransitionEvents = __webpack_require__(/*! ./ReactTransitionEvents */ 308);
 	
 	var onlyChild = __webpack_require__(/*! ./onlyChild */ 31);
 	
@@ -33411,7 +33518,7 @@
 	module.exports = ReactCSSTransitionGroupChild;
 
 /***/ },
-/* 306 */
+/* 307 */
 /*!********************************!*\
   !*** ../~/fbjs/lib/CSSCore.js ***!
   \********************************/
@@ -33541,7 +33648,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
 
 /***/ },
-/* 307 */
+/* 308 */
 /*!***********************************************!*\
   !*** ../~/react/lib/ReactTransitionEvents.js ***!
   \***********************************************/
@@ -33621,7 +33728,7 @@
 	module.exports = ReactTransitionEvents;
 
 /***/ },
-/* 308 */
+/* 309 */
 /*!************************************!*\
   !*** ./teacher/StudentProfile.jsx ***!
   \************************************/
@@ -33652,15 +33759,15 @@
 	
 	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
 	
-	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 291);
+	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 292);
 	
-	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 292);
+	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 293);
 	
-	var _StudentListItem = __webpack_require__(/*! ./StudentListItem.jsx */ 293);
+	var _StudentListItem = __webpack_require__(/*! ./StudentListItem.jsx */ 294);
 	
-	var _AddStudent = __webpack_require__(/*! ./AddStudent.jsx */ 294);
+	var _AddStudent = __webpack_require__(/*! ./AddStudent.jsx */ 295);
 	
-	var _reactAddonsCssTransitionGroup = __webpack_require__(/*! react-addons-css-transition-group */ 295);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(/*! react-addons-css-transition-group */ 296);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
