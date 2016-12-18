@@ -30781,11 +30781,17 @@
 	  _createClass(Auth, [{
 	    key: 'render',
 	    value: function render() {
-	      var cookie = getCookie('auth');
+	      var cookie = decodeURI(getCookie('auth'));
 	      if (cookie === "") {
 	        _reactRouter.browserHistory.push('/teacher/login');
 	      } else {
-	        var parsedCookie = cookie.split(',');
+	        console.log("COOKIE VALUE='" + cookie + "'");
+	        var parsedCookie = cookie.split('%2C');
+	        console.log(JSON.stringify({
+	          username: parsedCookie[1],
+	          classroom: parsedCookie[2],
+	          students: parsedCookie.splice(3)
+	        }));
 	        this.props.dispatch((0, _index.setUser)({
 	          username: parsedCookie[1],
 	          classroom: parsedCookie[2],
@@ -31472,6 +31478,12 @@
 	        return;
 	      }
 	      var context = this;
+	      console.log(JSON.stringify({
+	        username: username,
+	        password: password,
+	        teacher: this.props.username,
+	        classroom: this.props.classroom
+	      }));
 	      _axios2.default.post('http://localhost:3000/teacher/student', {
 	        username: username,
 	        password: password,

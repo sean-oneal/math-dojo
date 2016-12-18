@@ -40,7 +40,9 @@ app.get('/auth/google/callback',
     // Successful authentication, redirect home.
     //res.cookie('auth', JSON.stringify(req.user));
     console.log(JSON.stringify(req.user));
-    res.cookie('auth', req.user.googleId + ',' + req.user.displayName + ',' + req.user.classroom + ',' + req.user.students.join(','));
+    var cookieValue = req.user.googleId + ',' + req.user.displayName + ',' + req.user.classroom + ',' + req.user.students.join(',');
+    console.log('cookieValue:' + cookieValue);
+    res.cookie('auth', cookieValue);
     res.redirect('/teacher');
   });
 

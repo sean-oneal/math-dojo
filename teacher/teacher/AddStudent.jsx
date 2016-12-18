@@ -28,6 +28,12 @@ class AddStudent extends React.Component {
       return;
     }
     var context = this;
+    console.log(JSON.stringify({
+      username: username,
+      password: password,
+      teacher: this.props.username,
+      classroom: this.props.classroom
+    }));
     Axios.post('http://localhost:3000/teacher/student', {
       username: username,
       password: password,
