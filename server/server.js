@@ -38,12 +38,14 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/teacherdashboard');
+    //res.cookie('auth', JSON.stringify(req.user));
+    console.log(JSON.stringify(req.user));
+    res.cookie('auth', req.user.googleId + ',' + req.user.displayName + ',' + req.user.classroom + ',' + req.user.students.join(','));
+    res.redirect('/teacher');
   });
 
 app.listen(port, function() {
   console.log('Now listening on port', port);
 });
-
 
 module.exports = app;
