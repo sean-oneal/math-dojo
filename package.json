@@ -50,7 +50,7 @@
     "dev": "webpack -d --watch",
     "build": "webpack -p",
     "start": "nodemon --ignore node_modules ./server/server.js",
-    "reset": "mongo catFight --eval \"db.dropDatabase()\"",
+    "reset": "mongo mathDojo --eval \"db.dropDatabase()\"",
     "db": "node ./server/test/insertDummyData.js"
   },
   "repository": {

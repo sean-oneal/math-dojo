@@ -5,39 +5,43 @@ var util = require('./../config/utility.js');
 
 //find Teacher in Database or Create new one, saving  Google OAuth accessToken
 exports.findOrCreate = function(accessToken, refreshToken, profile, cb) {
+  console.log('accessToken:' + accessToken);
   // googleId
   var id = profile.id;
   // user's display name on Google
   var name = profile.displayName;
 
-Teacher.findOne({ googleId: id}, function (err, user) {
-  //if error occurs, return the callback and error
-  if (err) {
-    return cb(err, null);
-  }
-  //if a teacher is not found, create and save a new teacher to database
-  if (!user) {
-    var teacherToSave = {
-      googleId: id,
-      displayName: name,
-      accessToken: accessToken,
-      classroom: '',
-      students: []
+  Teacher.findOne({ googleId: id}, function (err, user) {
+    //if error occurs, return the callback and error
+    if (err) {
+      return cb(err, null);
     }
-
-    Teacher.create(teacherToSave, function(err, user) {
-      if (err) {
-        console.log('no teacher found');
-        return cb(err, null)
+    //if a teacher is not found, create and save a new teacher to database
+    if (!user) {
+      var teacherToSave = {
+        googleId: id,
+        displayName: name,
+        accessToken: accessToken,
+        classroom: name + ' class',
+        students: []
       }
-      if (user) {
-        console.log(err, user,'saved');
-      }
-    });
-  }
-
-  return cb(err, user);
-})};
+      Teacher.create(teacherToSave, function(err, user) {
+        if (err) {
+          console.log('no teacher found');
+          return cb(err, null)
+        }
+        else if (!user) {
+          console.log(err, user,'saved');
+          return cb({ error: 'Some error occured!'}, null);
+        } else {
+          return cb(err, user);
+        }
+      });
+    } else {
+      return cb(err, user);
+    }
+  });
+};
 
 //Local Storage Strategy
 exports.createTeacher = function (req, res) {
@@ -79,6 +83,7 @@ exports.addStudent = function (req, res) {
         res.status(500);
         res.send({ error: 'Error retrieving classroom' });
       } else {
+        console.log('CLASSROOM:' + JSON.stringify(classroom));
         if (classroom.students.includes(username)) {
           res.status(409);
           res.send({ error: 'Student username is already taken' });
