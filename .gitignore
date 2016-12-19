@@ -2,6 +2,8 @@
 
 # bundled files
 client/public/*
+teacher/public/*
+student/public/*
 
 # Logs
 logs
