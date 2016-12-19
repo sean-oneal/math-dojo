@@ -19,11 +19,6 @@ class Auth extends React.Component {
     } else {
       console.log("COOKIE VALUE='" + cookie + "'");
       var parsedCookie = cookie.split('%2C');
-      console.log(JSON.stringify({
-        username: parsedCookie[1],
-        classroom: parsedCookie[2],
-        students: parsedCookie.splice(3),
-      }));
       this.props.dispatch(setUser({
         username: parsedCookie[1],
         classroom: parsedCookie[2],

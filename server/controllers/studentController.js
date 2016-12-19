@@ -36,7 +36,7 @@ exports.logoutStudent = function (req, res) {
           res.send({ error: 'Error retrieving student record' });
         } else {
           req.session.destroy();
-          res.redirect('/');
+          res.send();
         }
       });
     }
@@ -44,7 +44,8 @@ exports.logoutStudent = function (req, res) {
 };
 
 exports.generateQuestion = function (req, res) {
-  let userlvl = parseInt(req.cookies.userlvl);
+  let userlvl = parseInt(req.body.userlvl);
+
   console.log('######', typeof req.cookies.userlvl);
   const operands = ['+', '-', '*', '/'];
   const firstDigit = Math.floor(Math.random() * Math.pow(5, userlvl));

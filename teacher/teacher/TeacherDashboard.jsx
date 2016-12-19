@@ -23,10 +23,13 @@ class TeacherDashboard extends React.Component {
 
   signOut() {
     var context = this;
-    Axios.post('http://localhost:3000/teacher/logout')
+    Axios.get('http://localhost:3000/teacher/logout')
     .then(function(res) {
       console.log(res);
-      browserHistory.push('/');
+      console.log('111:' + JSON.stringify(document.cookie));
+      document.cookie = 'auth=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      console.log('222:' + JSON.stringify(document.cookie));
+      window.location.href='/';
     });
   }
 

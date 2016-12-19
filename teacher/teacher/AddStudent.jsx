@@ -47,7 +47,7 @@ class AddStudent extends React.Component {
       } else {
         console.log(res.data);
         context.props.dispatch(setUser({
-          username: res.data.username,
+          username: res.data.displayName,
           classroom: res.data.classroom,
           students: res.data.students,
         }));

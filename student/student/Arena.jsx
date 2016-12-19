@@ -102,9 +102,12 @@ class Arena extends React.Component {
   generateQuestion() {
     const context = this;
     const userlvl = this.props.level; //this userlvl corrlates to the evil cat
-    document.cookie = `userlvl=${userlvl}`;
-    Axios.get('http://localhost:3000/mathApi/arena')
+    console.log("COOKIE="+document.cookie);
+    Axios.post('http://localhost:3000/student/question', {
+      "userlvl": userlvl
+    })
     .then((result) => {
+      console.log('GETQUESTION:' + JSON.stringify(result));
       context.setState({
         answer: result.data.answer,
         question: result.data.question,
@@ -231,7 +234,7 @@ class Arena extends React.Component {
     })
     .then(function(res) {
       console.log(res);
-      browserHistory.push('/');
+      window.location.href='/';
     });
   }
 
