@@ -69,9 +69,9 @@
 	
 	var _Login = __webpack_require__(/*! ./teacher/Login.jsx */ 262);
 	
-	var _Signup = __webpack_require__(/*! ./teacher/Signup.jsx */ 289);
+	var _Signup = __webpack_require__(/*! ./teacher/Signup.jsx */ 290);
 	
-	var _TeacherDashboard = __webpack_require__(/*! ./teacher/TeacherDashboard.jsx */ 290);
+	var _TeacherDashboard = __webpack_require__(/*! ./teacher/TeacherDashboard.jsx */ 291);
 	
 	var _StudentProfile = __webpack_require__(/*! ./teacher/StudentProfile.jsx */ 308);
 	
@@ -226,7 +226,7 @@
 	};
 	
 	module.exports = React;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 3 */
@@ -837,7 +837,7 @@
 	};
 	
 	module.exports = PooledClass;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 7 */
@@ -941,7 +941,7 @@
 	}
 	
 	module.exports = invariant;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 9 */
@@ -1290,7 +1290,7 @@
 	};
 	
 	module.exports = ReactElement;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 10 */
@@ -1403,7 +1403,7 @@
 	}
 	
 	module.exports = warning;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 12 */
@@ -1483,7 +1483,7 @@
 	}
 	
 	module.exports = canDefineProperty;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 14 */
@@ -1694,7 +1694,7 @@
 	}
 	
 	module.exports = traverseAllChildren;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 16 */
@@ -1934,7 +1934,7 @@
 	}
 	
 	module.exports = ReactComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 19 */
@@ -2038,7 +2038,7 @@
 	};
 	
 	module.exports = ReactNoopUpdateQueue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 20 */
@@ -2066,7 +2066,7 @@
 	}
 	
 	module.exports = emptyObject;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 21 */
@@ -2840,7 +2840,7 @@
 	};
 	
 	module.exports = ReactClass;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 23 */
@@ -2873,7 +2873,7 @@
 	}
 	
 	module.exports = ReactPropTypeLocationNames;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 24 */
@@ -3051,7 +3051,7 @@
 	};
 	
 	module.exports = ReactDOMFactories;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 25 */
@@ -3286,7 +3286,7 @@
 	};
 	
 	module.exports = ReactElementValidator;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 26 */
@@ -3628,7 +3628,7 @@
 	};
 	
 	module.exports = ReactComponentTreeHook;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 27 */
@@ -3723,7 +3723,7 @@
 	}
 	
 	module.exports = checkReactTypeSpec;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 28 */
@@ -4189,7 +4189,7 @@
 	}
 	
 	module.exports = ReactPropTypes;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 30 */
@@ -4256,7 +4256,7 @@
 	}
 	
 	module.exports = onlyChild;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 32 */
@@ -4387,7 +4387,7 @@
 	}
 	
 	module.exports = ReactDOM;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 34 */
@@ -4583,7 +4583,7 @@
 	};
 	
 	module.exports = ReactDOMComponentTree;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 35 */
@@ -4847,7 +4847,7 @@
 	};
 	
 	module.exports = DOMProperty;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 37 */
@@ -5580,7 +5580,7 @@
 	};
 	
 	module.exports = EventPropagators;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 42 */
@@ -5866,7 +5866,7 @@
 	};
 	
 	module.exports = EventPluginHub;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 43 */
@@ -6129,7 +6129,7 @@
 	};
 	
 	module.exports = EventPluginRegistry;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 44 */
@@ -6363,7 +6363,7 @@
 	};
 	
 	module.exports = EventPluginUtils;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 45 */
@@ -6448,7 +6448,7 @@
 	}
 	
 	module.exports = ReactErrorUtils;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 46 */
@@ -6514,7 +6514,7 @@
 	}
 	
 	module.exports = accumulateInto;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 47 */
@@ -6829,7 +6829,7 @@
 	};
 	
 	module.exports = PooledClass;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 51 */
@@ -7188,7 +7188,7 @@
 	    process.env.NODE_ENV !== 'production' ? warning(warningCondition, 'This synthetic event is reused for performance reasons. If you\'re seeing this, ' + 'you\'re %s `%s` on a released/nullified synthetic event. %s. ' + 'If you must keep the original synthetic event around, use event.persist(). ' + 'See https://fb.me/react-event-pooling for more information.', action, propName, result) : void 0;
 	  }
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 54 */
@@ -7819,7 +7819,7 @@
 	};
 	
 	module.exports = ReactUpdates;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 57 */
@@ -7946,7 +7946,7 @@
 	}();
 	
 	module.exports = PooledClass.addPoolingTo(CallbackQueue);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 58 */
@@ -8151,7 +8151,7 @@
 	};
 	
 	module.exports = ReactReconciler;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 60 */
@@ -8349,7 +8349,7 @@
 	};
 	
 	module.exports = ReactOwner;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 62 */
@@ -8381,7 +8381,7 @@
 	}
 	
 	module.exports = { debugTool: debugTool };
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 63 */
@@ -8750,7 +8750,7 @@
 	}
 	
 	module.exports = ReactDebugTool;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 64 */
@@ -8795,7 +8795,7 @@
 	};
 	
 	module.exports = ReactInvalidSetStateWarningHook;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 65 */
@@ -9140,7 +9140,7 @@
 	};
 	
 	module.exports = TransactionImpl;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 69 */
@@ -10165,7 +10165,7 @@
 	};
 	
 	module.exports = DOMChildrenOperations;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 81 */
@@ -10706,7 +10706,7 @@
 	};
 	
 	module.exports = Danger;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 88 */
@@ -10798,7 +10798,7 @@
 	}
 	
 	module.exports = createNodesFromMarkup;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 89 */
@@ -10933,7 +10933,7 @@
 	}
 	
 	module.exports = createArrayFromMixed;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 90 */
@@ -11036,7 +11036,7 @@
 	}
 	
 	module.exports = getMarkupWrap;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 91 */
@@ -12080,7 +12080,7 @@
 	_assign(ReactDOMComponent.prototype, ReactDOMComponent.Mixin, ReactMultiChild.Mixin);
 	
 	module.exports = ReactDOMComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 93 */
@@ -12362,7 +12362,7 @@
 	};
 	
 	module.exports = CSSPropertyOperations;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 96 */
@@ -12690,7 +12690,7 @@
 	}
 	
 	module.exports = dangerousStyleValue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 100 */
@@ -13058,7 +13058,7 @@
 	};
 	
 	module.exports = DOMPropertyOperations;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 104 */
@@ -13850,7 +13850,7 @@
 	}
 	
 	module.exports = ReactDOMInput;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 109 */
@@ -13993,7 +13993,7 @@
 	};
 	
 	module.exports = LinkedValueUtils;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 110 */
@@ -14148,7 +14148,7 @@
 	};
 	
 	module.exports = ReactDOMOption;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 112 */
@@ -14356,7 +14356,7 @@
 	}
 	
 	module.exports = ReactDOMSelect;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 113 */
@@ -14518,7 +14518,7 @@
 	}
 	
 	module.exports = ReactDOMTextarea;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 114 */
@@ -14976,7 +14976,7 @@
 	};
 	
 	module.exports = ReactMultiChild;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 115 */
@@ -15030,7 +15030,7 @@
 	};
 	
 	module.exports = ReactComponentEnvironment;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 116 */
@@ -15247,7 +15247,7 @@
 	};
 	
 	module.exports = ReactChildReconciler;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 118 */
@@ -15373,7 +15373,7 @@
 	}
 	
 	module.exports = instantiateReactComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 119 */
@@ -16283,7 +16283,7 @@
 	};
 	
 	module.exports = ReactCompositeComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 120 */
@@ -16331,7 +16331,7 @@
 	};
 	
 	module.exports = ReactNodeTypes;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 121 */
@@ -16426,7 +16426,7 @@
 	}
 	
 	module.exports = checkReactTypeSpec;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 122 */
@@ -16459,7 +16459,7 @@
 	}
 	
 	module.exports = ReactPropTypeLocationNames;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 123 */
@@ -16704,7 +16704,7 @@
 	};
 	
 	module.exports = ReactHostComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 127 */
@@ -16982,7 +16982,7 @@
 	}
 	
 	module.exports = traverseAllChildren;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 130 */
@@ -17141,7 +17141,7 @@
 	}
 	
 	module.exports = flattenChildren;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 133 */
@@ -17239,7 +17239,7 @@
 	PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 	
 	module.exports = ReactServerRenderingTransaction;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 134 */
@@ -17386,7 +17386,7 @@
 	}();
 	
 	module.exports = ReactServerUpdateQueue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 135 */
@@ -17620,7 +17620,7 @@
 	};
 	
 	module.exports = ReactUpdateQueue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 136 */
@@ -18010,7 +18010,7 @@
 	}
 	
 	module.exports = validateDOMNesting;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 137 */
@@ -18221,7 +18221,7 @@
 	  traverseTwoPhase: traverseTwoPhase,
 	  traverseEnterLeave: traverseEnterLeave
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 139 */
@@ -18393,7 +18393,7 @@
 	});
 	
 	module.exports = ReactDOMTextComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 140 */
@@ -18722,7 +18722,7 @@
 	};
 	
 	module.exports = EventListener;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 143 */
@@ -18995,7 +18995,7 @@
 	PooledClass.addPoolingTo(ReactReconcileTransaction);
 	
 	module.exports = ReactReconcileTransaction;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 146 */
@@ -20320,7 +20320,7 @@
 	};
 	
 	module.exports = SimpleEventPlugin;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 156 */
@@ -21459,7 +21459,7 @@
 	};
 	
 	module.exports = ReactMount;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 167 */
@@ -21500,7 +21500,7 @@
 	}
 	
 	module.exports = ReactDOMContainerInfo;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 168 */
@@ -21723,7 +21723,7 @@
 	}
 	
 	module.exports = findDOMNode;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 173 */
@@ -21903,7 +21903,7 @@
 	};
 	
 	module.exports = ReactDOMUnknownPropertyHook;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 176 */
@@ -21954,7 +21954,7 @@
 	};
 	
 	module.exports = ReactDOMNullInputValuePropHook;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 177 */
@@ -22055,7 +22055,7 @@
 	};
 	
 	module.exports = ReactDOMInvalidARIAHook;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 178 */
@@ -22167,7 +22167,7 @@
 	Provider.childContextTypes = {
 	  store: _storeShape2["default"].isRequired
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 180 */
@@ -22623,7 +22623,7 @@
 	    return (0, _hoistNonReactStatics2["default"])(Connect, WrappedComponent);
 	  };
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 183 */
@@ -22732,7 +22732,7 @@
 	exports.bindActionCreators = _bindActionCreators2['default'];
 	exports.applyMiddleware = _applyMiddleware2['default'];
 	exports.compose = _compose2['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 186 */
@@ -23368,7 +23368,7 @@
 	
 	var result = (0, _ponyfill2['default'])(root);
 	exports['default'] = result;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(/*! ./../../../../../../../../../../usr/local/lib/~/webpack/buildin/module.js */ 199)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/buildin/module.js */ 199)(module)))
 
 /***/ },
 /* 199 */
@@ -23569,7 +23569,7 @@
 	    return hasChanged ? nextState : state;
 	  };
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 202 */
@@ -23893,7 +23893,7 @@
 	
 	module.exports = invariant;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 208 */
@@ -24459,7 +24459,7 @@
 	
 	  return pathname.replace(/\/+/g, '/');
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 213 */
@@ -24643,7 +24643,7 @@
 	
 	exports.default = Router;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 214 */
@@ -24927,7 +24927,7 @@
 	  };
 	}
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 215 */
@@ -25041,7 +25041,7 @@
 	
 	module.exports = warning;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 217 */
@@ -25870,7 +25870,7 @@
 	  }, callback);
 	}
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 224 */
@@ -26052,7 +26052,7 @@
 	
 	exports.default = RouterContext;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 226 */
@@ -26418,7 +26418,7 @@
 	
 	exports.default = Link;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 230 */
@@ -26535,7 +26535,7 @@
 	  return (0, _hoistNonReactStatics2.default)(WithRouter, WrappedComponent);
 	}
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 232 */
@@ -26608,7 +26608,7 @@
 	
 	exports.default = IndexRedirect;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 233 */
@@ -26720,7 +26720,7 @@
 	
 	exports.default = Redirect;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 234 */
@@ -26790,7 +26790,7 @@
 	
 	exports.default = IndexRoute;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 235 */
@@ -26857,7 +26857,7 @@
 	
 	exports.default = Route;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 236 */
@@ -26938,7 +26938,7 @@
 	
 	exports.default = match;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 237 */
@@ -27290,7 +27290,7 @@
 	};
 	
 	exports.default = runTransitionHook;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 243 */
@@ -27391,7 +27391,7 @@
 	  // a.action === b.action && // Different action !== location change.
 	  a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && statesAreEqual(a.state, b.state);
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 244 */
@@ -27501,7 +27501,7 @@
 	
 	  return path;
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 245 */
@@ -27767,7 +27767,7 @@
 	};
 	
 	exports.default = createMemoryHistory;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 247 */
@@ -28111,7 +28111,7 @@
 	};
 	
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 251 */
@@ -28237,7 +28237,7 @@
 	};
 	
 	exports.default = createBrowserHistory;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 253 */
@@ -28497,7 +28497,7 @@
 	
 	  return undefined;
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 257 */
@@ -28749,7 +28749,7 @@
 	};
 	
 	exports.default = createHashHistory;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 261 */
@@ -28894,7 +28894,7 @@
 	    if (getHashPath() !== path) replaceHashPath(path);
 	  });
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 262 */
@@ -28929,6 +28929,8 @@
 	var _reactRouter = __webpack_require__(/*! react-router */ 209);
 	
 	var _Alerts = __webpack_require__(/*! ./../partials/Alerts.jsx */ 288);
+	
+	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 289);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -29001,47 +29003,36 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-	
 	      var alertToUser = this.state.alertToUser !== null ? _react2.default.createElement(_Alerts.Alerts, { alert: this.state.alertToUser, dismiss: this.dismissAlert.bind(this) }) : _react2.default.createElement('div', null);
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'container', onSubmit: this.handleClick },
+	        { className: 'container', onClick: this.handleClick },
 	        _react2.default.createElement(
 	          'form',
-	          { className: 'form-signin' },
+	          { className: 'form-signin col-9' },
 	          _react2.default.createElement(
 	            'h2',
 	            { className: 'form-signin-heading' },
-	            'Teacher login'
+	            'Math Dojo'
 	          ),
 	          _react2.default.createElement(
-	            'label',
-	            { className: 'sr-only' },
-	            'Username'
+	            'h3',
+	            { className: 'form-signin-heading' },
+	            '- Teacher Access -'
 	          ),
-	          _react2.default.createElement('input', { type: 'username', id: 'inputUsername', className: 'form-control', placeholder: 'Username', required: true, autoFocus: true }),
 	          _react2.default.createElement(
-	            'label',
-	            { className: 'sr-only' },
-	            'Password'
-	          ),
-	          _react2.default.createElement('input', { type: 'password', id: 'inputPassword', className: 'form-control', placeholder: 'Password', required: true }),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: function onClick() {
-	                return _this2.login($('#inputUsername').val(), $('#inputPassword').val());
-	              }, className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
-	            'Login'
-	          ),
-	          _react2.default.createElement('hr', null),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: function onClick() {
-	                location.href = 'http://127.0.0.1:3000/auth/google';
-	              }, className: 'btn btn-lg btn-primary btn-block', type: 'button' },
-	            'Google Login'
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'button',
+	              { onClick: function onClick() {
+	                  location.href = 'http://127.0.0.1:3000/auth/google';
+	                }, className: 'btn btn-lg btn-block btn-social  btn-google', type: 'button' },
+	              ' ',
+	              _react2.default.createElement('span', { className: 'fa fa-google' }),
+	              'Sign in with Google'
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -29652,7 +29643,7 @@
 	
 	module.exports = defaults;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 268 */
@@ -29860,7 +29851,7 @@
 	  });
 	};
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 270 */
@@ -30729,6 +30720,50 @@
 /***/ },
 /* 289 */
 /*!****************************!*\
+  !*** ./teacher/Navbar.jsx ***!
+  \****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Navbar = undefined;
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 209);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Navbar = function Navbar() {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'col-sm-3 col-md-2 sidebar' },
+	    _react2.default.createElement(
+	      'ul',
+	      { className: 'nav nav-sidebar' },
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: 'teacherdashboard' },
+	          'Dashboard'
+	        )
+	      )
+	    )
+	  );
+	};
+	
+	exports.Navbar = Navbar;
+
+/***/ },
+/* 290 */
+/*!****************************!*\
   !*** ./teacher/Signup.jsx ***!
   \****************************/
 /***/ function(module, exports, __webpack_require__) {
@@ -30908,7 +30943,7 @@
 	exports.TeacherSignup = TeacherSignup;
 
 /***/ },
-/* 290 */
+/* 291 */
 /*!**************************************!*\
   !*** ./teacher/TeacherDashboard.jsx ***!
   \**************************************/
@@ -30939,7 +30974,7 @@
 	
 	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
 	
-	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 291);
+	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 289);
 	
 	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 292);
 	
@@ -31042,50 +31077,6 @@
 	exports.TeacherDashboard = TeacherDashboard = (0, _reactRedux.connect)(mapStateToProps)(TeacherDashboard);
 	
 	exports.TeacherDashboard = TeacherDashboard;
-
-/***/ },
-/* 291 */
-/*!****************************!*\
-  !*** ./teacher/Navbar.jsx ***!
-  \****************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Navbar = undefined;
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 209);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Navbar = function Navbar() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'col-sm-3 col-md-2 sidebar' },
-	    _react2.default.createElement(
-	      'ul',
-	      { className: 'nav nav-sidebar' },
-	      _react2.default.createElement(
-	        'li',
-	        null,
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: 'teacherdashboard' },
-	          'Dashboard'
-	        )
-	      )
-	    )
-	  );
-	};
-	
-	exports.Navbar = Navbar;
 
 /***/ },
 /* 292 */
@@ -31824,7 +31815,7 @@
 	
 	
 	module.exports = ReactTransitionGroup;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 298 */
@@ -31868,7 +31859,7 @@
 	    return ReactTestUtils;
 	  };
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 299 */
@@ -32377,7 +32368,7 @@
 	};
 	
 	module.exports = ReactPerfAnalysis;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 300 */
@@ -32797,7 +32788,7 @@
 	});
 	
 	module.exports = ReactTestUtils;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 301 */
@@ -33039,7 +33030,7 @@
 	}();
 	
 	module.exports = ReactShallowRenderer;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 303 */
@@ -33150,7 +33141,7 @@
 	};
 	
 	module.exports = ReactTransitionChildMapping;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 304 */
@@ -33234,7 +33225,7 @@
 	}
 	
 	module.exports = flattenChildren;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 305 */
@@ -33538,7 +33529,7 @@
 	};
 	
 	module.exports = CSSCore;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/process/browser.js */ 3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../../usr/local/lib/~/webpack/~/process/browser.js */ 3)))
 
 /***/ },
 /* 307 */
@@ -33652,7 +33643,7 @@
 	
 	var _index = __webpack_require__(/*! ./../actions/index.jsx */ 287);
 	
-	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 291);
+	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 289);
 	
 	var _Topbar = __webpack_require__(/*! ./../partials/Topbar.jsx */ 292);
 	
