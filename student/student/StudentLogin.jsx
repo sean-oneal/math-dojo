@@ -32,7 +32,7 @@ class StudentLogin extends React.Component {
 
   getClassrooms() {
     var context = this;
-    Axios.get('http://localhost:3000/classrooms')
+    Axios.get('http://localhost:3000/student/classrooms')
     .then(function(res) {
       if (res.data.error) {
         console.log('unable to login');

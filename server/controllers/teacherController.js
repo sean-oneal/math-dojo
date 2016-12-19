@@ -74,11 +74,12 @@ exports.addStudent = function (req, res) {
   var password = req.body.password;
   var classroomName = req.body.classroom;
   var teacher = req.body.teacher;
+  console.log(username,password,classroomName,teacher);
   if (!username || !password || !classroomName || !teacher) {
     res.status(406);
     res.send({ error: 'Username, Password, Classroom, and Teacher Required' });
   } else {
-    Teacher.findOne({ username: teacher, classroom: classroomName }, function(err, classroom) {
+    Teacher.findOne({ displayName: teacher, classroom: classroomName }, function(err, classroom) {
       if (err) {
         res.status(500);
         res.send({ error: 'Error retrieving classroom' });
@@ -124,7 +125,7 @@ exports.getStudent = function (req, res) {
     res.status(406);
     res.send({ error: 'Username, Password, Classroom, and Teacher Required' });
   } else {
-    Teacher.findOne({ username: teacher, classroom: classroomName }, function(err, classroom) {
+    Teacher.findOne({ displayName: teacher, classroom: classroomName }, function(err, classroom) {
       if (err) {
         res.status(500);
         res.send({ error: 'Error retrieving classroom' });
@@ -172,5 +173,6 @@ exports.loginTeacher = function (req, res) {
 
 exports.logoutTeacher = function (req, res) {
   req.session.destroy();
+  //res.send('/');
   res.redirect('/');
 };
