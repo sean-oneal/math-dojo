@@ -33,11 +33,6 @@ dist/
 node_modules/
 bower_components/
 
-config.js
-auth.jsconfig.js
-config.js
-auth.js
-config.js
 auth.js
 .DS_Store
 config.js
