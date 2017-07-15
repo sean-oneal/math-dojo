@@ -34,4 +34,6 @@ node_modules/
 bower_components/
 
 config.js
+auth.jsconfig.js
+config.js
 auth.js
