@@ -37,3 +37,6 @@ config.js
 auth.jsconfig.js
 config.js
 auth.js
+config.js
+auth.js
+.DS_Store
