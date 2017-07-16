@@ -97,27 +97,34 @@
 #### Teacher Application
 
   - Login Screen
-    - <img src="readme/teacherLogin.png" alt="Math Dojo Mockup" height=600 />
+
+    <img src="readme/teacherLogin.png" alt="Math Dojo Mockup" height=600 />
 
   - Google OAuth Verification
-    - <img src="readme/googleOAuthLogin.png" alt="Math Dojo (Mobile) Google OAuth 2.0 Login" height=600 />
+
+    <img src="readme/googleOAuthLogin.png" alt="Math Dojo (Mobile) Google OAuth 2.0 Login" height=600 />
 
   - Responsive Dashboard
-    - <img src="readme/teacherResponsive.png" alt="Math Dojo Teacher Add Student" height=600 />
+
+    <img src="readme/teacherResponsive.png" alt="Math Dojo Teacher Add Student" height=600 />
 
   - Dashboard Drop-down
-    - <img src="readme/teacherAddStudent.png" alt="Math Dojo Teacher Sign Out" height=600 />
+
+    <img src="readme/teacherAddStudent.png" alt="Math Dojo Teacher Sign Out" height=600 />
 
 #### Student Application:
 
   - Login
-    - <img src="readme/studentLogin.png" alt="Math Dojo Student Login" height=600 />
+
+    <img src="readme/studentLogin.png" alt="Math Dojo Student Login" height=600 />
 
   - Desktop Dashboard
-    - <img src="readme/mathDojo1.png" alt="Math Dojo Student Dashboard" height=600 />
+
+    <img src="readme/mathDojo1.png" alt="Math Dojo Student Dashboard" height=600 />
 
   - Wrong Answer
-    - <img src="readme/studentWrongAnswer.png" alt="Math Dojo Student Wrong Answer" height=600 />
+
+    <img src="readme/studentWrongAnswer.png" alt="Math Dojo Student Wrong Answer" height=600 />
 
 ## Contributing
 
