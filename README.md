@@ -52,8 +52,8 @@ mongod
 1. From within the `/teacher` directory:
 
 ```sh
- ../node_modules/.bin/webpack -d --watch
- ```
+../node_modules/.bin/webpack -d --watch
+```
 
 1. From within the `/student` directory:
 
@@ -76,7 +76,7 @@ npm run dev
 #### Load the database with dummy data:
 
 ```sh
-  npm run db
+npm run db
 ```
 
 #### Clearing the Database:
@@ -139,7 +139,7 @@ npm run build
 
   - Desktop Dashboard
 
-    <img src="readme/mathDojo1.png" alt="Math Dojo Student Dashboard" height=600 />
+    <img src="readme/mathDojo1.png" alt="Math Dojo Student Dashboard" height=800 />
 
   - Wrong Answer
 
