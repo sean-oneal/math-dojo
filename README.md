@@ -35,41 +35,60 @@
 
 ### Installing Dependencies
 
-  From within the root directory:
-  ```sh
-    npm install
-  ```
+From within the root directory:
+
+```sh
+npm install
+```
 
 ### :warning: Tasks
 
 1. Open a separate terminal tab/window and launch `mongod`:
-  - ```sh mongod```
+
+```sh
+mongod
+```
 
 1. From within the `/teacher` directory:
- - ```sh ../node_modules/.bin/webpack -d --watch ```
+
+```sh
+ ../node_modules/.bin/webpack -d --watch
+ ```
 
 1. From within the `/student` directory:
-  - ```sh ../node_modules/.bin/webpack -d --watch ```
+
+```sh
+../node_modules/.bin/webpack -d --watch
+```
 
 1. From within the root `~/` directory, start server and webpack:
- - ```sh npm start ```
+
+```sh
+npm start
+```
 
 1. Alternatively, only have webpack watch:
- - ```sh npm run dev ```
+
+```sh
+npm run dev
+```
 
 #### Load the database with dummy data:
-  ```sh
-    npm run db
-  ```
+
+```sh
+  npm run db
+```
 
 #### Clearing the Database:
-  ```sh
-      npm run reset
+
+```sh
+npm run reset
 ```
 
 ## Production Build
- ```sh
-      npm run build
+
+```sh
+npm run build
 ```
 
 ### :white_check_mark: Tech Stack
