@@ -1,8 +1,25 @@
 {
-  "name": "catfight",
+  "name": "math-dojo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrilliantBroccoli/hrsf51-legacy.git"
+  },
+  "author": "Sean O'Neal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sean-oneal/math-dojo/issues"
+  },
+  "homepage": "https://github.com/sean-oneal/math-dojo#readme",
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "build": "webpack -p",
+    "start": "nodemon --ignore node_modules ./server/server.js && webpack -d --watch",
+    "reset": "mongo mathDojo --eval \"db.dropDatabase()\"",
+    "db": "node ./server/test/insertDummyData.js"
+  },
   "dependencies": {
     "axios": "^0.15.3",
     "babel-core": "^6.18.2",
@@ -45,22 +62,5 @@
     "style-loader": "^0.13.1",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "webpack": "^1.14.0"
-  },
-  "scripts": {
-    "dev": "webpack -d --watch",
-    "build": "webpack -p",
-    "start": "nodemon --ignore node_modules ./server/server.js",
-    "reset": "mongo mathDojo --eval \"db.dropDatabase()\"",
-    "db": "node ./server/test/insertDummyData.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BrilliantBroccoli/hrsf51-legacy.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BrilliantBroccoli/hrsf51-legacy/issues"
-  },
-  "homepage": "https://github.com/BrilliantBroccoli/hrsf51-legacy#readme"
+  }
 }

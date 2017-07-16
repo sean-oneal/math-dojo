@@ -1,10 +1,12 @@
 ### node etc ###
 
 # bundled files
-client/public/*
-teacher/public/*
-student/public/*
-
+client/public/**
+teacher/public/**
+student/public/**
+**student/public
+**teacher/public
+public?**
 # Logs
 logs
 *.log
@@ -36,3 +38,5 @@ bower_components/
 auth.js
 .DS_Store
 config.js
+
+**/bundle.js.map

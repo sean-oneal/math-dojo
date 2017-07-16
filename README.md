@@ -1,65 +1,123 @@
-# Project Name
+# :notebook: :100: Math Dojo
 
-> Pithy project description
+<img src="readme/studentLogin.png" alt="Math Dojo mockup" height=600 />
 
-## Team
+> A responsive, secure and interactive quiz application built for the classroom.
 
-  - __Product Owner__: Aaron Trank
-  - __Scrum Master__: Sean O'Neal
+## :busts_in_silhouette: Team
 
+  - [Aaron Trank](https://github.com/aarontrank)
+  - [Sean O'Neal](https://github.com/sean-oneal)
 
-## Table of Contents
+## :sparkles: Table of Contents
 
-1. [Usage](#Usage)
+1. [Team](#team)
+1. [Usage](#usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
     1. [Tasks](#tasks)
-1. [Team](#team)
+    1. [Tech Stack](#techstack)
+1. [Screenshots](#screenshots)
 1. [Contributing](#contributing)
 
-## Usage
+## :tada: Usage
 
-> Some usage instructions
+> Math Dojo was developed and tested to be used from a mobile device, as well as on a desktop or laptop.  A valid and working Google Account is required for Teachers to login.  To start using Math Dojo, go to `localhost:3000` in your browser.
 
-## Requirements
+## :bangbang: Requirements
 
-- React 15.4.x
-- Redux 3.6.x
-- Express 4.14.x
-- Mongoose 4.7.x
-- Passport
-- Passport Google OAuth 2.0 1.0.x,
-- Bcrypt-Node.js
-- Node 0.10.x
-- Webpack 1.14.x
+- Node
+- MongoDB
+- A valid Google Account
 
-## Development
+## :construction: Development
 
 ### Installing Dependencies
 
-From within the root directory:
+  From within the root directory:
+  ```sh
+    npm install
+  ```
 
-```sh
-npm install
-IN STUDENT DIRECTORY: webpack -d
-IN TEACHER DIRECTORY: webpack -d
-npm run start
+### :warning: Tasks
+
+1. Open a separate terminal tab/window and launch `mongod`:
+  - ```sh mongod```
+
+1. From within the `/teacher` directory:
+ - ```sh ../node_modules/.bin/webpack -d --watch ```
+
+1. From within the `/student` directory:
+  - ```sh ../node_modules/.bin/webpack -d --watch ```
+
+1. From within the root `~/` directory, start server and webpack:
+ - ```sh npm start ```
+
+1. Alternatively, only have webpack watch:
+ - ```sh npm run dev ```
+
+#### Load the database with dummy data:
+  ```sh
+    npm run db
+  ```
+
+#### Clearing the Database:
+  ```sh
+      npm run reset
 ```
-####Reset the Database
-```sh
-npm run reset
+
+## Production Build
+ ```sh
+      npm run build
 ```
 
-####Load the database with dummy data
-```sh
-npm run db
-```
+### :white_check_mark: Tech Stack
+> The application was built using the MongoDB, Express, React/Redux, Node (MERN) stack, and incorporates the following technologies:
 
-### Roadmap
+- React
+- React Router
+- Redux
+- Express
+- Mongoose
+- Webpack
+- PassportJS
+- Google OAuth 2.0
+- bCrypt
+- Axios
+- Express Sessions
+- Bootstrap
+- React Bootstrap
+- Chart.js
+- Morgan
+- jQuery
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+### :computer: Screenshots
 
+#### Teacher Application
+
+  Login Screen
+  <img src="readme/teacherLogin.png" alt="Math Dojo mockup" height=600 />
+
+  Google OAuth Verification
+  <img src="readme/googleOAuth.png" alt="Math Dojo (Mobile) Google OAuth 2.0 Teacher Login" />
+
+  Responsive Dashboard
+  <img src="readme/teacherResponsive.png" alt="Math Dojo Teacher Screen - Add Student" />
+
+  Sign out Drop Down
+  <img src="readme/teacherAddStudent.png" alt="Math Dojo Teacher Dashboard - Sign Out" />
+
+#### Student Application:
+
+  Login
+  <img src="readme/studentLogin.png" alt="Math Dojo Student Login" />
+
+  Desktop Dashboard
+  <img src="readme/mathDojo1.png" alt="Math Dojo Student Dashboard"/>
+
+  Wrong Answer
+  <img src="readme/studentWrongAnswer.png" alt="Math Dojo Student Wrong Answer"/>
 
 ## Contributing
 
