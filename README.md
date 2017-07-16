@@ -139,7 +139,7 @@ npm run build
 
   - Desktop Dashboard
 
-    <img src="readme/mathDojo1.png" alt="Math Dojo Student Dashboard" height=800 />
+    <img src="readme/mathDojo1.png" alt="Math Dojo Student Dashboard" height=400 />
 
   - Wrong Answer
 
