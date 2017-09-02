@@ -17,7 +17,7 @@
 1. [Development](#construction-development)
     1. [Installing Dependencies](#installing-dependencies)
     1. [Tasks](#warning-tasks)
-    1. [Tech Stack](#tech-stack)
+    1. [Tech Stack](#white_check_mark-tech-stack)
 1. [Screenshots](#computer-screenshots)
 1. [Contributing](#contributing)
 
