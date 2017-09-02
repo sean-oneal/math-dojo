@@ -11,14 +11,14 @@
 
 ## :sparkles: Table of Contents
 
-1. [Team](#team)
-1. [Usage](#usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+1. [Team](#busts_in_silhouette-team)
+1. [Usage](#tada-usage)
+1. [Requirements](#bangbang-requirements)
+1. [Development](#construction-development)
     1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-    1. [Tech Stack](#techstack)
-1. [Screenshots](#screenshots)
+    1. [Tasks](#warning-tasks)
+    1. [Tech Stack](#tech-stack)
+1. [Screenshots](#computer-screenshots)
 1. [Contributing](#contributing)
 
 ## :tada: Usage
